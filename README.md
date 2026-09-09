@@ -1,301 +1,433 @@
 # Data Quality Validation Platform
 
-**V1 frozen rule engine · independently validated at multi-million-row scale · 2026-09-09**
+> **V1 frozen rule engine · independently validated at 3M-row execution scale · 5M dataset forensically verified · 2026-09-09**
 
-| Layer | Name |
-|---|---|
-| Product display name | **Data Quality Validation Platform** |
-| Repository / archive identity | `Data-Quality-V1-Final-Company-Integrated` |
-| Python import name | `data_quality_platform` |
+[![Status](https://img.shields.io/badge/status-PASS%20WITH%20DOCUMENTED%20LIMITATIONS-yellow)](#1-executive-status)
+[![Tests](https://img.shields.io/badge/tests-322%20passed-brightgreen)](#4-test-suite)
+[![3M Validation](https://img.shields.io/badge/3M-2%20successful%20runs-brightgreen)](#2-validation-results)
+[![5M Dataset](https://img.shields.io/badge/5M-dataset%20verified-orange)](#2-validation-results)
+[![SP1](https://img.shields.io/badge/SP1-isolated%20%7C%20not%20active-blue)](#7-sp1-successor-semantics)
 
----
+> **Final status: PASS WITH DOCUMENTED LIMITATIONS**
+>
+> The V1 rule engine is frozen and independently validated. The largest fully completed flagship execution is **3,000,000 rows**, executed twice with byte-identical outputs and **48,000,000 independent flag comparisons with 0 mismatches**. A separate **5,000,000-row dataset** was forensically verified and the 5M pipeline was genuinely stress-tested to **98.9%** before the execution environment reached its RAM/OOM boundary.
 
-## 1. Executive status
+## 1. Executive Status
 
-**PASS WITH DOCUMENTED LIMITATIONS** — established by the FINAL 5M VALIDATION
-task (2026-09-09) and recorded in
-`evidence/final_5m_execution/FINAL_RESULTS.json` (single source of truth) and
-`docs/FINAL_5M_VALIDATION_REPORT.md`.
-
-- The **5,000,000-row dataset** was created and forensically verified
-  (exactly 5,000,000 rows · 33 columns · IDs 1..5,000,000 strict ·
-  SHA-256 `44e41bb8cfe1c0d2fbafbff5e91bb40b100f8331ef26f946532b84c57409fb9d`).
-- The **5M pipeline execution was attempted for real and was killed by the
-  kernel OOM killer at 98.9% completion** (this 4 GB container has ~3.55 GB
-  available; the frozen engine's measured memory model predicted 3,594 MB).
-  The failure is fully evidenced (live dmesg capture) — reported, not hidden.
-- The **complete dual-run protocol ran at 3,000,000 rows** — the **largest
-  pre-registered safe flagship execution scale** (largest scale satisfying the
-  pre-registered memory-safety rule) — and passed everything:
-  byte-identical determinism, 48,000,000 independent flag comparisons with
-  **0 mismatches**, all-zero reconciliation deltas.
-- Test suite: **331 collected / 322 passed / 9 skipped / 0 failed / 0 errors**
-  (every skip attributed).
-- This README deliberately contains no "production ready" claim.
-
-## 2. What was executed (authoritative — this pass only)
-
-| Step | Result | Evidence |
+| Area | Status | Result |
 |---|---|---|
-| 5M dataset generation (CLI, seed **20260909**) | exit 0 · 123.9 s · peak RSS 22.57 MB | `02_dataset/dataset_generation_terminal.txt` |
-| 5M dataset independent forensics | **ALL CHECKS PASS** (rows/IDs/schema/SHA-256) | `02_dataset/dataset_integrity.txt`, `dataset_generation_result.json` |
-| 5M Run 1 (canonical CLI validate) | **FAILED — ENVIRONMENT OOM** (SIGKILL at row 4,943,922/5,000,000; `anon-rss:3592016kB` captured from dmesg) | `03_run1/` |
-| 5M Run 2 | **NOT EXECUTED** (deterministic failure mode — documented decision) | `05_run2/5M_RUN2_NOT_EXECUTED.md` |
-| 3M dataset (same seed lineage) | ALL CHECKS PASS · byte-prefix of the 5M dataset (cross-scale determinism proof) | `11_largest_safe_execution_3m/` |
-| 3M Run 1 (`run_3m_r1`) | **PASSED** · 3,000,000 in/out · 138.5 s · peak RSS 2,192.27 MB | `11_…/run1/` |
-| Independent verifier (Run 1) | **24,000,000 comparisons · 0 mismatches · deltas 0** | `04_independent_verification/verification_result_run1.json` |
-| 3M Run 2 (`run_3m_r2`) | **PASSED** · 140.5 s · peak RSS 2,195.82 MB | `11_…/run2/` |
-| Byte comparison Run1 vs Run2 | **BYTE-IDENTICAL** (`cmp` exit 0; SHA-256 `22110e49d0276eeed1153fe16ddf00a2a87c49a379ece7363a84cfdca2cb1ef9`) | `11_…/byte_comparison/comparison.txt` |
-| Independent verifier (Run 2) | 24,000,000 comparisons · 0 mismatches | `04_independent_verification/verification_result_run2.json` |
+| V1 rule engine | PASS | Frozen, versioned, SHA-256 identified |
+| 5M dataset | PASS | 5,000,000 rows × 33 columns; IDs 1..5,000,000; SHA-256 verified |
+| 5M stress execution | DOCUMENTED LIMITATION | Reached 4,943,922 / 5,000,000 rows (98.9%) before kernel OOM |
+| 3M flagship execution | PASS | Two complete runs |
+| Independent verification | PASS | 48,000,000 comparisons; 0 mismatches |
+| Determinism | PASS | Run 1 and Run 2 byte-identical |
+| Test suite | PASS WITH SKIPS | 331 collected / 322 passed / 9 skipped / 0 failed |
+| Geography V1 | PASS WITH LIMITATIONS | Frozen prefix-map semantics only |
+| SP1 geography | INACTIVE | Implemented/tested in isolation; not activated |
+| ClickHouse | NOT RUNTIME EXECUTED | No connections; no mutation SQL |
+| Airflow | STATICALLY VERIFIED | DAG structure verified; runtime unavailable/not installed |
+| E1 | NOT IMPLEMENTED / NOT EXECUTED / NOT AUTHORIZED | Explicitly outside current execution boundary |
 
-Flag counts (both 3M runs, identical; independently confirmed):
-`first_name_cleaning_candidate` 317,185 · `last_name_cleaning_candidate`
-210,603 · `name_cleaning_candidate` 91,020 · `email_blank` 240,000 ·
-`email_syntax_failure` 210,000 · `proposed_email_export_eligible` 2,550,000 ·
-`zip_state_assessable` 3,000,000 · `geography_mismatch_candidate` 149,044.
-Flag-event sum **6,767,852** — exactly equal to the pipeline lineage
-`total_row_records`.
+## 2. Validation Map
 
-## 3. Determinism & independent verification
-
-- **Two executions, one frozen input, byte-identical outputs.** No
-  regeneration between runs; `cmp` + SHA-256 prove byte equality.
-- The verifier (`04_independent_verification/independent_verifier.py`) imports
-  **zero production code** (grep-verified): all 8 V1 predicates are
-  independently re-implemented; the 51-entry state→ZIP-prefix map is
-  transcribed data.
-- Comparisons: taskbook expectation at 5M was **40,000,000** (5,000,000 × 8).
-  Actual executed scale: **24,000,000 per run × 2 runs = 48,000,000
-  comparisons, 0 mismatches**, plus schema, ID-sequence, source-column
-  preservation, ordering, and flag-domain checks — all clean.
-- Reconciliation: pipeline count == independent count for **all 8 flags,
-  delta 0** in both runs.
-- Cross-scale determinism: the 3M dataset is the exact byte-prefix of the 5M
-  dataset (same seed; `head -c 809834462` of the 5M CSV hashes to the 3M
-  SHA-256) — `11_…/dataset_prefix_property.txt`.
-
-## 4. Test suite (fresh 2026-09-09)
-
-```
-$ python -m pytest -q -rs
-322 passed, 9 skipped in 4.63s      (331 collected; 0 failed, 0 errors)
-```
-
-Skip attribution (captured, never hidden):
-- **7 × DL001–DL015** — COMPANY-GATED: authoritative company acceptance table
-  is external evidence; never reconstructed from local fixtures.
-- **1 × ClickHouse runtime** — Docker/ClickHouse unavailable.
-- **1 × Airflow runtime** — Airflow not installed (DAG statically verified).
-
-Golden fixture hashes unchanged: `9ff2364f` / `fd2d9783` / `c5084feb` —
-frozen V1 semantics intact.
-
-## 5. Performance (methods labeled on every figure)
-
-| Rows | Duration | Throughput | peak RSS (`ru_maxrss`) |
-|---|---|---|---|
-| 1,000 | 0.187 s | 5,343.8 rows/s | 22.43 MB |
-| 10,000 | 0.566 s | 17,680.1 rows/s | 28.91 MB |
-| 100,000 | 4.471 s | 22,365.8 rows/s | 93.87 MB |
-| 1,000,000 | 45.917 s | 21,778.5 rows/s | 735.71 MB |
-| 3,000,000 (Run 1) | 138.472 s | 21,664.1 rows/s | 2,192.27 MB |
-| 3,000,000 (Run 2) | 140.466 s | 21,357.6 rows/s | 2,195.82 MB |
-| 5,000,000 | **FAILED at 185.3 s (98.9%)** — kernel OOM | — | 3,592.0 MB at kill |
-
-> Throughput-figure note (2026-09-09 documentation consolidation): the machine-computed
-> ladder capture (`06_performance/bench_ladder.json`, mirrored in
-> `FINAL_RESULTS.json → performance.ladder`) lists 21,665.0 / 21,357.5 rows/s for the two
-> 3M runs; the prose reports (this table, `06_performance/PERFORMANCE_REPORT.md`) carry
-> the hand-derived 21,664.1 / 21,357.6 — a 0.004% rounding difference with identical
-> durations (138.472 s / 140.466 s). Both value sets are captured evidence; the
-> difference is explained, not hidden.
-
-- Memory figures are process peak RSS (`getrusage ru_maxrss`, VmHWM-equivalent);
-  the repo's separate tracemalloc benchmark (object-level; not comparable)
-  measures 1.00 / 7.23 / 68.65 MB at 1K/10K/100K.
-- **Implementation-level O(N) memory** (code inspection: `id_set` + per-flag
-  lineage records) — stated from inspection, not from these measurements;
-  the measurements show **observed empirical scaling** consistent with it
-  (~713–732 KB per 1K rows). No constant-memory claim is made.
-- The pre-registered linear model predicted the 3M peak within +1.4% and the
-  5M kill point within 0.1%.
-
-## 6. V1 geography — frozen prefix-map semantics only
-
-- `zip_state_assessable` = 3,000,000/3,000,000 — **"100% assessable under the
-  frozen V1 prefix-map predicate"** (V1 does NOT perform strict ZIP5 canonical
-  validation; "100% valid ZIPs" is never claimed).
-- `geography_mismatch_candidate` = **149,044 (4.9681%)** — strictly "V1
-  prefix-map geography mismatch candidates", never "canonical USPS errors"
-  or "confirmed geographic errors".
-- Frozen limitations disclosed: 13 ambiguous prefixes · DC duplicate map entry
-  (`"20","20"`) · 11 authoritative territory/military codes absent from the
-  frozen V1 map (8 territory codes + 3 military/APO/FPO codes; none of the 11
-  occurs in the generated dataset, which emits 50 states + DC) · None-string
-  quirk · documentation-only exclusion policy · known Austin false-positive
-  golden cases.
-- Details: `evidence/final_5m_execution/07_geography/GEOGRAPHY_V1_RESULTS.md`.
-
-## 7. SP1 — successor semantics, hard isolation boundary
-
-Machine-verified activation boundary (six properties, all negative):
-
-```
-REGISTERED = NO · ACTIVE = NO · DEFAULT = NO · AUTHORIZED = NO
-PRODUCTION CALL SITES = 0 · PHYSICAL REFERENCE BOUND = NO
+```mermaid
+flowchart TD
+    A["FINAL VALIDATION"]
+    A --> B["5M DATASET VERIFIED"]
+    A --> C["3M EXECUTION FULLY VALIDATED"]
+    B --> B1["5,000,000 rows"]
+    B --> B2["33 columns"]
+    B --> B3["IDs 1..5,000,000"]
+    B --> B4["SHA-256 verified"]
+    B --> D["5M STRESS EXECUTION"]
+    D --> D1["98.9% reached"]
+    D1 --> D2["Kernel RAM / OOM boundary"]
+    C --> C1["Run 1"]
+    C --> C2["Run 2"]
+    C1 --> E["Independent verifier"]
+    C2 --> E
+    E --> F["48,000,000 flag comparisons"]
+    F --> G["0 mismatches"]
+    G --> H["Reconciliation delta = 0"]
+    H --> I["BYTE-IDENTICAL OUTPUTS"]
+    classDef pass fill:#d9ead3,stroke:#38761d,stroke-width:2px,color:#000;
+    classDef warn fill:#fce5cd,stroke:#e69138,stroke-width:2px,color:#000;
+    classDef final fill:#fff2cc,stroke:#bf9000,stroke-width:3px,color:#000;
+    class A,H,I final;
+    class B,B1,B2,B3,B4,C,C1,C2,E,F,G pass;
+    class D,D1,D2 warn;
 ```
 
-Runtime corroboration: both flagship success manifests carry exactly the 8 V1
-rule hashes; the V1-only independent recomputation matched all 48,000,000 flag
-values. SP1 contract semantics are implemented and tested (63/63) — reported
-as tested semantics, never as physical canonical validation.
-Evidence: `evidence/final_5m_execution/08_activation_boundary/`.
+## 3. What Was Executed
 
-## 8. External / company-gated statuses
+### 3.1 5M dataset verification
 
-| Item | Status |
+The final 5M dataset was verified as:
+
+- Exactly **5,000,000 rows**
+- Exactly **33 columns**
+- Strict ID sequence **1..5,000,000**
+- SHA-256: `44e41bb8cfe1c0d2fbafbff5e91bb40b100f8331ef26f946532b84c57409fb9d`
+- The 3M dataset is an exact byte-prefix of the 5M dataset.
+
+### 3.2 5M stress execution
+
+The 5M pipeline execution was genuinely attempted. It reached:
+
+- **4,943,922 / 5,000,000 rows = 98.9%**
+- Kernel OOM termination
+- Captured memory evidence: `anon-rss:3592016kB`
+- Observed peak near **3.59 GB**
+- Run 2 was intentionally **not executed**, because the failure mode was deterministic and already documented.
+
+This is a stress-test result, not a claim that 5M completed successfully.
+
+### 3.3 Largest fully validated execution
+
+The pre-registered safe flagship scale was **3M rows**.
+
+| Run | Rows in | Rows out | Time | Peak RSS |
+|---|---:|---:|---:|---:|
+| Run 1 | 3,000,000 | 3,000,000 | 138.5 s | 2,192.27 MB |
+| Run 2 | 3,000,000 | 3,000,000 | 140.5 s | 2,195.82 MB |
+
+The two outputs were byte-identical.
+
+**3M output SHA-256:** `22110e49d0276eeed1153fe16ddf00a2a87c49a379ece7363a84cfdca2cb1ef9`
+
+## 4. V1 Rule Results
+
+The frozen V1 engine produces **41 columns** from the original **33 input columns**, including these 8 validation flags:
+
+| # | V1 flag |
+|---:|---|
+| 1 | `first_name_cleaning_candidate` |
+| 2 | `last_name_cleaning_candidate` |
+| 3 | `name_cleaning_candidate` |
+| 4 | `email_blank` |
+| 5 | `email_syntax_failure` |
+| 6 | `proposed_email_export_eligible` |
+| 7 | `zip_state_assessable` |
+| 8 | `geography_mismatch_candidate` |
+
+### Flag counts on both 3M runs
+
+| Flag | Count |
+|---|---:|
+| `first_name_cleaning_candidate` | 317,185 |
+| `last_name_cleaning_candidate` | 210,603 |
+| `name_cleaning_candidate` | 91,020 |
+| `email_blank` | 240,000 |
+| `email_syntax_failure` | 210,000 |
+| `proposed_email_export_eligible` | 2,550,000 |
+| `zip_state_assessable` | 3,000,000 |
+| `geography_mismatch_candidate` | 149,044 |
+| **Total flag events** | **6,767,852** |
+
+The total flag-event count reconciles exactly with pipeline lineage `total_row_records`.
+
+## 5. V1 Rule Flow
+
+```mermaid
+flowchart TD
+    A["Input Record<br/>33 columns"] --> B["Schema Validation"]
+    B --> C["V1 Rule Registry<br/>Frozen + Versioned + SHA-256"]
+    C --> R1["first_name_cleaning_candidate"]
+    C --> R2["last_name_cleaning_candidate"]
+    C --> R3["name_cleaning_candidate"]
+    C --> R4["email_blank"]
+    C --> R5["email_syntax_failure"]
+    C --> R6["proposed_email_export_eligible"]
+    C --> R7["zip_state_assessable"]
+    C --> R8["geography_mismatch_candidate"]
+    R1 --> O["Flag Preview<br/>41 columns"]
+    R2 --> O
+    R3 --> O
+    R4 --> O
+    R5 --> O
+    R6 --> O
+    R7 --> O
+    R8 --> O
+    O --> V["Independent Verification"]
+    V --> X["Reconciliation"]
+    X --> Y["0 mismatches"]
+    classDef input fill:#cfe2f3,stroke:#3d85c6,stroke-width:2px,color:#000;
+    classDef rule fill:#d9ead3,stroke:#38761d,stroke-width:2px,color:#000;
+    classDef verify fill:#fff2cc,stroke:#bf9000,stroke-width:2px,color:#000;
+    class A,B input;
+    class C,R1,R2,R3,R4,R5,R6,R7,R8,O rule;
+    class V,X,Y verify;
+```
+
+## 6. Independent Verification
+
+The independent verifier deliberately avoids importing production validation logic. It independently reimplements all 8 frozen V1 predicates and verifies the resulting output.
+
+Across the two complete 3M executions:
+
+- **24,000,000 comparisons per run**
+- **48,000,000 comparisons total**
+- **0 mismatches**
+- Schema checks: PASS
+- ID sequence: PASS
+- Source-column preservation: PASS
+- Ordering: PASS
+- Flag-domain checks: PASS
+- Pipeline vs independent counts: delta **0** for all 8 flags
+- Run 1 vs Run 2: **byte-identical**
+
+## 7. Test Suite
+
+Fresh final test execution on 2026-09-09:
+
+**331 collected / 322 passed / 9 skipped / 0 failed / 0 errors**
+
+The 9 skips are explicitly bounded:
+
+- 7 company-gated authoritative geography acceptance tests
+- 1 ClickHouse runtime test because the runtime was unavailable
+- 1 Airflow runtime test because the runtime was unavailable/not installed
+
+Golden fixture hashes remained unchanged:
+
+- `9ff2364f`
+- `fd2d9783`
+- `c5084feb`
+
+## 8. Performance and Memory
+
+| Scale | Time | Throughput | Peak / observed memory |
+|---:|---:|---:|---:|
+| 1K | 0.187 s | 5,343.8 rows/s | 22.43 MB |
+| 10K | 0.566 s | 17,680.1 rows/s | 28.91 MB |
+| 100K | 4.471 s | 22,365.8 rows/s | 93.87 MB |
+| 1M | 45.917 s | 21,778.5 rows/s | 735.71 MB |
+| 3M Run 1 | 138.472 s | 21,664.1 rows/s | 2,192.27 MB |
+| 3M Run 2 | 140.466 s | 21,357.6 rows/s | 2,195.82 MB |
+| 5M stress | 185.3 s | — | 3,592.0 MB at termination |
+
+Observed memory growth is approximately linear because the implementation maintains an `id_set` plus per-flag lineage records. The pre-registered linear model predicted the 3M peak within approximately **+1.4%** and the 5M termination point within approximately **0.1%**.
+
+Under the observed model, approximately **4.6 GB of free RAM** would be required for a safe 5M execution in this environment.
+
+> Minor throughput differences between the machine-computed ladder and rounded report values are retained as evidence and are within approximately 0.004%.
+
+## 9. Geography — Frozen V1 Semantics
+
+`zip_state_assessable = 3,000,000 / 3,000,000` means that every generated row was **assessable under the frozen V1 prefix-map predicate**. It does **not** mean that every ZIP is a valid canonical USPS ZIP.
+
+`geography_mismatch_candidate = 149,044 (4.9681%)` represents V1 prefix-map mismatch candidates only. It is **not** a claim of canonical USPS geography errors.
+
+Known V1 geography limitations include:
+
+- 13 ambiguous prefixes
+- DC duplicate prefix representation (`"20", "20"`)
+- 11 authoritative territory/military codes absent from the frozen V1 map
+  - 8 territory codes
+  - 3 military / APO / FPO codes
+- The generator emits 50 states + DC, so those absent codes were not generated
+- Existing `None`-string behavior remains a documented quirk
+- Documentation-only exclusion policy remains documented
+- Known Austin false-positive golden cases remain known and bounded
+
+## 10. SP1 Activation Boundary
+
+SP1 successor geography semantics are isolated and are **not active** in the current V1 production path.
+
+```mermaid
+flowchart LR
+    A["SP1 successor geography"] --> B["REGISTERED = NO"]
+    A --> C["ACTIVE = NO"]
+    A --> D["DEFAULT = NO"]
+    A --> E["AUTHORIZED = NO"]
+    A --> F["PRODUCTION CALL SITES = 0"]
+    A --> G["PHYSICAL REFERENCE BOUND = NO"]
+    H["Frozen V1 engine"] --> I["Exactly 8 V1 rule hashes"]
+    I --> J["V1-only independent recomputation"]
+    J --> K["48M values matched"]
+    classDef inactive fill:#cfe2f3,stroke:#3d85c6,stroke-width:2px,color:#000;
+    classDef pass fill:#d9ead3,stroke:#38761d,stroke-width:2px,color:#000;
+    class A,B,C,D,E,F,G inactive;
+    class H,I,J,K pass;
+```
+
+The SP1 contract semantics are implemented/tested in isolation, but the final evidence does **not** claim physical canonical geography validation.
+
+## 11. Architecture
+
+```mermaid
+flowchart LR
+    A["CSV<br/>33 columns"]
+    B["SchemaValidator<br/>Header contract"]
+    C["RuleRegistry<br/>8 frozen V1 rules"]
+    D["ValidationEngine<br/>Per-row validation<br/>O(N) accumulators"]
+    E["Flag Preview<br/>41 columns"]
+    F["Lineage / Audit<br/>Monitoring / Alerts"]
+    G["Success Manifest<br/>Rule hashes + reconciliation"]
+    H["Independent Verifier<br/>Zero production imports"]
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    D --> F
+    D --> G
+    E --> H
+    G --> H
+    I["Airflow DAG<br/>6 tasks<br/>STATIC ONLY"]
+    J["ClickHouse<br/>DDL templates<br/>RUNTIME NOT EXECUTED"]
+    K["SP1 Geography<br/>ISOLATED / INACTIVE"]
+    L["CleaningEngine<br/>Execution layer only"]
+    I -.-> D
+    J -.-> E
+    K -.-> C
+    L -.-> E
+    classDef core fill:#d9ead3,stroke:#38761d,stroke-width:2px,color:#000;
+    classDef boundary fill:#fce5cd,stroke:#e69138,stroke-width:2px,color:#000;
+    classDef isolated fill:#cfe2f3,stroke:#3d85c6,stroke-width:2px,color:#000;
+    class A,B,C,D,E,F,G,H,L core;
+    class I,J boundary;
+    class K isolated;
+```
+
+## 12. Safety and Execution Boundary
+
+The validation was deliberately conducted without modifying production or read-only source data.
+
+| Component | Final boundary |
 |---|---|
-| DL001–DL015 canonical geography | **COMPANY-GATED** (external fixtures; 7 skip-gated tests) |
-| ClickHouse | **NOT RUNTIME EXECUTED** — 0 connections, 0 mutation SQL; DDL templates only |
-| Airflow | **STATICALLY VERIFIED** (DAG = 6 tasks); runtime NOT EXECUTED |
-| E1 | **NOT IMPLEMENTED / NOT EXECUTED / NOT AUTHORIZED** |
-| 721,141,364 / 590,011,545 population figures | **COMPANY-SUPPLIED / HISTORICAL / ARITHMETIC-ONLY / NOT LOCALLY REPRODUCED** |
+| ClickHouse | No runtime connection; no production statements; no writes/mutations |
+| Airflow | Static verification only; runtime not executed |
+| E1 | Not implemented, not executed, not authorized |
+| SP1 | Registered/active/default/authorized: NO |
+| Company authoritative geography | Company-gated; not substituted with a local guess |
+| 721,141,364 / 590,011,545 population figures | Company-supplied / historical / arithmetic-only; not locally reproduced |
 
-## 9. Limitations (current, evidence-backed)
+This boundary is intentional: missing company-authorized evidence is reported as a limitation rather than replaced with an unsupported claim.
 
-1. 5M end-to-end execution: **BLOCKED by environment RAM** (kernel-evidenced);
-   5M is the verified dataset scale, not the verified execution scale.
-2. Engine in-process memory is **O(N)** (documented + measured); single-box
-   runs beyond ~3M rows need memory headroom (≥ ~4.6 GB free for 5M).
-3. Canonical geography validation gated on company inputs (SP1 unactivated).
-4. ClickHouse/Airflow runtimes not executed here.
-5. Full register: `docs/FINAL_AUDIT_DECISION_MATRIX.md` §15 / `LIMITATIONS.md`.
+## 13. Evidence Source of Truth
 
-## 10. Terminal verification (copy-paste)
+The final evidence root is:
 
-```bash
-# toolchain
-python --version && python -m pytest --version
+```text
+evidence/final_5m_execution/
+├── FINAL_RESULTS.json
+├── MANIFEST.json
+├── 00_baseline/
+├── 01_reporting_audit/
+├── 02_dataset/
+├── 03_run1/
+├── 04_independent_verification/
+├── 05_run2/
+├── 06_performance/
+├── 07_geography/
+├── 08_activation_boundary/
+├── 09_consistency/
+├── 10_final_summary/
+├── 11_largest_safe_execution_3m/
+├── 12_test_suite/
+└── 13_archive/
+```
 
-# full test suite (expect: 322 passed, 9 skipped, 0 failed, 0 errors)
+### Primary source-of-truth files
+
+1. `evidence/final_5m_execution/FINAL_RESULTS.json`
+2. `docs/FINAL_5M_VALIDATION_REPORT.md`
+3. Evidence files under `evidence/final_5m_execution/`
+
+## 14. Reproducibility
+
+### PowerShell
+
+```powershell
+python --version
+python -m pytest --version
 python -m pytest -q -rs
-
-# SP1 isolation + registry probe (expect: 8 V1 rules, 0 security/mutation hits)
 python scripts/fresh_execution_probe.py
 
-# regenerate the 3M flagship dataset byte-identically (seed 20260909)
-python -m runner.cli generate --rows 3000000 --seed 20260909 \
-    --output /tmp/repro_3m.csv
-sha256sum /tmp/repro_3m.csv        # expect 9be5438ee082652968705add152ee7268272213249826043603f36cfd55ae09e
+python -m runner.cli generate --rows 3000000 --seed 20260909 --output .\repro_3m.csv
 
-# validate it (expect: Validation PASSED, 3000000 in / 3000000 out)
-python -m runner.cli validate --csv /tmp/repro_3m.csv \
-    --output /tmp/repro_3m_out.csv --run-id repro_3m
+(Get-FileHash .\repro_3m.csv -Algorithm SHA256).Hash
 
-# independent re-verification of the shipped evidence outputs
-python scripts/five_m/independent_verifier.py \
-    data/generated/final_3m/consumer_3m_seed_20260909.csv \
-    data/generated/final_3m/consumer_3m_seed_20260909_out_run1.csv \
-    /tmp/pipeline_counts_r1.json /tmp/repro_verify.json \
-    evidence/final_5m_execution/11_largest_safe_execution_3m/run1/lineage.json
-python -c "import json;print(json.load(open('/tmp/repro_verify.json'))['ALL_CHECKS_PASS'])"
+python -m runner.cli validate `
+  --csv .\repro_3m.csv `
+  --output .\repro_3m_out.csv `
+  --run-id repro_3m
 ```
 
-Captured equivalents of every command above live under
-`evidence/final_5m_execution/` (see `docs/REPRODUCIBILITY.md` for the full
-COMMAND / PURPOSE / EXPECTED / ACTUAL table).
+### WSL / Linux
 
-## 11. Evidence directory
+```bash
+python3 --version
+python3 -m pytest --version
+python3 -m pytest -q -rs
+python3 scripts/fresh_execution_probe.py
 
-```
-evidence/final_5m_execution/
-├── FINAL_RESULTS.json                  ← single source of truth (all numbers)
-├── MANIFEST.json                       ← path/size/SHA-256/type/purpose per artifact
-├── 00_baseline/          git/env forensics + 1M/2M feasibility probes
-├── 01_reporting_audit/   REPORTING_FORENSIC_AUDIT.md (A–F claim classes, 14 contradictions)
-├── 02_dataset/           5M dataset evidence (generation/integrity/SHA-256/metadata)
-├── 03_run1/              5M attempt: honest OOM failure evidence (+ live dmesg)
-├── 04_independent_verification/   verifier source + 2 × 24M-comparison results
-├── 05_run2/              5M Run 2 NOT EXECUTED decision record
-├── 06_performance/       ladder captures + bench_ladder.json + PERFORMANCE_REPORT.md
-├── 07_geography/         GEOGRAPHY_V1_RESULTS.md + per-state 3M aggregation
-├── 08_activation_boundary/  SP1_NEGATIVE_ACTIVATION_PROOF.md + machine check
-├── 09_consistency/       DOCUMENT_CONSISTENCY_REPORT.md
-├── 10_final_summary/     FINAL_TERMINAL_SUMMARY.txt
-├── 11_largest_safe_execution_3m/  run1/ run2/ byte_comparison/ (flagship protocol)
-├── 12_test_suite/        pytest captures + probe output
-└── 13_archive/           package records — v1 (task-time package) + v2
-                          (2026-09-09 consolidation): manifest verifications,
-                          unpack verifications, archive SHA-256 bindings
+python3 -m runner.cli generate --rows 3000000 --seed 20260909 --output ./repro_3m.csv
+sha256sum ./repro_3m.csv
+
+python3 -m runner.cli validate \
+  --csv ./repro_3m.csv \
+  --output ./repro_3m_out.csv \
+  --run-id repro_3m
 ```
 
-## 12. Reports & documentation map
-
-| Document | Role |
-|---|---|
-| `docs/FINAL_5M_VALIDATION_REPORT.md` | **Report of record** (18-section structure) |
-| `docs/EVIDENCE_COVERAGE.md` | Requirement × evidence matrix (claim classes A–F) |
-| `docs/FINAL_AUDIT_DECISION_MATRIX.md` | Area × status matrix (mandatory vocabulary) |
-| `docs/REPRODUCIBILITY.md` | Terminal reproduction guide (actual commands) |
-| `evidence/final_5m_execution/01_reporting_audit/REPORTING_FORENSIC_AUDIT.md` | Pre-rebuild audit of all legacy reports |
-| `BENCHMARK_REPORT.md`, `RECONCILIATION_REPORT.md`, `RULE_VALIDATION_REPORT.md`, `GEOGRAPHY_VALIDATION_REPORT.md`, `TEST_REPORT.md`, `LIMITATIONS.md`, `FINAL_VERIFICATION_REPORT.md`, `FINAL_EXECUTION_REPORT.md`, `EVIDENCE_MANIFEST.md`, et al. | Legacy 2026-09-05/06/07 pass reports — each now carries an individual `HISTORICAL / SUPERSEDED — 2026-09-07` banner (2026-09-09 documentation consolidation); superseded where they conflict with the 2026-09-09 pass |
-
-## 13. HISTORICAL / SUPERSEDED EVIDENCE
-
-- Everything under `reports/history/` is quarantined history
-  (indexed by `reports/history/HISTORY_INDEX.md`).
-- Root reports dated 2026-09-05/06/07 (`FINAL_SCALE_REPORT.md`,
-  `FINAL_SECURITY_REPORT.md`, `FINAL_TEST_REPORT.md`,
-  `FINAL_REMEDIATION_REPORT.md`, `COMPANY_REQUIREMENTS_ANSWER.md`,
-  `BENCHMARK_REPORT.md`, `RECONCILIATION_REPORT.md`,
-  `RULE_VALIDATION_REPORT.md`, `GEOGRAPHY_VALIDATION_REPORT.md`,
-  `TEST_REPORT.md`, `LIMITATIONS.md`, `FINAL_VERIFICATION_REPORT.md`,
-  `FINAL_EXECUTION_REPORT.md`, `EVIDENCE_MANIFEST.md`,
-  `FINAL_TEST_AND_FORENSIC_REPORT.md`,
-  `EVIDENCE_MANIFEST_FORENSIC_AUDIT_REPORT.md`,
-  `CROSS_REFERENCE_PROVENANCE_REPORT.md`, `FINAL_IMPROVEMENT_REPORT.md`)
-  describe prior passes and now each carry an individual
-  `HISTORICAL / SUPERSEDED — 2026-09-07` banner (2026-09-09 documentation
-  consolidation, contents preserved verbatim); where they conflict with this
-  pass, **the 2026-09-09 evidence wins** (e.g., "largest verified execution
-  = 100K" is superseded; the untraceable 0.199 s benchmark family is
-  superseded by `06_performance/benchmark_tracemalloc_20260909.json`).
-- No 2M or 3M execution evidence ever existed in this repository before this
-  task (forensically established in `00_baseline/` and
-  `01_reporting_audit/`); the earlier company "2M" claims were never
-  supported by artifacts and are not represented anywhere as executed.
-- Prior archives in `download/` are preserved unmodified.
-
-## 14. Architecture (one screen)
-
-```
-CSV (33 cols) → SchemaValidator (header contract)
-             → RuleRegistry (exactly 8 frozen V1 rules, versioned + SHA-256)
-             → ValidationEngine (streaming per-row; O(N) accumulators disclosed)
-             → outputs: Flag Preview CSV (41 cols) + lineage/audit/monitoring/
-                        alerts + success manifest (rule hashes, reconciliation)
-             → independent verifier (this task): recomputes every flag value
-```
-
-Orchestration (Airflow DAG, 6 tasks) and storage tier (ClickHouse DDL
-templates) are present but **NOT runtime executed** — see §8. SP1 canonical
-geography lives isolated inside `data_quality_platform/geography/` with zero
-production call sites (§7).
+> Reproduction commands operate on local/generated data. They do not authorize or require writes to ClickHouse production/read-only datasets.
 
 ## 15. Archive
 
-**Current package (2026-09-09 documentation consolidation):**
-`download/Data-Quality-Validation-Platform-5M-Revalidated-2026-09-09-v2.zip`
-— SHA-256 recorded in the `download/…-v2.zip.sha256` sidecar and in
-`evidence/final_5m_execution/13_archive/archive_v2_sha256.txt`; unpack-verified
-(structure + documentation-currency checks; the test suite was deliberately
-NOT re-run during consolidation — its verified result is
-`12_test_suite/pytest_full_rs.txt`, 322/9/0/0, and the v1-named package's
-unpack check re-ran it inside the extracted copy with the same result).
+Current validated archive:
 
-**Prior package (task-time, preserved unmodified — never overwritten):**
-`download/Data-Quality-Validation-Platform-5M-Revalidated-2026-09-09.zip`,
-SHA-256 `51fdf65d31df91a930aaaecf4e8f8fabfe2d0487372177b219d0b9bbe3463ea4`,
-built at commit `95868cc` (records: `13_archive/archive_sha256.txt` +
-`13_archive/unpack_verification.txt`). All earlier archives in `download/`
-are preserved untouched.
+```text
+download/Data-Quality-Validation-Platform-5M-Revalidated-2026-09-09-v2.zip
+download/Data-Quality-Validation-Platform-5M-Revalidated-2026-09-09-v2.zip.sha256
+```
+
+The current archive was unpack-verified. The archive evidence records its SHA-256. Tests were not rerun during the documentation-only consolidation step.
+
+The prior archive remains preserved and unmodified:
+
+```text
+download/Data-Quality-Validation-Platform-5M-Revalidated-2026-09-09.zip
+```
+
+## 16. Final Audit Conclusion
+
+The evidence supports the following precise conclusion:
+
+> **The frozen V1 Data Quality Validation Platform is independently validated at the 3M-row execution scale, with two complete deterministic runs and 48M independent flag comparisons producing zero mismatches. The 5M dataset is forensically verified, and the 5M pipeline was genuinely stress-tested to 98.9% before the environment's memory boundary terminated execution.**
+
+The project therefore passes the implemented local validation scope **with documented limitations**. It does not claim successful 5M completion, live ClickHouse execution, Airflow runtime execution, canonical company-authoritative geography acceptance, or E1 authorization where those conditions were not available or authorized.
+
+## 17. Final Verdict
+
+**PASS WITH DOCUMENTED LIMITATIONS**
+
+### What is proven
+
+- Frozen V1 rule behavior
+- Deterministic 3M execution
+- Two complete 3M runs
+- Byte-identical outputs
+- Independent recomputation of all 8 V1 predicates
+- 48,000,000 comparisons with 0 mismatches
+- Schema, ID, ordering, preservation, domain, and reconciliation integrity
+- 5M dataset integrity
+- Real 5M stress behavior and memory boundary
+- Evidence and provenance boundary
+
+### What remains externally gated or unexecuted
+
+- Company-authoritative canonical geography acceptance
+- ClickHouse runtime execution
+- Airflow runtime execution
+- E1 execution
+- Any production mutation
+
+---
+
+**Product:** Data Quality Validation Platform  
+**Repository:** `Data-Quality-Validation-Platform-v2`  
+**Python package:** `data_quality_platform`  
+**Validation date:** 2026-09-09  
+**Final verdict:** **PASS WITH DOCUMENTED LIMITATIONS**

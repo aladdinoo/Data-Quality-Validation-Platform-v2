@@ -1,0 +1,45 @@
+PHASE 0 FORENSIC BASELINE — EXISTING REPORTS INVENTORY — captured 2026-09-09T15:21:48.236791+00:00
+
+42 markdown/report documents found:
+  BENCHMARK_REPORT.md                                                         3420 B  sha256=3a1438da1e03e762
+  COMPANY_ALIGNMENT_FORENSIC_REPORT.md                                       17445 B  sha256=ba1d643fdd050aff
+  COMPANY_REQUIREMENTS_ANSWER.md                                             26264 B  sha256=4c00b6ec7bc49b04
+  CROSS_REFERENCE_PROVENANCE_REPORT.md                                        7101 B  sha256=ce3e9d5321346f20
+  ENGINEERING_RECOMMENDATIONS.md                                             11851 B  sha256=8c708f147dd0606a
+  EVIDENCE_MANIFEST.md                                                        5054 B  sha256=2b07684d3ab0625f
+  EVIDENCE_MANIFEST_FORENSIC_AUDIT_REPORT.md                                 24483 B  sha256=b9f771c3e6de2009
+  FINAL_EXECUTION_REPORT.md                                                   7571 B  sha256=61f038ae852dfc89
+  FINAL_IMPROVEMENT_REPORT.md                                                17988 B  sha256=3b659c818c7cadc5
+  FINAL_REMEDIATION_REPORT.md                                                21641 B  sha256=86ae40f247c37c2e
+  FINAL_SCALE_REPORT.md                                                       4319 B  sha256=8c7ab2819768af56
+  FINAL_SECURITY_REPORT.md                                                    5845 B  sha256=0eccc549fb5a2123
+  FINAL_TEST_AND_FORENSIC_REPORT.md                                          32211 B  sha256=189757806b6c19da
+  FINAL_TEST_REPORT.md                                                        8967 B  sha256=312097db0cd8c0a4
+  FINAL_VERIFICATION_REPORT.md                                                6216 B  sha256=d3c0784f6ad767e8
+  GEOGRAPHY_VALIDATION_REPORT.md                                              4865 B  sha256=ad2bdbaee5f9a2c0
+  LIMITATIONS.md                                                              4375 B  sha256=e4ce833d97e2e688
+  README.md                                                                  37736 B  sha256=38e4c7d07f0bc99e
+  RECONCILIATION_REPORT.md                                                    4128 B  sha256=159ff36862874b0a
+  RULE_VALIDATION_REPORT.md                                                   3942 B  sha256=d2942037d16932e5
+  SECURITY.md                                                                 2183 B  sha256=40df54608fb73521
+  TEST_REPORT.md                                                              4820 B  sha256=58fe307c784b54d5
+  docs/ARCHITECTURE_MAP.md                                                    6926 B  sha256=2d70ca611ee300d3
+  docs/CANONICAL_GEOGRAPHY_DESIGN.md                                         17786 B  sha256=077b8d85c6507e55
+  docs/DATA_FLOW_MAP.md                                                       7966 B  sha256=6146eac7b4a72315
+  docs/FALSE_POSITIVE_REVIEW.md                                               3212 B  sha256=7491afefd4d7aa85
+  docs/GEOGRAPHY_RULE_SP1_CONTRACT.md                                        13206 B  sha256=22c5eb3b337a978f
+  docs/GULNARA_REVIEW.md                                                      3170 B  sha256=5f251e1ee11aebf7
+  evidence/final/PROOF_MATRIX.md                                             10854 B  sha256=daa2c9118c8f0203
+  evidence/verification/verification_report.md                                1223 B  sha256=28fa576535269312
+  reports/history/COMPANY_ALIGNMENT_FORENSIC_REPORT.md                       40637 B  sha256=800eb3b873170a56
+  reports/history/CROSS_REFERENCE_PROVENANCE_REPORT.md                       18296 B  sha256=770946128ea8e16d
+  reports/history/DELIVERY_MANIFEST.json                                     11405 B  sha256=b6ba6668bd080088
+  reports/history/ENGINEERING_RECOMMENDATIONS.md                             32189 B  sha256=cbb1dce35778a94d
+  reports/history/FINAL_VERIFICATION_REPORT_2026-08-25_HISTORICAL.md         14319 B  sha256=c6d6c6873f9c306e
+  reports/history/HISTORY_INDEX.md                                            6462 B  sha256=507bcceab2974d99
+  reports/history/PHASE1_Q21_ADJUDICATION.md                                 10791 B  sha256=20c72ccf91ce9cad
+  reports/history/PHASE3_GOLDEN_INTEGRITY_REPORT.md                          12579 B  sha256=44913d4b136edd0d
+  reports/history/PHASE_18_DELTA_VERIFICATION_REPORT.md                      28620 B  sha256=3a1b18452482bba4
+  reports/history/PHASE_19_EVIDENCE_REPORT.md                                24178 B  sha256=83eedcb4744acaf3
+  reports/history/PHASE_20_FORENSIC_AUDIT_REPORT.md                          28015 B  sha256=4bb618ef1baa54f7
+  reports/history/Q1_Q22_ACCEPTANCE_AUDIT.md                                 26539 B  sha256=a8783a425fb3e28f

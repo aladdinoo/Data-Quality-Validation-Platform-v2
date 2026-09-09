@@ -1,0 +1,22 @@
+PHASE 0 — 1,000,000-ROW FEASIBILITY PROBE — started 2026-09-09T15:21:48.236791+00:00
+
+$ python -c <generate 1M rows, seed 20260909>
+GENERATION_OK rows=1000000 duration_s=25.34 peak_rss_mb=20.00
+exit code: 0
+
+$ python -c <validate probe_1m.csv via ValidationEngine>
+[ALERT WARNING] sla_breach: SLA breach for completeness: score=0.9, threshold=0.95
+[ALERT WARNING] sla_breach: SLA breach for validity: score=0.85, threshold=0.95
+[ALERT WARNING] sla_breach: SLA breach for accuracy: score=0.8242, threshold=0.9
+[ALERT WARNING] sla_breach: SLA breach for email_quality: score=0.85, threshold=0.95
+VALIDATE_OK success=True in=1000000 out=1000000 duration_s=47.03 peak_rss_mb=731.41
+FLAGS {"first_name_cleaning_candidate": 105724, "last_name_cleaning_candidate": 70090, "name_cleaning_candidate": 30331, "email_blank": 80000, "email_syntax_failure": 70000, "proposed_email_export_eligible": 850000, "zip_state_assessable": 1000000, "geography_mismatch_candidate": 49682}
+exit code: 0
+
+MEASUREMENT METHOD: resource.getrusage(RUSAGE_SELF).ru_maxrss (Linux KiB) —
+process peak resident set size (VmHWM-equivalent). NOT tracemalloc.
+
+probe wall time total: 73.0s
+
+NOTE: this is an in-process feasibility probe, not the official benchmark;
+official 1K/10K/100K/1M/5M measurements live in 06_performance/.

@@ -1,0 +1,2 @@
+$ cd /home/z/my-project/Data-Quality-V1-Final-Company-Integrated
+$ /home/z/.venv/bin/python -m runner.cli validate --csv data/generated/final_3m/consumer_3m_seed_20260909.csv --output data/generated/final_3m/consumer_3m_seed_20260909_out_run2.csv --run-id run_3m_r2 --evidence-dir evidence/final_5m_execution/11_largest_safe_execution_3m/run2

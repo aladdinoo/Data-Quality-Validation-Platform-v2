@@ -1,0 +1,7 @@
+PREFIX-PROPERTY DETERMINISM CROSS-CHECK (same seed 20260909, frozen generator)
+head -c 809834462 of consumer_5m_seed_20260909.csv | sha256sum
+  = 9be5438ee082652968705add152ee7268272213249826043603f36cfd55ae09e (see command above in execution log)
+sha256(consumer_3m_seed_20260909.csv)
+  = 9be5438ee082652968705add152ee7268272213249826043603f36cfd55ae09e
+RESULT: IDENTICAL — the 3M dataset is the exact byte-prefix of the 5M dataset,
+proving generator determinism across row counts with one seed lineage.

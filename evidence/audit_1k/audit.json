@@ -1,0 +1,109 @@
+{
+  "run_id": "audit_1k",
+  "events": [
+    {
+      "event_type": "run_started",
+      "run_id": "audit_1k",
+      "timestamp": "2026-08-25T07:48:21.086500+00:00",
+      "details": {
+        "source": "data/generated/audit_1k.csv"
+      }
+    },
+    {
+      "event_type": "schema_validated",
+      "run_id": "audit_1k",
+      "timestamp": "2026-08-25T07:48:21.086670+00:00",
+      "details": {
+        "schema_hash": "",
+        "errors": []
+      }
+    },
+    {
+      "event_type": "rules_loaded",
+      "run_id": "audit_1k",
+      "timestamp": "2026-08-25T07:48:21.086772+00:00",
+      "details": {
+        "rule_count": 8,
+        "registry_hash": "d732b66053da1be1643a81a244fd9ad08100cecce61b0c5b5f8e444ab3e0c263"
+      }
+    },
+    {
+      "event_type": "validation_started",
+      "run_id": "audit_1k",
+      "timestamp": "2026-08-25T07:48:21.086782+00:00",
+      "details": {
+        "row_count": 0
+      }
+    },
+    {
+      "event_type": "reconciliation_completed",
+      "run_id": "audit_1k",
+      "timestamp": "2026-08-25T07:48:21.129106+00:00",
+      "details": {
+        "passed": true,
+        "details": {
+          "passed": true,
+          "errors": [],
+          "input_row_count": 1000,
+          "output_row_count": 1000,
+          "flag_counts": {
+            "first_name_cleaning_candidate": 99,
+            "last_name_cleaning_candidate": 69,
+            "name_cleaning_candidate": 31,
+            "email_blank": 80,
+            "email_syntax_failure": 70,
+            "proposed_email_export_eligible": 850,
+            "zip_state_assessable": 1000,
+            "geography_mismatch_candidate": 50
+          }
+        }
+      }
+    },
+    {
+      "event_type": "monitoring_completed",
+      "run_id": "audit_1k",
+      "timestamp": "2026-08-25T07:48:21.129160+00:00",
+      "details": {
+        "overall_score": 0.9165,
+        "sla_passed": false
+      }
+    },
+    {
+      "event_type": "validation_completed",
+      "run_id": "audit_1k",
+      "timestamp": "2026-08-25T07:48:21.129229+00:00",
+      "details": {
+        "input_rows": 1000,
+        "output_rows": 1000,
+        "flag_counts": {
+          "first_name_cleaning_candidate": 99,
+          "last_name_cleaning_candidate": 69,
+          "name_cleaning_candidate": 31,
+          "email_blank": 80,
+          "email_syntax_failure": 70,
+          "proposed_email_export_eligible": 850,
+          "zip_state_assessable": 1000,
+          "geography_mismatch_candidate": 50
+        },
+        "duration_seconds": 0.03539109230041504
+      }
+    },
+    {
+      "event_type": "output_written",
+      "run_id": "audit_1k",
+      "timestamp": "2026-08-25T07:48:21.129232+00:00",
+      "details": {
+        "path": "data/generated/audit_1k_flags.csv",
+        "rows": 1000
+      }
+    },
+    {
+      "event_type": "lineage_recorded",
+      "run_id": "audit_1k",
+      "timestamp": "2026-08-25T07:48:21.131326+00:00",
+      "details": {
+        "path": "evidence/audit_1k/lineage.json"
+      }
+    }
+  ]
+}

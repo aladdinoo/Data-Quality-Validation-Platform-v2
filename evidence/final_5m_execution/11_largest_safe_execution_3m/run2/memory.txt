@@ -1,0 +1,16 @@
+MEMORY MEASUREMENT — METHODS EXPLICITLY LABELED
+============================================================
+run_id: run_3m_r2
+
+METHOD 1 (authoritative, post-exit): resource.getrusage(
+  RUSAGE_CHILDREN).ru_maxrss — process peak resident set size of the
+  CLI child process (Linux reports KiB; VmHWM-equivalent):
+  ru_maxrss_peak = 2195.82 MB
+
+METHOD 2 (in-flight, polling): /proc/<pid>/status VmHWM sampled
+  every 0.5 s while the CLI process ran (last observed peak):
+  vmhwm_peak_observed = 2195.82 MB
+
+NOTE: neither figure is tracemalloc. tracemalloc measures Python
+object allocations only and is NOT comparable to process RSS.
+MemAvailable before: 3594.2 MB; after: 3579.1 MB

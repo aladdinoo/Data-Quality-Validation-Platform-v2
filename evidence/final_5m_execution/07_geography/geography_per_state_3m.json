@@ -1,0 +1,452 @@
+{
+  "source_output_csv": "data/generated/final_3m/consumer_3m_seed_20260909_out_run1.csv",
+  "total_rows": 3000000,
+  "total_assessable": 3000000,
+  "total_mismatch_candidates": 149044,
+  "assessable_rate_pct": 100.0,
+  "mismatch_rate_pct": 4.9681,
+  "per_state": [
+    {
+      "state": "AK",
+      "rows": 58997,
+      "assessable": 58997,
+      "mismatch_candidates": 2890,
+      "mismatch_rate_pct": 4.899
+    },
+    {
+      "state": "AL",
+      "rows": 59210,
+      "assessable": 59210,
+      "mismatch_candidates": 2991,
+      "mismatch_rate_pct": 5.052
+    },
+    {
+      "state": "AR",
+      "rows": 58618,
+      "assessable": 58618,
+      "mismatch_candidates": 2882,
+      "mismatch_rate_pct": 4.917
+    },
+    {
+      "state": "AZ",
+      "rows": 58448,
+      "assessable": 58448,
+      "mismatch_candidates": 2848,
+      "mismatch_rate_pct": 4.873
+    },
+    {
+      "state": "CA",
+      "rows": 58580,
+      "assessable": 58580,
+      "mismatch_candidates": 2884,
+      "mismatch_rate_pct": 4.923
+    },
+    {
+      "state": "CO",
+      "rows": 58824,
+      "assessable": 58824,
+      "mismatch_candidates": 2875,
+      "mismatch_rate_pct": 4.887
+    },
+    {
+      "state": "CT",
+      "rows": 58992,
+      "assessable": 58992,
+      "mismatch_candidates": 2984,
+      "mismatch_rate_pct": 5.058
+    },
+    {
+      "state": "DC",
+      "rows": 59011,
+      "assessable": 59011,
+      "mismatch_candidates": 2985,
+      "mismatch_rate_pct": 5.058
+    },
+    {
+      "state": "DE",
+      "rows": 58772,
+      "assessable": 58772,
+      "mismatch_candidates": 2842,
+      "mismatch_rate_pct": 4.836
+    },
+    {
+      "state": "FL",
+      "rows": 58356,
+      "assessable": 58356,
+      "mismatch_candidates": 2876,
+      "mismatch_rate_pct": 4.928
+    },
+    {
+      "state": "GA",
+      "rows": 58836,
+      "assessable": 58836,
+      "mismatch_candidates": 2924,
+      "mismatch_rate_pct": 4.97
+    },
+    {
+      "state": "HI",
+      "rows": 58575,
+      "assessable": 58575,
+      "mismatch_candidates": 2918,
+      "mismatch_rate_pct": 4.982
+    },
+    {
+      "state": "IA",
+      "rows": 59031,
+      "assessable": 59031,
+      "mismatch_candidates": 3077,
+      "mismatch_rate_pct": 5.213
+    },
+    {
+      "state": "ID",
+      "rows": 58923,
+      "assessable": 58923,
+      "mismatch_candidates": 2914,
+      "mismatch_rate_pct": 4.945
+    },
+    {
+      "state": "IL",
+      "rows": 58645,
+      "assessable": 58645,
+      "mismatch_candidates": 2939,
+      "mismatch_rate_pct": 5.012
+    },
+    {
+      "state": "IN",
+      "rows": 58515,
+      "assessable": 58515,
+      "mismatch_candidates": 2811,
+      "mismatch_rate_pct": 4.804
+    },
+    {
+      "state": "KS",
+      "rows": 58870,
+      "assessable": 58870,
+      "mismatch_candidates": 2990,
+      "mismatch_rate_pct": 5.079
+    },
+    {
+      "state": "KY",
+      "rows": 58955,
+      "assessable": 58955,
+      "mismatch_candidates": 2970,
+      "mismatch_rate_pct": 5.038
+    },
+    {
+      "state": "LA",
+      "rows": 58783,
+      "assessable": 58783,
+      "mismatch_candidates": 2897,
+      "mismatch_rate_pct": 4.928
+    },
+    {
+      "state": "MA",
+      "rows": 59111,
+      "assessable": 59111,
+      "mismatch_candidates": 2914,
+      "mismatch_rate_pct": 4.93
+    },
+    {
+      "state": "MD",
+      "rows": 58807,
+      "assessable": 58807,
+      "mismatch_candidates": 2955,
+      "mismatch_rate_pct": 5.025
+    },
+    {
+      "state": "ME",
+      "rows": 59120,
+      "assessable": 59120,
+      "mismatch_candidates": 2848,
+      "mismatch_rate_pct": 4.817
+    },
+    {
+      "state": "MI",
+      "rows": 58850,
+      "assessable": 58850,
+      "mismatch_candidates": 2937,
+      "mismatch_rate_pct": 4.991
+    },
+    {
+      "state": "MN",
+      "rows": 59012,
+      "assessable": 59012,
+      "mismatch_candidates": 2932,
+      "mismatch_rate_pct": 4.968
+    },
+    {
+      "state": "MO",
+      "rows": 58227,
+      "assessable": 58227,
+      "mismatch_candidates": 2903,
+      "mismatch_rate_pct": 4.986
+    },
+    {
+      "state": "MS",
+      "rows": 58775,
+      "assessable": 58775,
+      "mismatch_candidates": 2928,
+      "mismatch_rate_pct": 4.982
+    },
+    {
+      "state": "MT",
+      "rows": 58752,
+      "assessable": 58752,
+      "mismatch_candidates": 2892,
+      "mismatch_rate_pct": 4.922
+    },
+    {
+      "state": "NC",
+      "rows": 58868,
+      "assessable": 58868,
+      "mismatch_candidates": 3000,
+      "mismatch_rate_pct": 5.096
+    },
+    {
+      "state": "ND",
+      "rows": 58882,
+      "assessable": 58882,
+      "mismatch_candidates": 2918,
+      "mismatch_rate_pct": 4.956
+    },
+    {
+      "state": "NE",
+      "rows": 58599,
+      "assessable": 58599,
+      "mismatch_candidates": 2937,
+      "mismatch_rate_pct": 5.012
+    },
+    {
+      "state": "NH",
+      "rows": 58759,
+      "assessable": 58759,
+      "mismatch_candidates": 2851,
+      "mismatch_rate_pct": 4.852
+    },
+    {
+      "state": "NJ",
+      "rows": 58727,
+      "assessable": 58727,
+      "mismatch_candidates": 2942,
+      "mismatch_rate_pct": 5.01
+    },
+    {
+      "state": "NM",
+      "rows": 58617,
+      "assessable": 58617,
+      "mismatch_candidates": 2905,
+      "mismatch_rate_pct": 4.956
+    },
+    {
+      "state": "NV",
+      "rows": 58677,
+      "assessable": 58677,
+      "mismatch_candidates": 2876,
+      "mismatch_rate_pct": 4.901
+    },
+    {
+      "state": "NY",
+      "rows": 59030,
+      "assessable": 59030,
+      "mismatch_candidates": 2917,
+      "mismatch_rate_pct": 4.942
+    },
+    {
+      "state": "OH",
+      "rows": 58952,
+      "assessable": 58952,
+      "mismatch_candidates": 2919,
+      "mismatch_rate_pct": 4.951
+    },
+    {
+      "state": "OK",
+      "rows": 58902,
+      "assessable": 58902,
+      "mismatch_candidates": 2999,
+      "mismatch_rate_pct": 5.092
+    },
+    {
+      "state": "OR",
+      "rows": 59374,
+      "assessable": 59374,
+      "mismatch_candidates": 2856,
+      "mismatch_rate_pct": 4.81
+    },
+    {
+      "state": "PA",
+      "rows": 58958,
+      "assessable": 58958,
+      "mismatch_candidates": 2998,
+      "mismatch_rate_pct": 5.085
+    },
+    {
+      "state": "RI",
+      "rows": 58885,
+      "assessable": 58885,
+      "mismatch_candidates": 2789,
+      "mismatch_rate_pct": 4.736
+    },
+    {
+      "state": "SC",
+      "rows": 58767,
+      "assessable": 58767,
+      "mismatch_candidates": 2973,
+      "mismatch_rate_pct": 5.059
+    },
+    {
+      "state": "SD",
+      "rows": 58909,
+      "assessable": 58909,
+      "mismatch_candidates": 3071,
+      "mismatch_rate_pct": 5.213
+    },
+    {
+      "state": "TN",
+      "rows": 58820,
+      "assessable": 58820,
+      "mismatch_candidates": 2883,
+      "mismatch_rate_pct": 4.901
+    },
+    {
+      "state": "TX",
+      "rows": 58922,
+      "assessable": 58922,
+      "mismatch_candidates": 2925,
+      "mismatch_rate_pct": 4.964
+    },
+    {
+      "state": "UT",
+      "rows": 58504,
+      "assessable": 58504,
+      "mismatch_candidates": 2877,
+      "mismatch_rate_pct": 4.918
+    },
+    {
+      "state": "VA",
+      "rows": 58833,
+      "assessable": 58833,
+      "mismatch_candidates": 2907,
+      "mismatch_rate_pct": 4.941
+    },
+    {
+      "state": "VT",
+      "rows": 59140,
+      "assessable": 59140,
+      "mismatch_candidates": 2897,
+      "mismatch_rate_pct": 4.899
+    },
+    {
+      "state": "WA",
+      "rows": 59187,
+      "assessable": 59187,
+      "mismatch_candidates": 2989,
+      "mismatch_rate_pct": 5.05
+    },
+    {
+      "state": "WI",
+      "rows": 58664,
+      "assessable": 58664,
+      "mismatch_candidates": 2929,
+      "mismatch_rate_pct": 4.993
+    },
+    {
+      "state": "WV",
+      "rows": 58446,
+      "assessable": 58446,
+      "mismatch_candidates": 2962,
+      "mismatch_rate_pct": 5.068
+    },
+    {
+      "state": "WY",
+      "rows": 58983,
+      "assessable": 58983,
+      "mismatch_candidates": 2918,
+      "mismatch_rate_pct": 4.947
+    }
+  ],
+  "v1_map_limitation_accounting": {
+    "map_entries": 51,
+    "dc_duplicate_prefix_entry_present": true,
+    "ambiguous_prefixes_prefix_to_multiple_states": [
+      "02",
+      "03",
+      "19",
+      "22",
+      "24",
+      "38",
+      "71",
+      "83",
+      "84",
+      "88",
+      "96",
+      "97",
+      "99"
+    ],
+    "ambiguous_prefix_owners": {
+      "02": [
+        "MA",
+        "RI"
+      ],
+      "03": [
+        "ME",
+        "NH",
+        "RI"
+      ],
+      "19": [
+        "DE",
+        "PA"
+      ],
+      "22": [
+        "MD",
+        "VA"
+      ],
+      "24": [
+        "VA",
+        "WV"
+      ],
+      "38": [
+        "MS",
+        "TN"
+      ],
+      "71": [
+        "AR",
+        "LA"
+      ],
+      "83": [
+        "ID",
+        "WY"
+      ],
+      "84": [
+        "ID",
+        "UT"
+      ],
+      "88": [
+        "NM",
+        "NV"
+      ],
+      "96": [
+        "CA",
+        "HI"
+      ],
+      "97": [
+        "HI",
+        "OR"
+      ],
+      "99": [
+        "AK",
+        "WA"
+      ]
+    },
+    "absent_codes_territories_military": [
+      "AS",
+      "GU",
+      "MP",
+      "PR",
+      "VI",
+      "AA",
+      "AE",
+      "AP"
+    ],
+    "uncovered_first_digits_1x_7x": []
+  }
+}

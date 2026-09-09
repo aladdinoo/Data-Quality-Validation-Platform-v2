@@ -1,0 +1,9 @@
+UNPACK VERIFICATION (fresh directory, archive as shipped)
+unpacked to: /tmp/unpack_5m_check
+zip integrity (testzip): OK
+pytest in unpacked copy: 322 passed, 9 skipped in 4.56s
+spot-check evidence/final_5m_execution/FINAL_RESULTS.json: PRESENT
+spot-check evidence/final_5m_execution/02_dataset/dataset_sha256.txt: PRESENT
+spot-check evidence/final_5m_execution/03_run1/oom_kernel_log.txt: PRESENT
+spot-check docs/FINAL_5M_VALIDATION_REPORT.md: PRESENT
+spot-check README.md: PRESENT

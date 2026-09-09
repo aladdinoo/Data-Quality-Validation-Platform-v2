@@ -1,0 +1,109 @@
+{
+  "run_id": "bench5m_100000",
+  "events": [
+    {
+      "event_type": "run_started",
+      "run_id": "bench5m_100000",
+      "timestamp": "2026-09-09T16:09:41.557909+00:00",
+      "details": {
+        "source": "data/generated/final_5m/bench5m_100000.csv"
+      }
+    },
+    {
+      "event_type": "schema_validated",
+      "run_id": "bench5m_100000",
+      "timestamp": "2026-09-09T16:09:41.558041+00:00",
+      "details": {
+        "schema_hash": "",
+        "errors": []
+      }
+    },
+    {
+      "event_type": "rules_loaded",
+      "run_id": "bench5m_100000",
+      "timestamp": "2026-09-09T16:09:41.558139+00:00",
+      "details": {
+        "rule_count": 8,
+        "registry_hash": "2b9130fdcc656d32191b122e6ea863c3dc228f20679827ba7dde7f4749273192"
+      }
+    },
+    {
+      "event_type": "validation_started",
+      "run_id": "bench5m_100000",
+      "timestamp": "2026-09-09T16:09:41.558150+00:00",
+      "details": {
+        "row_count": 0
+      }
+    },
+    {
+      "event_type": "reconciliation_completed",
+      "run_id": "bench5m_100000",
+      "timestamp": "2026-09-09T16:09:45.829324+00:00",
+      "details": {
+        "passed": true,
+        "details": {
+          "passed": true,
+          "errors": [],
+          "input_row_count": 100000,
+          "output_row_count": 100000,
+          "flag_counts": {
+            "first_name_cleaning_candidate": 10657,
+            "last_name_cleaning_candidate": 7049,
+            "name_cleaning_candidate": 3042,
+            "email_blank": 8000,
+            "email_syntax_failure": 7000,
+            "proposed_email_export_eligible": 85000,
+            "zip_state_assessable": 100000,
+            "geography_mismatch_candidate": 4967
+          }
+        }
+      }
+    },
+    {
+      "event_type": "monitoring_completed",
+      "run_id": "bench5m_100000",
+      "timestamp": "2026-09-09T16:09:45.829422+00:00",
+      "details": {
+        "overall_score": 0.9154,
+        "sla_passed": false
+      }
+    },
+    {
+      "event_type": "validation_completed",
+      "run_id": "bench5m_100000",
+      "timestamp": "2026-09-09T16:09:45.829504+00:00",
+      "details": {
+        "input_rows": 100000,
+        "output_rows": 100000,
+        "flag_counts": {
+          "first_name_cleaning_candidate": 10657,
+          "last_name_cleaning_candidate": 7049,
+          "name_cleaning_candidate": 3042,
+          "email_blank": 8000,
+          "email_syntax_failure": 7000,
+          "proposed_email_export_eligible": 85000,
+          "zip_state_assessable": 100000,
+          "geography_mismatch_candidate": 4967
+        },
+        "duration_seconds": 3.517531394958496
+      }
+    },
+    {
+      "event_type": "output_written",
+      "run_id": "bench5m_100000",
+      "timestamp": "2026-09-09T16:09:45.829508+00:00",
+      "details": {
+        "path": "data/generated/final_5m/bench5m_100000_out.csv",
+        "rows": 100000
+      }
+    },
+    {
+      "event_type": "lineage_recorded",
+      "run_id": "bench5m_100000",
+      "timestamp": "2026-09-09T16:09:45.831947+00:00",
+      "details": {
+        "path": "evidence/final_5m_execution/06_performance/bench_100000_evidence/lineage.json"
+      }
+    }
+  ]
+}

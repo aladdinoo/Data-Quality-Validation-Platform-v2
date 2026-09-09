@@ -1,0 +1,290 @@
+{
+  "generated_at_utc": "2026-09-09T16:12:40.181911+00:00",
+  "git_head": "0282e67bf1212b188915973b9449e09bcd22a11b",
+  "git_status_entries_at_probe_start": 251,
+  "registry_default_rules": [
+    {
+      "class": "FirstNameCleaningCandidate",
+      "rule_id": "first_name_cleaning_candidate",
+      "rule_version": "1.0.0",
+      "rule_hash": "575e9d4588334d364bdcfae6ca3c44b9bf35120a371b78fecfde8ee19373ca69",
+      "module": "data_quality_platform/rules/v1_rules.py",
+      "line": 34
+    },
+    {
+      "class": "LastNameCleaningCandidate",
+      "rule_id": "last_name_cleaning_candidate",
+      "rule_version": "1.0.0",
+      "rule_hash": "c553b7f4484b54135e2b84c6b37a84b15df328544256577984e61f6ede900122",
+      "module": "data_quality_platform/rules/v1_rules.py",
+      "line": 73
+    },
+    {
+      "class": "NameCleaningCandidate",
+      "rule_id": "name_cleaning_candidate",
+      "rule_version": "1.0.0",
+      "rule_hash": "3a128ec85d196cd3a42720347ba8790f5fbf0f386bd617e4ec508ee050b661c8",
+      "module": "data_quality_platform/rules/v1_rules.py",
+      "line": 112
+    },
+    {
+      "class": "EmailBlank",
+      "rule_id": "email_blank",
+      "rule_version": "1.0.0",
+      "rule_hash": "157ccc2127334bac03534f80868a3d7ea3bc8df77c132e8c237874321164f2bc",
+      "module": "data_quality_platform/rules/v1_rules.py",
+      "line": 146
+    },
+    {
+      "class": "EmailSyntaxFailure",
+      "rule_id": "email_syntax_failure",
+      "rule_version": "1.0.0",
+      "rule_hash": "5caaba13a73c90c5aac7a52cf756713c8ecc3dc73d30c2949206efa8d2b712f7",
+      "module": "data_quality_platform/rules/v1_rules.py",
+      "line": 174
+    },
+    {
+      "class": "ProposedEmailExportEligible",
+      "rule_id": "proposed_email_export_eligible",
+      "rule_version": "1.0.0",
+      "rule_hash": "6732e6bfed6fae3c23439f0e69b5c39e2843a5b74f2f8f3fdaf6ad5d536da98c",
+      "module": "data_quality_platform/rules/v1_rules.py",
+      "line": 209
+    },
+    {
+      "class": "ZipStateAssessable",
+      "rule_id": "zip_state_assessable",
+      "rule_version": "1.0.0",
+      "rule_hash": "e7730c1b848f32790a56bfb79f7ef5dbc8c88b3919f9903421adc7dde5393885",
+      "module": "data_quality_platform/rules/v1_rules.py",
+      "line": 244
+    },
+    {
+      "class": "GeographyMismatchCandidate",
+      "rule_id": "geography_mismatch_candidate",
+      "rule_version": "1.0.0",
+      "rule_hash": "7967b59ef7a14b83284a12eb298d63c6140e0837bfafdf3ac4e758baf74c4e93",
+      "module": "data_quality_platform/rules/v1_rules.py",
+      "line": 273
+    }
+  ],
+  "registry_default_count": 8,
+  "registry_validate_ok": true,
+  "registry_validate_errors": [],
+  "registry_validate_warnings": [],
+  "sp1_geography_imports_outside_geography_pkg": [
+    {
+      "file": "data_quality_platform/geography/references.py",
+      "from": "data_quality_platform.geography.canonical",
+      "names": [
+        "compute_zip5",
+        "normalize_state"
+      ]
+    },
+    {
+      "file": "data_quality_platform/geography/__init__.py",
+      "from": "data_quality_platform.geography.canonical",
+      "names": [
+        "GEOGRAPHY_FIELDS_WITH_PRESENCE_CONTRACT",
+        "SP1_CONTRACT_DECISION_RECORD_V2_SHA256",
+        "SP1_CONTRACT_DOCUMENT_SHA256",
+        "SP1_CONTRACT_DOCUMENT_TITLE",
+        "SP1_CONTRACT_MEASUREMENTS",
+        "SP1_CONTRACT_PINNED_TEMPLATE_SHA256",
+        "SP1_CONTRACT_PREPARED",
+        "SP1_CONTRACT_SOURCE_COMMIT",
+        "SP1_CONTRACT_SUPERSEDES_SHA256",
+        "SP1_CONTRACT_V3_SHA256",
+        "STATE_ALLOWLIST",
+        "FieldPresenceNotDefinedError",
+        "GeographyAssessment",
+        "ReferenceResolution",
+        "SP1Decision",
+        "compute_zip5",
+        "evaluate_geography",
+        "field_present",
+        "is_blank_state",
+        "is_invalid_state_format",
+        "is_numeric_state_review",
+        "is_unknown_state_code",
+        "normalize_state",
+        "normalize_text",
+        "resolve_reference",
+        "sp1_eligibility"
+      ]
+    }
+  ],
+  "sp1_all_geography_imports_outside_pkg": [
+    {
+      "file": "data_quality_platform/geography/references.py",
+      "from": "data_quality_platform.geography.canonical",
+      "names": [
+        "compute_zip5",
+        "normalize_state"
+      ]
+    },
+    {
+      "file": "data_quality_platform/geography/__init__.py",
+      "from": "data_quality_platform.geography.canonical",
+      "names": [
+        "GEOGRAPHY_FIELDS_WITH_PRESENCE_CONTRACT",
+        "SP1_CONTRACT_DECISION_RECORD_V2_SHA256",
+        "SP1_CONTRACT_DOCUMENT_SHA256",
+        "SP1_CONTRACT_DOCUMENT_TITLE",
+        "SP1_CONTRACT_MEASUREMENTS",
+        "SP1_CONTRACT_PINNED_TEMPLATE_SHA256",
+        "SP1_CONTRACT_PREPARED",
+        "SP1_CONTRACT_SOURCE_COMMIT",
+        "SP1_CONTRACT_SUPERSEDES_SHA256",
+        "SP1_CONTRACT_V3_SHA256",
+        "STATE_ALLOWLIST",
+        "FieldPresenceNotDefinedError",
+        "GeographyAssessment",
+        "ReferenceResolution",
+        "SP1Decision",
+        "compute_zip5",
+        "evaluate_geography",
+        "field_present",
+        "is_blank_state",
+        "is_invalid_state_format",
+        "is_numeric_state_review",
+        "is_unknown_state_code",
+        "normalize_state",
+        "normalize_text",
+        "resolve_reference",
+        "sp1_eligibility"
+      ]
+    },
+    {
+      "file": "data_quality_platform/geography/__init__.py",
+      "from": "data_quality_platform.geography.references",
+      "names": [
+        "CANONICAL_SOURCE_TABLE",
+        "InMemoryTwoReferenceProvider",
+        "ReferenceUnavailableError",
+        "TwoReferenceProvider"
+      ]
+    }
+  ],
+  "sp1_isolation": {
+    "registered_rule_ids": [
+      "first_name_cleaning_candidate",
+      "last_name_cleaning_candidate",
+      "name_cleaning_candidate",
+      "email_blank",
+      "email_syntax_failure",
+      "proposed_email_export_eligible",
+      "zip_state_assessable",
+      "geography_mismatch_candidate"
+    ],
+    "sp1_in_default_registry": false
+  },
+  "golden_fixtures": {
+    "golden_cases.csv": {
+      "sha256": "9ff2364f6b283ad26612677af99a39905ef9587654f1cef03206db994b2bc23e",
+      "bytes": 15155
+    },
+    "expected_results.csv": {
+      "sha256": "fd2d9783718c7bd60ee89615309a3f5708c8e3fa0401c8fdbdcc4ed9db3a63b2",
+      "bytes": 1377
+    },
+    "geography_edge_cases.csv": {
+      "sha256": "c5084feb4d8f2cee6dbe4bab67fc3f8fb15f39d2098f7ab8c6a5a5c9d6b8406f",
+      "bytes": 1458
+    }
+  },
+  "security_scan": {
+    "env_file_present": false,
+    "hits": [],
+    "hit_count": 0
+  },
+  "sql_mutation_scan": {
+    "sql_files": {
+      "sql/004_create_audit_table.sql": {
+        "mutation_statements": []
+      },
+      "sql/003_create_reference_tables.sql": {
+        "mutation_statements": []
+      },
+      "sql/002_create_flag_preview.sql": {
+        "mutation_statements": []
+      },
+      "sql/001_create_source.sql": {
+        "mutation_statements": []
+      },
+      "sql/005_create_lineage_table.sql": {
+        "mutation_statements": []
+      }
+    },
+    "python_production_mutation_hits": []
+  },
+  "fresh_cli_reconciliation": {
+    "input_rows": 1000,
+    "output_rows": 1000,
+    "rows_preserved": true,
+    "input_columns": 33,
+    "output_columns": 41,
+    "source_columns_preserved": true,
+    "unique_input_ids": 1000,
+    "unique_output_ids": 1000,
+    "flag_partition": {
+      "zip_state_assessable": 1000,
+      "geography_mismatch_candidate": 50,
+      "match": 950,
+      "partition_consistent": true
+    },
+    "flag_columns_added": [
+      "first_name_cleaning_candidate",
+      "last_name_cleaning_candidate",
+      "name_cleaning_candidate",
+      "email_blank",
+      "email_syntax_failure",
+      "proposed_email_export_eligible",
+      "zip_state_assessable",
+      "geography_mismatch_candidate"
+    ],
+    "invalid_flag_values": 0,
+    "evidence_bundle_files": [
+      "alerts.json",
+      "audit.json",
+      "lineage.json",
+      "manifest.json",
+      "monitoring.json"
+    ],
+    "evidence_bundle_sha256": {
+      "alerts.json": "acf303a009383dc9961cc41bf6710201d71030727d9de9e8fe603749f43fac76",
+      "audit.json": "0b4d040ceb043c29ead2319d286fe70cbf6efd403ad9ee03e4b73b0bf32e5fbf",
+      "lineage.json": "2013f886e44d3b5e7c1772228d1c00021c8b3092072691710a9a7057ef160b65",
+      "manifest.json": "de4f174029f34f9de7fef15723c415d5e64cdae42bd31e4c0457c3c5add0538c",
+      "monitoring.json": "d68b83e0bdbab1dedca6c94f48d24ad88f45ef44a90696e2289ca739f18fb845"
+    }
+  },
+  "benchmark_scaling": {
+    "sizes": [
+      1000,
+      10000,
+      100000
+    ],
+    "durations_s": [
+      0.209,
+      1.471,
+      14.941
+    ],
+    "rows_per_second": [
+      4791.7,
+      6799.2,
+      6692.9
+    ],
+    "peak_memory_mb": [
+      1.0,
+      7.23,
+      68.65
+    ],
+    "peak_memory_kb_per_row": [
+      1.024,
+      0.74,
+      0.703
+    ],
+    "memory_monotonic_increasing": true
+  }
+}

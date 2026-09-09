@@ -1,0 +1,222 @@
+PHASE 0 FORENSIC BASELINE — EXISTING EVIDENCE INVENTORY — captured 2026-09-09T15:21:48.236791+00:00
+
+166 files under evidence/:
+  [evidence/audit_1k]
+    alerts.json                                                       1282 B
+    audit.json                                                        2980 B
+    lineage.json                                                     91201 B
+    manifest.json                                                     4082 B
+    monitoring.json                                                    714 B
+  [evidence/benchmarks/bench_1000]
+    alerts.json                                                       1290 B
+    audit.json                                                        3195 B
+    lineage.json                                                     91331 B
+    manifest.json                                                     4509 B
+    monitoring.json                                                    714 B
+  [evidence/benchmarks/bench_10000]
+    alerts.json                                                       1296 B
+    audit.json                                                        3230 B
+    lineage.json                                                     91338 B
+    manifest.json                                                     4543 B
+    monitoring.json                                                    719 B
+  [evidence/benchmarks/bench_100000]
+    alerts.json                                                       1300 B
+    audit.json                                                        3264 B
+    lineage.json                                                     91345 B
+    manifest.json                                                     4570 B
+    monitoring.json                                                    719 B
+  [evidence/benchmarks]
+    benchmark.json                                                    1231 B
+  [evidence/consolidation]
+    sp1_consolidation_probe.log                                       2369 B
+    test_cat_contract.log                                               99 B
+    test_cat_e2e.log                                                    99 B
+    test_cat_golden.log                                                110 B
+    test_cat_integration.log                                            99 B
+    test_cat_runtime.log                                               372 B
+    test_cat_security.log                                               99 B
+    test_cat_sp1.log                                                    99 B
+    test_cat_unit.log                                                  340 B
+    test_full_suite.log                                               1026 B
+  [evidence/final]
+    PROOF_MATRIX.md                                                  10854 B
+  [evidence/final_5m_execution/00_baseline]
+    environment.txt                                                    703 B
+    existing_reports_inventory.txt                                    4760 B
+    git_state.txt                                                     4742 B
+    repository_structure.txt                                          3431 B
+  [evidence/final_execution]
+    EVIDENCE_MANIFEST.json                                           23907 B
+  [evidence/final_execution/benchmark]
+    benchmark.json                                                    1231 B
+  [evidence/final_execution/category_runs]
+    contract.txt                                                       173 B
+    e2e_cli.txt                                                        199 B
+    golden.txt                                                         599 B
+    integration.txt                                                    176 B
+    runtime.txt                                                        449 B
+    security.txt                                                       172 B
+    sp1.txt                                                            200 B
+    unit.txt                                                           410 B
+  [evidence/final_execution/cli_run/evidence]
+    alerts.json                                                       1310 B
+    audit.json                                                        3146 B
+    lineage.json                                                     91238 B
+    manifest.json                                                     4512 B
+    monitoring.json                                                    714 B
+  [evidence/final_execution/commands]
+    00_execution_metadata.txt                                          448 B
+    01_collect_only.txt                                              28285 B
+    02_full_suite.txt                                                  490 B
+    03_full_suite_rs.txt                                              1089 B
+    04_cli_generate.txt                                                373 B
+    05_cli_validate.txt                                               1345 B
+    06_benchmark.txt                                                  1373 B
+    07_run_final_verification.txt                                     7339 B
+    08_final_precommit_suite.txt                                       534 B
+    exit_codes.txt                                                    1249 B
+    exit_codes_part2.txt                                               471 B
+  [evidence/final_execution/environment]
+    pip_relevant_versions.txt                                          270 B
+  [evidence/final_execution]
+    probe_results.json                                                8814 B
+    rule_matrix.json                                                  7719 B
+  [evidence/final_verification]
+    FINAL_VERIFICATION.json                                          12249 B
+    VERIFICATION_MATRIX.json                                          7786 B
+  [evidence/final_verification/airflow]
+    results.json                                                       618 B
+  [evidence/final_verification]
+    alerts.json                                                       1282 B
+    audit.json                                                        2988 B
+  [evidence/final_verification/clickhouse]
+    results.json                                                       821 B
+  [evidence/final_verification/commands]
+    pytest_output.txt                                                  431 B
+    runtime_tests_output.txt                                          1849 B
+  [evidence/final_verification/flag_contract/evidence_100]
+    alerts.json                                                       1272 B
+    audit.json                                                        3208 B
+    lineage.json                                                     21440 B
+    manifest.json                                                     4627 B
+    monitoring.json                                                    713 B
+  [evidence/final_verification/flag_contract/evidence_1000]
+    alerts.json                                                       1276 B
+    audit.json                                                        3243 B
+    lineage.json                                                     91376 B
+    manifest.json                                                     4655 B
+    monitoring.json                                                    712 B
+  [evidence/final_verification/flag_contract]
+    input_100.csv                                                    25972 B
+    input_1000.csv                                                  260075 B
+    output_100.csv                                                   27769 B
+    output_1000.csv                                                 276272 B
+    results.json                                                      1252 B
+  [evidence/final_verification]
+    lineage.json                                                     91201 B
+    manifest.json                                                     4130 B
+    monitoring.json                                                    714 B
+  [evidence/final_verification/negative_tests]
+    results.json                                                      1398 B
+  [evidence/final_verification]
+    phase2_documentation_audit.json                                    752 B
+  [evidence/final_verification/q1_schema]
+    duplicate_column.csv                                              1610 B
+    extra_column.csv                                                  1667 B
+    missing_column.csv                                                1576 B
+    reordered_columns.csv                                             1597 B
+    results.json                                                      1266 B
+    valid_33col.csv                                                   1603 B
+  [evidence/final_verification/q2_quality/evidence]
+    alerts.json                                                       1308 B
+    audit.json                                                        3292 B
+    lineage.json                                                     21469 B
+    manifest.json                                                     4600 B
+    monitoring.json                                                    713 B
+  [evidence/final_verification/q2_quality]
+    output_flags.csv                                                 27769 B
+    results.json                                                      1506 B
+    synthetic_100.csv                                                25972 B
+  [evidence/final_verification/q3_rules]
+    determinism_input.csv                                            13326 B
+  [evidence/final_verification/q3_rules/evidence_a]
+    alerts.json                                                        316 B
+    audit.json                                                        3208 B
+    lineage.json                                                     11011 B
+    manifest.json                                                     4571 B
+    monitoring.json                                                    706 B
+  [evidence/final_verification/q3_rules/evidence_b]
+    alerts.json                                                        316 B
+    audit.json                                                        3207 B
+    lineage.json                                                     11011 B
+    manifest.json                                                     4571 B
+    monitoring.json                                                    706 B
+  [evidence/final_verification/q3_rules]
+    gen_x1.csv                                                        8246 B
+    gen_x2.csv                                                        8246 B
+    results.json                                                      1589 B
+    run_a.csv                                                        14323 B
+    run_b.csv                                                        14323 B
+  [evidence/final_verification/q4_evidence]
+    e2e_input.csv                                                    25972 B
+    e2e_output.csv                                                   27769 B
+  [evidence/final_verification/q4_evidence/evidence]
+    alerts.json                                                       1272 B
+    audit.json                                                        3198 B
+    lineage.json                                                     21436 B
+    manifest.json                                                     4595 B
+    monitoring.json                                                    713 B
+  [evidence/final_verification/q4_evidence]
+    results.json                                                      2461 B
+  [evidence/final_verification/reconciliation/evidence_100]
+    alerts.json                                                       1284 B
+    audit.json                                                        3242 B
+    lineage.json                                                     21451 B
+    manifest.json                                                     4636 B
+    monitoring.json                                                    713 B
+  [evidence/final_verification/reconciliation/evidence_1000]
+    alerts.json                                                       1288 B
+    audit.json                                                        3276 B
+    lineage.json                                                     91387 B
+    manifest.json                                                     4664 B
+    monitoring.json                                                    712 B
+  [evidence/final_verification/reconciliation]
+    input_100.csv                                                    25972 B
+    input_1000.csv                                                  260075 B
+    output_100.csv                                                   27769 B
+    output_1000.csv                                                 276272 B
+    results.json                                                       292 B
+  [evidence/final_verification/security]
+    results.json                                                       542 B
+  [evidence/final_verification/tests]
+    full_pytest_output.txt                                             779 B
+    results.json                                                      1781 B
+  [evidence/q20_cli]
+    alerts.json                                                          2 B
+    audit.json                                                        3169 B
+    lineage.json                                                     10421 B
+    manifest.json                                                     4404 B
+    monitoring.json                                                    704 B
+  [evidence/rt_1k]
+    alerts.json                                                       1270 B
+    audit.json                                                        3119 B
+    lineage.json                                                     91306 B
+    manifest.json                                                     4419 B
+    monitoring.json                                                    714 B
+  [evidence/test_q9]
+    alerts.json                                                       1276 B
+    audit.json                                                        3128 B
+    lineage.json                                                     21925 B
+    manifest.json                                                     4414 B
+    monitoring.json                                                    713 B
+  [evidence/verification]
+    verification_report.json                                          3659 B
+    verification_report.md                                            1223 B
+
+total evidence bytes: 2637412
+
+DIRECT CHECK — claimed 2M/3M/5M evidence presence (before this task):
+  evidence/final_2m_execution                   EXISTS=False
+  evidence/final_3m_execution                   EXISTS=False
+  evidence/final_5m_execution                   EXISTS=True
+  data/generated/final_5m                       EXISTS=False

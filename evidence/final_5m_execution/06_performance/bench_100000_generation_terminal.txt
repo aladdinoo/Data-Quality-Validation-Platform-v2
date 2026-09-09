@@ -1,0 +1,6 @@
+COMMAND: /home/z/.venv/bin/python -m runner.cli generate --rows 100000 --seed 20260909 --output data/generated/final_5m/bench5m_100000.csv
+Generated 100000 rows -> data/generated/final_5m/bench5m_100000.csv
+<frozen runpy>:128: RuntimeWarning: 'runner.cli' found in sys.modules after import of package 'runner', but prior to execution of 'runner.cli'; this may result in unpredictable behaviour
+Exit code: 0
+Wall duration: 2.626 s
+Child peak RSS (ru_maxrss): 28.91 MB

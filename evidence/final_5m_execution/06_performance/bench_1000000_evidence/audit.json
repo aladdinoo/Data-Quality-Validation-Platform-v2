@@ -1,0 +1,109 @@
+{
+  "run_id": "bench5m_1000000",
+  "events": [
+    {
+      "event_type": "run_started",
+      "run_id": "bench5m_1000000",
+      "timestamp": "2026-09-09T16:10:10.970140+00:00",
+      "details": {
+        "source": "data/generated/final_5m/bench5m_1000000.csv"
+      }
+    },
+    {
+      "event_type": "schema_validated",
+      "run_id": "bench5m_1000000",
+      "timestamp": "2026-09-09T16:10:10.970290+00:00",
+      "details": {
+        "schema_hash": "",
+        "errors": []
+      }
+    },
+    {
+      "event_type": "rules_loaded",
+      "run_id": "bench5m_1000000",
+      "timestamp": "2026-09-09T16:10:10.970395+00:00",
+      "details": {
+        "rule_count": 8,
+        "registry_hash": "2b9130fdcc656d32191b122e6ea863c3dc228f20679827ba7dde7f4749273192"
+      }
+    },
+    {
+      "event_type": "validation_started",
+      "run_id": "bench5m_1000000",
+      "timestamp": "2026-09-09T16:10:10.970407+00:00",
+      "details": {
+        "row_count": 0
+      }
+    },
+    {
+      "event_type": "reconciliation_completed",
+      "run_id": "bench5m_1000000",
+      "timestamp": "2026-09-09T16:10:56.170833+00:00",
+      "details": {
+        "passed": true,
+        "details": {
+          "passed": true,
+          "errors": [],
+          "input_row_count": 1000000,
+          "output_row_count": 1000000,
+          "flag_counts": {
+            "first_name_cleaning_candidate": 105724,
+            "last_name_cleaning_candidate": 70090,
+            "name_cleaning_candidate": 30331,
+            "email_blank": 80000,
+            "email_syntax_failure": 70000,
+            "proposed_email_export_eligible": 850000,
+            "zip_state_assessable": 1000000,
+            "geography_mismatch_candidate": 49682
+          }
+        }
+      }
+    },
+    {
+      "event_type": "monitoring_completed",
+      "run_id": "bench5m_1000000",
+      "timestamp": "2026-09-09T16:10:56.170925+00:00",
+      "details": {
+        "overall_score": 0.9156,
+        "sla_passed": false
+      }
+    },
+    {
+      "event_type": "validation_completed",
+      "run_id": "bench5m_1000000",
+      "timestamp": "2026-09-09T16:10:56.171002+00:00",
+      "details": {
+        "input_rows": 1000000,
+        "output_rows": 1000000,
+        "flag_counts": {
+          "first_name_cleaning_candidate": 105724,
+          "last_name_cleaning_candidate": 70090,
+          "name_cleaning_candidate": 30331,
+          "email_blank": 80000,
+          "email_syntax_failure": 70000,
+          "proposed_email_export_eligible": 850000,
+          "zip_state_assessable": 1000000,
+          "geography_mismatch_candidate": 49682
+        },
+        "duration_seconds": 37.62048888206482
+      }
+    },
+    {
+      "event_type": "output_written",
+      "run_id": "bench5m_1000000",
+      "timestamp": "2026-09-09T16:10:56.171006+00:00",
+      "details": {
+        "path": "data/generated/final_5m/bench5m_1000000_out.csv",
+        "rows": 1000000
+      }
+    },
+    {
+      "event_type": "lineage_recorded",
+      "run_id": "bench5m_1000000",
+      "timestamp": "2026-09-09T16:10:56.173142+00:00",
+      "details": {
+        "path": "evidence/final_5m_execution/06_performance/bench_1000000_evidence/lineage.json"
+      }
+    }
+  ]
+}

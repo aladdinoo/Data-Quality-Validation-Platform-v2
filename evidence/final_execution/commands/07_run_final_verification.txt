@@ -1,0 +1,186 @@
+$ python3 scripts/run_final_verification.py
+
+============================================================
+PHASE 2: GATHERING ACTUAL DATA FOR CONTRADICTION RESOLUTION
+============================================================
+  unit: 237 collected
+  contract: 22 collected
+  golden: 32 collected
+  integration: 24 collected
+  runtime: 10 collected
+  security: 6 collected
+
+  Running full pytest...
+  RESULT: 322 passed, 9 skipped, 0 failed, 0 warnings
+  Runtime: 8 passed, 2 skipped, 0 failed
+  Golden cases in CSV: 50
+  Audit event types: 12
+  CLI validate uses --csv: True, --input: False
+
+  Checking Consistency vs Geography Quality overlap...
+  Consistency and Geography Quality use same formula: True
+  ZIP prefix lengths used: [2]
+
+============================================================
+PHASE 3: REAL EXPERIMENTS
+============================================================
+
+--- Q1: Schema Experiments ---
+  A: Valid 33-col -> PASS
+  B: Missing column -> REJECT
+  C: Extra column -> REJECT
+  D: Reordered columns -> REJECT
+  E: Duplicate column -> REJECT
+
+--- Q2: Quality Experiments ---
+[ALERT WARNING] sla_breach: SLA breach for completeness: score=0.9, threshold=0.95
+[ALERT WARNING] sla_breach: SLA breach for validity: score=0.85, threshold=0.95
+[ALERT WARNING] sla_breach: SLA breach for accuracy: score=0.85, threshold=0.9
+[ALERT WARNING] sla_breach: SLA breach for email_quality: score=0.85, threshold=0.95
+  Score: 0.9187, SLA: False
+  Flags: {'first_name_cleaning_candidate': 9, 'last_name_cleaning_candidate': 6, 'name_cleaning_candidate': 3, 'email_blank': 8, 'email_syntax_failure': 7, 'proposed_email_export_eligible': 85, 'zip_state_assessable': 100, 'geography_mismatch_candidate': 5}
+
+--- Q3: Rule Determinism ---
+[ALERT WARNING] sla_breach: SLA breach for accuracy: score=0.86, threshold=0.9
+[ALERT WARNING] sla_breach: SLA breach for accuracy: score=0.86, threshold=0.9
+  Output determinism: True (A=6d76b69f2aaf8ab7... B=6d76b69f2aaf8ab7...)
+  Generator determinism: True
+
+--- Q4: Evidence Integrity ---
+[ALERT WARNING] sla_breach: SLA breach for completeness: score=0.9, threshold=0.95
+[ALERT WARNING] sla_breach: SLA breach for validity: score=0.85, threshold=0.95
+[ALERT WARNING] sla_breach: SLA breach for accuracy: score=0.85, threshold=0.9
+[ALERT WARNING] sla_breach: SLA breach for email_quality: score=0.85, threshold=0.95
+  Evidence files checked: 9
+
+============================================================
+PHASE 4: NEGATIVE / DEFECT TESTING
+============================================================
+  blank_email: expected=1, actual=1 -> PASS
+  invalid_email_no_at: expected=1, actual=1 -> PASS
+  suspicious_first_name: expected=1, actual=1 -> PASS
+  suspicious_last_name: expected=1, actual=1 -> PASS
+  same_first_last_name: expected=1, actual=1 -> PASS
+  zip_state_mismatch: expected=1, actual=1 -> PASS
+  valid_row_no_flags: expected=0, actual=0 -> PASS
+  email_export_eligible: expected=1, actual=1 -> PASS
+  zip_state_assessable: expected=1, actual=1 -> PASS
+  short_names_both: expected=1, actual=1 -> PASS
+
+============================================================
+PHASE 5: FLAG PREVIEW CONTRACT
+============================================================
+[ALERT WARNING] sla_breach: SLA breach for completeness: score=0.9, threshold=0.95
+[ALERT WARNING] sla_breach: SLA breach for validity: score=0.85, threshold=0.95
+[ALERT WARNING] sla_breach: SLA breach for accuracy: score=0.85, threshold=0.9
+[ALERT WARNING] sla_breach: SLA breach for email_quality: score=0.85, threshold=0.95
+  100 rows: cols=41, flags_binary=True, rows_in=100, rows_out=100
+[ALERT WARNING] sla_breach: SLA breach for completeness: score=0.9, threshold=0.95
+[ALERT WARNING] sla_breach: SLA breach for validity: score=0.85, threshold=0.95
+[ALERT WARNING] sla_breach: SLA breach for accuracy: score=0.82, threshold=0.9
+[ALERT WARNING] sla_breach: SLA breach for email_quality: score=0.85, threshold=0.95
+  1000 rows: cols=41, flags_binary=True, rows_in=1000, rows_out=1000
+
+============================================================
+PHASE 6: RECONCILIATION
+============================================================
+[ALERT WARNING] sla_breach: SLA breach for completeness: score=0.9, threshold=0.95
+[ALERT WARNING] sla_breach: SLA breach for validity: score=0.85, threshold=0.95
+[ALERT WARNING] sla_breach: SLA breach for accuracy: score=0.85, threshold=0.9
+[ALERT WARNING] sla_breach: SLA breach for email_quality: score=0.85, threshold=0.95
+  100 rows: in=100, engine_out=100, file_out=100 -> PASS
+[ALERT WARNING] sla_breach: SLA breach for completeness: score=0.9, threshold=0.95
+[ALERT WARNING] sla_breach: SLA breach for validity: score=0.85, threshold=0.95
+[ALERT WARNING] sla_breach: SLA breach for accuracy: score=0.82, threshold=0.9
+[ALERT WARNING] sla_breach: SLA breach for email_quality: score=0.85, threshold=0.95
+  1000 rows: in=1000, engine_out=1000, file_out=1000 -> PASS
+
+============================================================
+PHASE 7: SECURITY SCAN
+============================================================
+  Security: PASS
+  Hardcoded secrets: False
+  TODO/FIXME: 0
+  PII in evidence: False
+
+============================================================
+PHASE 8: AIRFLOW VERIFICATION
+============================================================
+  Static: PASS
+  Runtime: SKIPPED
+  Tasks: ['preflight', 'schema_validation', 'rule_validation', 'quality_validation', 'monitoring', 'evidence_finalization']
+
+============================================================
+PHASE 9: CLICKHOUSE VERIFICATION
+============================================================
+  SQL static: PASS
+  Runtime: SKIPPED
+  Docker available: False
+
+============================================================
+PHASE 10: FULL TEST SUITE (post-fix)
+============================================================
+  unit: 0 collected, 237 passed, 0 skipped, 0 failed
+  contract: 0 collected, 22 passed, 0 skipped, 0 failed
+  golden: 0 collected, 25 passed, 7 skipped, 0 failed
+  integration: 0 collected, 24 passed, 0 skipped, 0 failed
+  runtime: 0 collected, 8 passed, 2 skipped, 0 failed
+  security: 0 collected, 6 passed, 0 skipped, 0 failed
+  TOTAL: 0 collected, 322 passed, 9 skipped, 0 failed, 0 warnings
+
+============================================================
+PHASE 11+12: VERIFICATION MATRIX
+============================================================
+  Matrix: 22 questions
+  Q1: PASS
+  Q2: PASS
+  Q3: PASS
+  Q4: PASS
+  Q5: PASS
+  Q6: PASS
+  Q7: PASS
+  Q8: PASS
+  Q9: PASS
+  Q10: PASS
+  Q11: PASS
+  Q12: PASS
+  Q13: PASS
+  Q14: PASS
+  Q15: PASS
+  Q16: PASS
+  Q17: PASS
+  Q18: PARTIAL
+  Q19: PARTIAL
+  Q20: PASS
+  Q21: PASS
+  Q22: PASS
+
+============================================================
+PHASE 14: FINAL VERIFICATION REPORT
+============================================================
+
+  FINAL VERDICT: PASS
+  PASS: 20, PARTIAL: 2, SKIP: 0, FAIL: 0
+
+============================================================
+VERIFICATION COMPLETE
+============================================================
+{
+  "verdict": "PASS",
+  "pytest": {
+    "collected": 0,
+    "passed": 322,
+    "skipped": 9,
+    "failed": 0
+  },
+  "matrix": {
+    "pass": 20,
+    "partial": 2,
+    "skip": 0,
+    "fail": 0
+  },
+  "security": "PASS",
+  "airflow": "PASS",
+  "clickhouse": "PASS"
+}
+--- exit code: 0 ---

@@ -1,0 +1,5 @@
+$ python3 -m pytest tests/integration -q
+........................                                                 [100%]
+24 passed in 1.32s
+=== STDERR ===
+--- exit code: 0 ---

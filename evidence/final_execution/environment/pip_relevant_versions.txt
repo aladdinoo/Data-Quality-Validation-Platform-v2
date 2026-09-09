@@ -1,0 +1,15 @@
+fastapi==0.128.0
+httpx==0.28.1
+httpx-sse==0.4.3
+numpy==2.1.3
+numpy-financial==1.0.0
+pandas==2.2.3
+pytest==9.0.2
+pytest-asyncio==1.3.0
+pytest-cov==7.0.0
+pytest-json-report==1.5.0
+pytest-metadata==3.1.1
+PyYAML==6.0.3
+requests==2.32.5
+requests-cache==1.3.1
+uvicorn==0.44.0

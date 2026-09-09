@@ -1,0 +1,22 @@
+$ python3 -m runner.cli validate --csv data/generated/fresh_exec_input.csv --output data/generated/fresh_exec_output.csv --run-id fresh_exec_1000 --evidence-dir /home/z/my-project/Data-Quality-V1-Final-Company-Integrated/evidence/final_execution/cli_run/evidence
+<frozen runpy>:128: RuntimeWarning: 'runner.cli' found in sys.modules after import of package 'runner', but prior to execution of 'runner.cli'; this may result in unpredictable behaviour
+[ALERT WARNING] sla_breach: SLA breach for completeness: score=0.9, threshold=0.95
+[ALERT WARNING] sla_breach: SLA breach for validity: score=0.85, threshold=0.95
+[ALERT WARNING] sla_breach: SLA breach for accuracy: score=0.832, threshold=0.9
+[ALERT WARNING] sla_breach: SLA breach for email_quality: score=0.85, threshold=0.95
+Validation PASSED: 1000 rows in, 1000 rows out
+  Run ID: fresh_exec_1000
+  Duration: 0.04s
+  Monitoring score: 0.9165
+  SLA passed: False
+  Reconciliation passed: True
+  Evidence: /home/z/my-project/Data-Quality-V1-Final-Company-Integrated/evidence/final_execution/cli_run/evidence
+    first_name_cleaning_candidate: 99
+    last_name_cleaning_candidate: 69
+    name_cleaning_candidate: 31
+    email_blank: 80
+    email_syntax_failure: 70
+    proposed_email_export_eligible: 850
+    zip_state_assessable: 1000
+    geography_mismatch_candidate: 50
+--- exit code: 0 ---

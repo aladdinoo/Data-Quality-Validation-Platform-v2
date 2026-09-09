@@ -1,0 +1,120 @@
+$ python run_capture.py --out evidence/final_5m_execution/04_independent_verification/verifier_run2_terminal.txt --
+COMMAND: python /home/z/my-project/scripts/five_m/independent_verifier.py data/generated/final_3m/consumer_3m_seed_20260909.csv data/generated/final_3m/consumer_3m_seed_20260909_out_run2.csv /tmp/pipeline_counts_r1.json evidence/final_5m_execution/04_independent_verification/verification_result_run2.json evidence/final_5m_execution/11_largest_safe_execution_3m/run2/lineage.json
+START_EPOCH: 1788970527.966
+--- captured stdout ---
+  verified 500000 rows...
+  verified 1000000 rows...
+  verified 1500000 rows...
+  verified 2000000 rows...
+  verified 2500000 rows...
+  verified 3000000 rows...
+{
+  "verifier": "independent_verifier.py",
+  "independence": {
+    "imports_used": [
+      "csv",
+      "json",
+      "os?",
+      "re",
+      "sys",
+      "time"
+    ],
+    "production_imports": false,
+    "predicates": "independently re-implemented from the frozen V1 specification",
+    "constants": "transcribed data constants (51-entry prefix map, 19 suspicious patterns)"
+  },
+  "input_csv": "data/generated/final_3m/consumer_3m_seed_20260909.csv",
+  "output_csv": "data/generated/final_3m/consumer_3m_seed_20260909_out_run2.csv",
+  "input_header_ok": true,
+  "output_header_ok": true,
+  "output_column_count": 41,
+  "rows_checked": 3000000,
+  "extra_output_rows": 0,
+  "id_errors": [],
+  "ids_strictly_sequential_and_complete": true,
+  "source_preservation_errors": [],
+  "source_columns_preserved": true,
+  "flag_domain_errors": 0,
+  "flag_comparisons_expected": 24000000,
+  "flag_comparisons_actual": 24000000,
+  "flag_mismatches": 0,
+  "independent_flag_counts": {
+    "first_name_cleaning_candidate": 317185,
+    "last_name_cleaning_candidate": 210603,
+    "name_cleaning_candidate": 91020,
+    "email_blank": 240000,
+    "email_syntax_failure": 210000,
+    "proposed_email_export_eligible": 2550000,
+    "zip_state_assessable": 3000000,
+    "geography_mismatch_candidate": 149044
+  },
+  "independent_flag_event_sum": 6767852,
+  "reconciliation": [
+    {
+      "flag": "first_name_cleaning_candidate",
+      "pipeline_count": 317185,
+      "independent_count": 317185,
+      "delta": 0,
+      "status": "MATCH"
+    },
+    {
+      "flag": "last_name_cleaning_candidate",
+      "pipeline_count": 210603,
+      "independent_count": 210603,
+      "delta": 0,
+      "status": "MATCH"
+    },
+    {
+      "flag": "name_cleaning_candidate",
+      "pipeline_count": 91020,
+      "independent_count": 91020,
+      "delta": 0,
+      "status": "MATCH"
+    },
+    {
+      "flag": "email_blank",
+      "pipeline_count": 240000,
+      "independent_count": 240000,
+      "delta": 0,
+      "status": "MATCH"
+    },
+    {
+      "flag": "email_syntax_failure",
+      "pipeline_count": 210000,
+      "independent_count": 210000,
+      "delta": 0,
+      "status": "MATCH"
+    },
+    {
+      "flag": "proposed_email_export_eligible",
+      "pipeline_count": 2550000,
+      "independent_count": 2550000,
+      "delta": 0,
+      "status": "MATCH"
+    },
+    {
+      "flag": "zip_state_assessable",
+      "pipeline_count": 3000000,
+      "independent_count": 3000000,
+      "delta": 0,
+      "status": "MATCH"
+    },
+    {
+      "flag": "geography_mismatch_candidate",
+      "pipeline_count": 149044,
+      "independent_count": 149044,
+      "delta": 0,
+      "status": "MATCH"
+    }
+  ],
+  "reconciliation_all_zero_delta": true,
+  "lineage_total_row_records": 6767852,
+  "lineage_matches_flag_event_sum": true,
+  "lineage_truncated_field": true,
+  "ALL_CHECKS_PASS": true,
+  "verification_duration_s": 38.25
+}
+--- end ---
+Exit code: 0
+Child peak RSS (ru_maxrss, VmHWM-equivalent, max over reaped children): 13.37 MB
+Wall duration: 38.280 s

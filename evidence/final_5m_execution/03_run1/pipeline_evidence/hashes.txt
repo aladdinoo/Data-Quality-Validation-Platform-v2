@@ -1,0 +1,6 @@
+input_csv: data/generated/final_5m/consumer_5m_seed_20260909.csv
+input_sha256: 44e41bb8cfe1c0d2fbafbff5e91bb40b100f8331ef26f946532b84c57409fb9d
+input_size_bytes: 1351673659
+output_csv: data/generated/final_5m/consumer_5m_seed_20260909_out_run1.csv
+output_sha256: a15936b2bdcb46180cd550748e368da38e4a2a8aeefa9e96c905c24323eca7ae
+output_size_bytes: 1415583267

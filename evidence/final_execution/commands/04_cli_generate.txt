@@ -1,0 +1,4 @@
+$ python3 -m runner.cli generate --rows 1000 --seed 20260821 --output data/generated/fresh_exec_input.csv
+<frozen runpy>:128: RuntimeWarning: 'runner.cli' found in sys.modules after import of package 'runner', but prior to execution of 'runner.cli'; this may result in unpredictable behaviour
+Generated 1000 rows -> data/generated/fresh_exec_input.csv
+--- exit code: 0 ---

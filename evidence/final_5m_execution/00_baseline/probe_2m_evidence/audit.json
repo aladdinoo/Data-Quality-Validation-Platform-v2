@@ -1,0 +1,109 @@
+{
+  "run_id": "probe_2m",
+  "events": [
+    {
+      "event_type": "run_started",
+      "run_id": "probe_2m",
+      "timestamp": "2026-09-09T15:27:16.692170+00:00",
+      "details": {
+        "source": "data/generated/probe_2m.csv"
+      }
+    },
+    {
+      "event_type": "schema_validated",
+      "run_id": "probe_2m",
+      "timestamp": "2026-09-09T15:27:16.692385+00:00",
+      "details": {
+        "schema_hash": "",
+        "errors": []
+      }
+    },
+    {
+      "event_type": "rules_loaded",
+      "run_id": "probe_2m",
+      "timestamp": "2026-09-09T15:27:16.692531+00:00",
+      "details": {
+        "rule_count": 8,
+        "registry_hash": "2b9130fdcc656d32191b122e6ea863c3dc228f20679827ba7dde7f4749273192"
+      }
+    },
+    {
+      "event_type": "validation_started",
+      "run_id": "probe_2m",
+      "timestamp": "2026-09-09T15:27:16.692549+00:00",
+      "details": {
+        "row_count": 0
+      }
+    },
+    {
+      "event_type": "reconciliation_completed",
+      "run_id": "probe_2m",
+      "timestamp": "2026-09-09T15:28:51.749977+00:00",
+      "details": {
+        "passed": true,
+        "details": {
+          "passed": true,
+          "errors": [],
+          "input_row_count": 2000000,
+          "output_row_count": 2000000,
+          "flag_counts": {
+            "first_name_cleaning_candidate": 211548,
+            "last_name_cleaning_candidate": 140296,
+            "name_cleaning_candidate": 60674,
+            "email_blank": 160000,
+            "email_syntax_failure": 140000,
+            "proposed_email_export_eligible": 1700000,
+            "zip_state_assessable": 2000000,
+            "geography_mismatch_candidate": 99386
+          }
+        }
+      }
+    },
+    {
+      "event_type": "monitoring_completed",
+      "run_id": "probe_2m",
+      "timestamp": "2026-09-09T15:28:51.750084+00:00",
+      "details": {
+        "overall_score": 0.9156,
+        "sla_passed": false
+      }
+    },
+    {
+      "event_type": "validation_completed",
+      "run_id": "probe_2m",
+      "timestamp": "2026-09-09T15:28:51.750220+00:00",
+      "details": {
+        "input_rows": 2000000,
+        "output_rows": 2000000,
+        "flag_counts": {
+          "first_name_cleaning_candidate": 211548,
+          "last_name_cleaning_candidate": 140296,
+          "name_cleaning_candidate": 60674,
+          "email_blank": 160000,
+          "email_syntax_failure": 140000,
+          "proposed_email_export_eligible": 1700000,
+          "zip_state_assessable": 2000000,
+          "geography_mismatch_candidate": 99386
+        },
+        "duration_seconds": 79.92555642127991
+      }
+    },
+    {
+      "event_type": "output_written",
+      "run_id": "probe_2m",
+      "timestamp": "2026-09-09T15:28:51.750225+00:00",
+      "details": {
+        "path": "data/generated/probe_2m_out.csv",
+        "rows": 2000000
+      }
+    },
+    {
+      "event_type": "lineage_recorded",
+      "run_id": "probe_2m",
+      "timestamp": "2026-09-09T15:28:51.752512+00:00",
+      "details": {
+        "path": "evidence/final_5m_execution/00_baseline/probe_2m_evidence/lineage.json"
+      }
+    }
+  ]
+}

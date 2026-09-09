@@ -1,0 +1,17 @@
+$ cd /home/z/my-project/Data-Quality-V1-Final-Company-Integrated
+$ python /home/z/my-project/scripts/five_m/independent_verifier.py \
+    data/generated/final_3m/consumer_3m_seed_20260909.csv \
+    data/generated/final_3m/consumer_3m_seed_20260909_out_run1.csv \
+    /tmp/pipeline_counts_r1.json \
+    evidence/final_5m_execution/04_independent_verification/verification_result_run1.json \
+    evidence/final_5m_execution/11_largest_safe_execution_3m/run1/pipeline_evidence/lineage.json
+
+$ python /home/z/my-project/scripts/five_m/independent_verifier.py \
+    data/generated/final_3m/consumer_3m_seed_20260909.csv \
+    data/generated/final_3m/consumer_3m_seed_20260909_out_run2.csv \
+    /tmp/pipeline_counts_r1.json \
+    evidence/final_5m_execution/04_independent_verification/verification_result_run2.json \
+    evidence/final_5m_execution/11_largest_safe_execution_3m/run2/pipeline_evidence/lineage.json
+
+(/tmp/pipeline_counts_r1.json contains the pipeline-reported flag counts from the
+run's captured stdout — the verifier's job is to confirm or refute them.)

@@ -1,0 +1,5 @@
+$ python3 -m pytest tests/security -q
+......                                                                   [100%]
+6 passed in 0.08s
+=== STDERR ===
+--- exit code: 0 ---

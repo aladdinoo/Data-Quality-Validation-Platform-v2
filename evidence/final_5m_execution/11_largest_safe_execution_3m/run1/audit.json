@@ -1,0 +1,109 @@
+{
+  "run_id": "run_3m_r1",
+  "events": [
+    {
+      "event_type": "run_started",
+      "run_id": "run_3m_r1",
+      "timestamp": "2026-09-09T15:59:46.502291+00:00",
+      "details": {
+        "source": "data/generated/final_3m/consumer_3m_seed_20260909.csv"
+      }
+    },
+    {
+      "event_type": "schema_validated",
+      "run_id": "run_3m_r1",
+      "timestamp": "2026-09-09T15:59:46.502433+00:00",
+      "details": {
+        "schema_hash": "",
+        "errors": []
+      }
+    },
+    {
+      "event_type": "rules_loaded",
+      "run_id": "run_3m_r1",
+      "timestamp": "2026-09-09T15:59:46.502542+00:00",
+      "details": {
+        "rule_count": 8,
+        "registry_hash": "2b9130fdcc656d32191b122e6ea863c3dc228f20679827ba7dde7f4749273192"
+      }
+    },
+    {
+      "event_type": "validation_started",
+      "run_id": "run_3m_r1",
+      "timestamp": "2026-09-09T15:59:46.502557+00:00",
+      "details": {
+        "row_count": 0
+      }
+    },
+    {
+      "event_type": "reconciliation_completed",
+      "run_id": "run_3m_r1",
+      "timestamp": "2026-09-09T16:02:03.162013+00:00",
+      "details": {
+        "passed": true,
+        "details": {
+          "passed": true,
+          "errors": [],
+          "input_row_count": 3000000,
+          "output_row_count": 3000000,
+          "flag_counts": {
+            "first_name_cleaning_candidate": 317185,
+            "last_name_cleaning_candidate": 210603,
+            "name_cleaning_candidate": 91020,
+            "email_blank": 240000,
+            "email_syntax_failure": 210000,
+            "proposed_email_export_eligible": 2550000,
+            "zip_state_assessable": 3000000,
+            "geography_mismatch_candidate": 149044
+          }
+        }
+      }
+    },
+    {
+      "event_type": "monitoring_completed",
+      "run_id": "run_3m_r1",
+      "timestamp": "2026-09-09T16:02:03.162689+00:00",
+      "details": {
+        "overall_score": 0.9156,
+        "sla_passed": false
+      }
+    },
+    {
+      "event_type": "validation_completed",
+      "run_id": "run_3m_r1",
+      "timestamp": "2026-09-09T16:02:03.162928+00:00",
+      "details": {
+        "input_rows": 3000000,
+        "output_rows": 3000000,
+        "flag_counts": {
+          "first_name_cleaning_candidate": 317185,
+          "last_name_cleaning_candidate": 210603,
+          "name_cleaning_candidate": 91020,
+          "email_blank": 240000,
+          "email_syntax_failure": 210000,
+          "proposed_email_export_eligible": 2550000,
+          "zip_state_assessable": 3000000,
+          "geography_mismatch_candidate": 149044
+        },
+        "duration_seconds": 112.79530596733093
+      }
+    },
+    {
+      "event_type": "output_written",
+      "run_id": "run_3m_r1",
+      "timestamp": "2026-09-09T16:02:03.162937+00:00",
+      "details": {
+        "path": "data/generated/final_3m/consumer_3m_seed_20260909_out_run1.csv",
+        "rows": 3000000
+      }
+    },
+    {
+      "event_type": "lineage_recorded",
+      "run_id": "run_3m_r1",
+      "timestamp": "2026-09-09T16:02:03.166020+00:00",
+      "details": {
+        "path": "evidence/final_5m_execution/11_largest_safe_execution_3m/run1/lineage.json"
+      }
+    }
+  ]
+}

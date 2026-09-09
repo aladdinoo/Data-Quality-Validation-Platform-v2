@@ -1,0 +1,8 @@
+run_id: run_3m_r1
+command: /home/z/.venv/bin/python -m runner.cli validate --csv data/generated/final_3m/consumer_3m_seed_20260909.csv --output data/generated/final_3m/consumer_3m_seed_20260909_out_run1.csv --run-id run_3m_r1 --evidence-dir evidence/final_5m_execution/11_largest_safe_execution_3m/run1
+start_utc: 2026-09-09T15:59:46.372162+00:00
+end_utc: 2026-09-09T16:02:04.843720+00:00
+wall_duration_s: 138.472
+exit_code: 0
+memory_free_before: {'MemTotal_mb': 4041.6, 'MemAvailable_mb': 3577.3}
+memory_free_after: {'MemTotal_mb': 4041.6, 'MemAvailable_mb': 3594.4}

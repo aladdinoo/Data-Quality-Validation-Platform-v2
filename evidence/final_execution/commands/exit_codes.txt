@@ -1,0 +1,11 @@
+0 /home/z/my-project/Data-Quality-V1-Final-Company-Integrated/evidence/final_execution/commands/01_collect_only.txt
+0 /home/z/my-project/Data-Quality-V1-Final-Company-Integrated/evidence/final_execution/commands/02_full_suite.txt
+0 /home/z/my-project/Data-Quality-V1-Final-Company-Integrated/evidence/final_execution/commands/03_full_suite_rs.txt
+0 /home/z/my-project/Data-Quality-V1-Final-Company-Integrated/evidence/final_execution/category_runs/unit.txt
+0 /home/z/my-project/Data-Quality-V1-Final-Company-Integrated/evidence/final_execution/category_runs/contract.txt
+0 /home/z/my-project/Data-Quality-V1-Final-Company-Integrated/evidence/final_execution/category_runs/integration.txt
+0 /home/z/my-project/Data-Quality-V1-Final-Company-Integrated/evidence/final_execution/category_runs/golden.txt
+0 /home/z/my-project/Data-Quality-V1-Final-Company-Integrated/evidence/final_execution/category_runs/security.txt
+0 /home/z/my-project/Data-Quality-V1-Final-Company-Integrated/evidence/final_execution/category_runs/runtime.txt
+0 /home/z/my-project/Data-Quality-V1-Final-Company-Integrated/evidence/final_execution/category_runs/sp1.txt
+0 /home/z/my-project/Data-Quality-V1-Final-Company-Integrated/evidence/final_execution/category_runs/e2e_cli.txt

@@ -1,0 +1,97 @@
+{
+  "ladder": "1K/10K/100K/1M official CLI runs (seed 20260909)",
+  "captured_utc": "2026-09-09T16:09:37.513350+00:00",
+  "memory_method": "resource.getrusage(RUSAGE_CHILDREN).ru_maxrss (VmHWM-equivalent, MB)",
+  "throughput_definition": "rows / wall duration of the validate invocation",
+  "datapoints": [
+    {
+      "rows": 3000000,
+      "source": "run_3m_r1 (flagship run 1)",
+      "duration_s": 138.472,
+      "rows_per_second": 21665.0,
+      "peak_rss_mb": null,
+      "status": "COMPLETED"
+    },
+    {
+      "rows": 3000000,
+      "source": "run_3m_r2 (flagship run 2)",
+      "duration_s": 140.466,
+      "rows_per_second": 21357.5,
+      "peak_rss_mb": null,
+      "status": "COMPLETED"
+    },
+    {
+      "rows": 1000,
+      "generation_duration_s": 0.163,
+      "validation_duration_s": 0.187,
+      "rows_per_second": 5343.8,
+      "peak_rss_mb_validation": 22.43,
+      "output_size_bytes": 276573,
+      "output_sha256": "e8ac4813e2ffc4cf36044e74a90bad680aaffc821079e04480058f3d62df27a8",
+      "status": "COMPLETED"
+    },
+    {
+      "rows": 10000,
+      "generation_duration_s": 0.372,
+      "validation_duration_s": 0.566,
+      "rows_per_second": 17680.1,
+      "peak_rss_mb_validation": 28.91,
+      "output_size_bytes": 2786937,
+      "output_sha256": "b4152f6cb66cd05bf3a0ab7d43be277a6bed88350fa2314f453684909dde9459",
+      "status": "COMPLETED"
+    },
+    {
+      "rows": 100000,
+      "generation_duration_s": 2.626,
+      "validation_duration_s": 4.471,
+      "rows_per_second": 22365.8,
+      "peak_rss_mb_validation": 93.87,
+      "output_size_bytes": 28132939,
+      "output_sha256": "7091494adb406b897e47935f97c0b1f1fbc2f3c85255d6398267b447824f8db5",
+      "status": "COMPLETED"
+    },
+    {
+      "rows": 1000000,
+      "generation_duration_s": 24.913,
+      "validation_duration_s": 45.917,
+      "rows_per_second": 21778.5,
+      "peak_rss_mb_validation": 735.71,
+      "output_size_bytes": 283982315,
+      "output_sha256": "041ace9c30085d16f5072a2781553d311c8aa1f865359e9995ddcab25e9d05d0",
+      "status": "COMPLETED"
+    }
+  ],
+  "observed_scaling": [
+    {
+      "rows": 1000,
+      "rows_per_second": 5343.8,
+      "peak_rss_mb": 22.43
+    },
+    {
+      "rows": 10000,
+      "rows_per_second": 17680.1,
+      "peak_rss_mb": 28.91
+    },
+    {
+      "rows": 100000,
+      "rows_per_second": 22365.8,
+      "peak_rss_mb": 93.87
+    },
+    {
+      "rows": 1000000,
+      "rows_per_second": 21778.5,
+      "peak_rss_mb": 735.71
+    },
+    {
+      "rows": 3000000,
+      "rows_per_second": 21665.0,
+      "peak_rss_mb": null
+    },
+    {
+      "rows": 3000000,
+      "rows_per_second": 21357.5,
+      "peak_rss_mb": null
+    }
+  ],
+  "scaling_interpretation": "Observed empirical scaling: throughput is roughly stable across 1K-3M and peak RSS grows approximately linearly (see PERFORMANCE_REPORT.md for the explicit O(N)-by-inspection vs observed distinction). No O(N) claim is made from these measurements alone; the implementation-level O(N) memory statement comes from code inspection (ValidationEngine docstring)."
+}

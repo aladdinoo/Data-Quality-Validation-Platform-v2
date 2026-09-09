@@ -1,0 +1,50 @@
+[
+  {
+    "severity": "warning",
+    "alert_type": "sla_breach",
+    "message": "SLA breach for completeness: score=0.9, threshold=0.95",
+    "run_id": "bench_10000",
+    "timestamp": "2026-09-09T16:11:07.923671+00:00",
+    "details": {
+      "dimension": "completeness",
+      "score": 0.9,
+      "threshold": 0.95
+    }
+  },
+  {
+    "severity": "warning",
+    "alert_type": "sla_breach",
+    "message": "SLA breach for validity: score=0.85, threshold=0.95",
+    "run_id": "bench_10000",
+    "timestamp": "2026-09-09T16:11:07.923715+00:00",
+    "details": {
+      "dimension": "validity",
+      "score": 0.85,
+      "threshold": 0.95
+    }
+  },
+  {
+    "severity": "warning",
+    "alert_type": "sla_breach",
+    "message": "SLA breach for accuracy: score=0.8249, threshold=0.9",
+    "run_id": "bench_10000",
+    "timestamp": "2026-09-09T16:11:07.923732+00:00",
+    "details": {
+      "dimension": "accuracy",
+      "score": 0.8249,
+      "threshold": 0.9
+    }
+  },
+  {
+    "severity": "warning",
+    "alert_type": "sla_breach",
+    "message": "SLA breach for email_quality: score=0.85, threshold=0.95",
+    "run_id": "bench_10000",
+    "timestamp": "2026-09-09T16:11:07.923751+00:00",
+    "details": {
+      "dimension": "email_quality",
+      "score": 0.85,
+      "threshold": 0.95
+    }
+  }
+]

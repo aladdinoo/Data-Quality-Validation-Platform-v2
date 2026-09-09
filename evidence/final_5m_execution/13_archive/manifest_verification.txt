@@ -1,0 +1,6 @@
+MANIFEST VERIFICATION — 2026-09-09T17:20:09.628243+00:00
+manifest: regenerated during the 2026-09-09 documentation consolidation (see hashing_semantics.regeneration_note)
+manifest artifact_count field: 132
+artifacts actually verified: 132
+mismatched/missing: 0 []
+RESULT: PASS — manifest count == verified count, all hashes match

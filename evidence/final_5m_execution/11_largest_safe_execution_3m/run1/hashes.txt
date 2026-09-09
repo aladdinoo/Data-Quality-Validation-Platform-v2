@@ -1,0 +1,6 @@
+input_csv: data/generated/final_3m/consumer_3m_seed_20260909.csv
+input_sha256: 9be5438ee082652968705add152ee7268272213249826043603f36cfd55ae09e
+input_size_bytes: 809834462
+output_csv: data/generated/final_3m/consumer_3m_seed_20260909_out_run1.csv
+output_sha256: 22110e49d0276eeed1153fe16ddf00a2a87c49a379ece7363a84cfdca2cb1ef9
+output_size_bytes: 857834659

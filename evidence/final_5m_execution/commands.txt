@@ -1,0 +1,40 @@
+INDEX OF ACTUAL COMMANDS EXECUTED (FINAL 5M VALIDATION pass, 2026-09-09)
+Every line below was really executed; full captured outputs live at the cited
+evidence paths. This file is an index — it does not replace the captures.
+
+1. python -m runner.cli generate --rows 5000000 --seed 20260909 --output data/generated/final_5m/consumer_5m_seed_20260909.csv
+   -> 02_dataset/dataset_generation_terminal.txt   [exit 0, 123.904 s, RSS 22.57 MB]
+2. python scripts/five_m/verify_dataset_5m.py <5m.csv> evidence/final_5m_execution/02_dataset/dataset_generation_result.json
+   -> 02_dataset/dataset_integrity.txt             [ALL_CHECKS_PASS, sha256 44e41bb8...]
+3. python -m runner.cli validate --csv data/generated/final_5m/consumer_5m_seed_20260909.csv --output data/generated/final_5m/consumer_5m_seed_20260909_out_run1.csv --run-id run_5m_r1 --evidence-dir evidence/final_5m_execution/03_run1/pipeline_evidence
+   -> 03_run1/terminal_output.txt + oom_kernel_log.txt  [FAILED — kernel OOM, exit -9, row 4,943,922/5,000,000]
+4. python -m runner.cli generate --rows 3000000 --seed 20260909 --output data/generated/final_3m/consumer_3m_seed_20260909.csv
+   -> 11_largest_safe_execution_3m/dataset_generation_terminal.txt  [exit 0, 74.559 s]
+5. python scripts/five_m/verify_dataset_5m.py <3m.csv> evidence/final_5m_execution/11_largest_safe_execution_3m/dataset_verification.json 3000000
+   -> dataset_verification.json                    [ALL_CHECKS_PASS, sha256 9be5438e...]
+6. python -m runner.cli validate --csv data/generated/final_3m/consumer_3m_seed_20260909.csv --output data/generated/final_3m/consumer_3m_seed_20260909_out_run1.csv --run-id run_3m_r1 --evidence-dir evidence/final_5m_execution/11_largest_safe_execution_3m/run1
+   -> 11_.../run1/terminal_output.txt              [Validation PASSED, exit 0, 138.472 s, RSS 2192.27 MB]
+7. python scripts/five_m/independent_verifier.py <3m.csv> <run1 out> /tmp/pipeline_counts_r1.json evidence/final_5m_execution/04_independent_verification/verification_result_run1.json evidence/final_5m_execution/11_largest_safe_execution_3m/run1/lineage.json
+   -> 04_independent_verification/verifier_run1_terminal.txt  [24,000,000 comparisons, 0 mismatches, ALL_CHECKS_PASS]
+8. python -m runner.cli validate --csv data/generated/final_3m/consumer_3m_seed_20260909.csv --output data/generated/final_3m/consumer_3m_seed_20260909_out_run2.csv --run-id run_3m_r2 --evidence-dir evidence/final_5m_execution/11_largest_safe_execution_3m/run2
+   -> 11_.../run2/terminal_output.txt              [Validation PASSED, exit 0, 140.466 s, RSS 2195.82 MB]
+9. python scripts/five_m/independent_verifier.py <3m.csv> <run2 out> ... verification_result_run2.json ... run2/lineage.json
+   -> 04_independent_verification/verifier_run2_terminal.txt  [24,000,000 comparisons, 0 mismatches, ALL_CHECKS_PASS]
+10. cmp <run1 out> <run2 out> ; sha256sum <both>
+    -> 11_.../byte_comparison/comparison.txt       [BYTE-IDENTICAL, sha256 22110e49...]
+11. python scripts/five_m/phase7_bench.py ; python scripts/benchmark.py
+    -> 06_performance/bench_ladder.json + bench_*_terminal.txt + benchmark_tracemalloc_20260909.json
+12. python -m pytest -q -rs ; python -m pytest --collect-only -q
+    -> 12_test_suite/pytest_full_rs.txt            [322 passed / 9 skipped / 0 failed / 0 errors of 331]
+13. python scripts/fresh_execution_probe.py
+    -> 12_test_suite/consolidation_probe.txt       [registry 8 V1, SP1 not registered, 0 security/mutation hits]
+14. python scripts/five_m/phase8_geography.py <run1 out> evidence/final_5m_execution/07_geography/geography_per_state_3m.json
+    -> 07_geography/geography_per_state_3m.json    [3,000,000 rows, 100% assessable (V1), 149,044 candidates]
+15. python scripts/five_m/phase9_sp1.py
+    -> 08_activation_boundary/sp1_activation_check.json  [all six properties negative, PASS]
+16. python scripts/five_m/phase13_results.py
+    -> FINAL_RESULTS.json                          [single source of truth built from artifacts]
+17. python scripts/five_m/phase17_consistency.py
+    -> 09_consistency/DOCUMENT_CONSISTENCY_REPORT.md  [0 contradictions / 0 stale-current]
+18. python scripts/five_m/phase18_manifest_archive.py
+    -> MANIFEST.json + 13_archive/ + final archive  [see manifest verification output]

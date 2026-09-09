@@ -1,0 +1,7 @@
+partial_output_file: data/generated/final_5m/consumer_5m_seed_20260909_out_run1.csv
+lines_including_header: 4943923
+data_rows_written: 4943922
+size_bytes: 1415583267
+sha256_partial: a15936b2bdcb46180cd550748e368da38e4a2a8aeefa9e96c905c24323eca7ae
+status: DELETED after measurement (failed-run scratch artifact; run died at 98.9%)
+deletion_reason: disk economy; identifying measurements preserved here and in EXECUTION_BLOCKED_SUMMARY.md

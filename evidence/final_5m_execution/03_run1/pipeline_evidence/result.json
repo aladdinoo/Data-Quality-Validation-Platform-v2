@@ -1,0 +1,14 @@
+{
+  "run_id": "run_5m_r1",
+  "command": "/home/z/.venv/bin/python -m runner.cli validate --csv data/generated/final_5m/consumer_5m_seed_20260909.csv --output data/generated/final_5m/consumer_5m_seed_20260909_out_run1.csv --run-id run_5m_r1 --evidence-dir evidence/final_5m_execution/03_run1/pipeline_evidence",
+  "cwd": "/home/z/my-project/Data-Quality-V1-Final-Company-Integrated",
+  "start_utc": "2026-09-09T15:50:30.139973+00:00",
+  "end_utc": "2026-09-09T15:53:35.447482+00:00",
+  "duration_s": 185.307,
+  "exit_code": -9,
+  "status": "FAILED_TERMINATED_BY_SIGNAL_9",
+  "input_csv": "data/generated/final_5m/consumer_5m_seed_20260909.csv",
+  "output_csv": "data/generated/final_5m/consumer_5m_seed_20260909_out_run1.csv",
+  "evidence_dir": "evidence/final_5m_execution/03_run1/pipeline_evidence",
+  "stdout_lines": 0
+}

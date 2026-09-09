@@ -1,0 +1,58 @@
+PHASE 0 FORENSIC BASELINE — REPOSITORY STRUCTURE — captured 2026-09-09T15:21:48.236791+00:00
+
+git tracked files: 263
+
+Top-level layout (tracked entries, depth 1):
+  .env.example                                                1 files
+  .gitignore                                                  1 files
+  BENCHMARK_REPORT.md                                         1 files
+  COMPANY_ALIGNMENT_FORENSIC_REPORT.md                        1 files
+  COMPANY_REQUIREMENTS_ANSWER.md                              1 files
+  CROSS_REFERENCE_PROVENANCE_REPORT.md                        1 files
+  DELIVERY_MANIFEST.json                                      1 files
+  ENGINEERING_RECOMMENDATIONS.md                              1 files
+  EVIDENCE_MANIFEST.md                                        1 files
+  EVIDENCE_MANIFEST_FORENSIC_AUDIT_REPORT.md                  1 files
+  FINAL_EXECUTION_REPORT.md                                   1 files
+  FINAL_IMPROVEMENT_REPORT.md                                 1 files
+  FINAL_REMEDIATION_REPORT.md                                 1 files
+  FINAL_SCALE_REPORT.md                                       1 files
+  FINAL_SECURITY_REPORT.md                                    1 files
+  FINAL_TEST_AND_FORENSIC_REPORT.md                           1 files
+  FINAL_TEST_REPORT.md                                        1 files
+  FINAL_VERIFICATION_REPORT.md                                1 files
+  GEOGRAPHY_VALIDATION_REPORT.md                              1 files
+  LIMITATIONS.md                                              1 files
+  README.md                                                   1 files
+  RECONCILIATION_REPORT.md                                    1 files
+  RULE_VALIDATION_REPORT.md                                   1 files
+  SECURITY.md                                                 1 files
+  TEST_REPORT.md                                              1 files
+  airflow/                                                    1 files
+  configs/                                                    1 files
+  data_quality_platform/                                     36 files
+  docker-compose.yml                                          1 files
+  docs/                                                       6 files
+  evidence/                                                 137 files
+  pyproject.toml                                              1 files
+  reports/                                                   12 files
+  runner/                                                     2 files
+  scripts/                                                    5 files
+  sql/                                                        5 files
+  tests/                                                     31 files
+
+evidence/ subdirectories (tracked file counts):
+  evidence/audit_1k                                           5 files
+  evidence/benchmarks                                        16 files
+  evidence/final                                              1 files
+  evidence/final_execution                                   29 files
+  evidence/final_verification                                84 files
+  evidence/verification                                       2 files
+
+docs/ tracked files:
+  docs/ARCHITECTURE_MAP.md
+  docs/CANONICAL_GEOGRAPHY_DESIGN.md
+  docs/DATA_FLOW_MAP.md
+  docs/FALSE_POSITIVE_REVIEW.md
+  docs/GEOGRAPHY_RULE_SP1_CONTRACT.md
+  docs/GULNARA_REVIEW.md

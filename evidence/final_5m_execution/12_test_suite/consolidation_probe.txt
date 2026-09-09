@@ -1,0 +1,64 @@
+$ python run_capture.py --out evidence/final_5m_execution/12_test_suite/consolidation_probe.txt --
+COMMAND: python scripts/fresh_execution_probe.py
+START_EPOCH: 1788970360.157
+--- captured stdout ---
+{
+ "git_head": "0282e67bf1212b188915973b9449e09bcd22a11b",
+ "registry_default_count": 8,
+ "sp1_geography_imports_outside_geography_pkg": [
+  {
+   "file": "data_quality_platform/geography/references.py",
+   "from": "data_quality_platform.geography.canonical",
+   "names": [
+    "compute_zip5",
+    "normalize_state"
+   ]
+  },
+  {
+   "file": "data_quality_platform/geography/__init__.py",
+   "from": "data_quality_platform.geography.canonical",
+   "names": [
+    "GEOGRAPHY_FIELDS_WITH_PRESENCE_CONTRACT",
+    "SP1_CONTRACT_DECISION_RECORD_V2_SHA256",
+    "SP1_CONTRACT_DOCUMENT_SHA256",
+    "SP1_CONTRACT_DOCUMENT_TITLE",
+    "SP1_CONTRACT_MEASUREMENTS",
+    "SP1_CONTRACT_PINNED_TEMPLATE_SHA256",
+    "SP1_CONTRACT_PREPARED",
+    "SP1_CONTRACT_SOURCE_COMMIT",
+    "SP1_CONTRACT_SUPERSEDES_SHA256",
+    "SP1_CONTRACT_V3_SHA256",
+    "STATE_ALLOWLIST",
+    "FieldPresenceNotDefinedError",
+    "GeographyAssessment",
+    "ReferenceResolution",
+    "SP1Decision",
+    "compute_zip5",
+    "evaluate_geography",
+    "field_present",
+    "is_blank_state",
+    "is_invalid_state_format",
+    "is_numeric_state_review",
+    "is_unknown_state_code",
+    "normalize_state",
+    "normalize_text",
+    "resolve_reference",
+    "sp1_eligibility"
+   ]
+  }
+ ]
+}
+sp1_isolation: {"registered_rule_ids": ["first_name_cleaning_candidate", "last_name_cleaning_candidate", "name_cleaning_candidate", "email_blank", "email_syntax_failure", "proposed_email_export_eligible", "zip_state_assessable", "geography_mismatch_candidate"], "sp1_in_default_registry": false}
+registry_validate: True [] []
+security hits: 0
+py mutation hits: 0
+cli rec: {"zip_state_assessable": 1000, "geography_mismatch_candidate": 50, "match": 950, "partition_consistent": true} rows_ok: True cols: 33 -> 41
+bench per-row KB: [1.024, 0.74, 0.703]
+--- captured stderr ---
+/home/z/my-project/Data-Quality-V1-Final-Company-Integrated/scripts/fresh_execution_probe.py:122: SyntaxWarning: invalid escape sequence '\s'
+  (r"(?i)(api_key|apikey|secret|password|passwd|token|credential)\s*[=:]\s*['\"](?!(?:\{\{|<|\$\{|your|example|placeholder|change|xxx|dummy|test|None|""|''))[^\s'\"]{8,}", "hardcoded-secret-like"),
+<unknown>:122: SyntaxWarning: invalid escape sequence '\s'
+--- end ---
+Exit code: 0
+Child peak RSS (ru_maxrss, VmHWM-equivalent, max over reaped children): 23.75 MB
+Wall duration: 0.651 s

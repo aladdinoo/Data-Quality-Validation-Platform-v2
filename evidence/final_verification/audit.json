@@ -1,0 +1,109 @@
+{
+  "run_id": "final_1k",
+  "events": [
+    {
+      "event_type": "run_started",
+      "run_id": "final_1k",
+      "timestamp": "2026-08-25T08:56:53.522079+00:00",
+      "details": {
+        "source": "data/generated/final_1k.csv"
+      }
+    },
+    {
+      "event_type": "schema_validated",
+      "run_id": "final_1k",
+      "timestamp": "2026-08-25T08:56:53.522221+00:00",
+      "details": {
+        "schema_hash": "",
+        "errors": []
+      }
+    },
+    {
+      "event_type": "rules_loaded",
+      "run_id": "final_1k",
+      "timestamp": "2026-08-25T08:56:53.522312+00:00",
+      "details": {
+        "rule_count": 8,
+        "registry_hash": "30bb178e6fc13296929a23cf902e0431441decf15ae6450bebbc2f8bacf6240a"
+      }
+    },
+    {
+      "event_type": "validation_started",
+      "run_id": "final_1k",
+      "timestamp": "2026-08-25T08:56:53.522322+00:00",
+      "details": {
+        "row_count": 0
+      }
+    },
+    {
+      "event_type": "reconciliation_completed",
+      "run_id": "final_1k",
+      "timestamp": "2026-08-25T08:56:53.563115+00:00",
+      "details": {
+        "passed": true,
+        "details": {
+          "passed": true,
+          "errors": [],
+          "input_row_count": 1000,
+          "output_row_count": 1000,
+          "flag_counts": {
+            "first_name_cleaning_candidate": 99,
+            "last_name_cleaning_candidate": 69,
+            "name_cleaning_candidate": 31,
+            "email_blank": 80,
+            "email_syntax_failure": 70,
+            "proposed_email_export_eligible": 850,
+            "zip_state_assessable": 1000,
+            "geography_mismatch_candidate": 50
+          }
+        }
+      }
+    },
+    {
+      "event_type": "monitoring_completed",
+      "run_id": "final_1k",
+      "timestamp": "2026-08-25T08:56:53.563167+00:00",
+      "details": {
+        "overall_score": 0.9165,
+        "sla_passed": false
+      }
+    },
+    {
+      "event_type": "validation_completed",
+      "run_id": "final_1k",
+      "timestamp": "2026-08-25T08:56:53.563224+00:00",
+      "details": {
+        "input_rows": 1000,
+        "output_rows": 1000,
+        "flag_counts": {
+          "first_name_cleaning_candidate": 99,
+          "last_name_cleaning_candidate": 69,
+          "name_cleaning_candidate": 31,
+          "email_blank": 80,
+          "email_syntax_failure": 70,
+          "proposed_email_export_eligible": 850,
+          "zip_state_assessable": 1000,
+          "geography_mismatch_candidate": 50
+        },
+        "duration_seconds": 0.03384518623352051
+      }
+    },
+    {
+      "event_type": "output_written",
+      "run_id": "final_1k",
+      "timestamp": "2026-08-25T08:56:53.563227+00:00",
+      "details": {
+        "path": "data/generated/final_1k_out.csv",
+        "rows": 1000
+      }
+    },
+    {
+      "event_type": "lineage_recorded",
+      "run_id": "final_1k",
+      "timestamp": "2026-08-25T08:56:53.565311+00:00",
+      "details": {
+        "path": "evidence/final_verification/lineage.json"
+      }
+    }
+  ]
+}

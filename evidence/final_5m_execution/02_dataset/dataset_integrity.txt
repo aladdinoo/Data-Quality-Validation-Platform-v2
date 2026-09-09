@@ -1,0 +1,37 @@
+$ python run_capture.py --out evidence/final_5m_execution/02_dataset/dataset_integrity.txt --
+COMMAND: python /home/z/my-project/scripts/five_m/verify_dataset_5m.py data/generated/final_5m/consumer_5m_seed_20260909.csv evidence/final_5m_execution/02_dataset/dataset_generation_result.json
+START_EPOCH: 1788968915.572
+--- captured stdout ---
+  scanned 1000000 rows...
+  scanned 2000000 rows...
+  scanned 3000000 rows...
+  scanned 4000000 rows...
+  scanned 5000000 rows...
+{
+  "check": "dataset_forensic_verification",
+  "dataset_path": "data/generated/final_5m/consumer_5m_seed_20260909.csv",
+  "expected_rows": 5000000,
+  "independent_implementation": true,
+  "production_imports": false,
+  "header_ok": true,
+  "row_count": 5000000,
+  "row_count_ok": true,
+  "csv_structure_errors": [],
+  "csv_structure_ok": true,
+  "id_sequence_check": {
+    "ids_sequential_1_to_N": true,
+    "first_anomaly": null,
+    "note": "streamed strict check: each row's id field must equal its 1-based position; a strict in-order pass with count==5,000,000 and zero anomalies proves IDs 1..5,000,000 with no duplicates and no missing values"
+  },
+  "ids_ok": true,
+  "file_size_bytes": 1351673659,
+  "file_size_mb": 1289.06,
+  "sha256": "44e41bb8cfe1c0d2fbafbff5e91bb40b100f8331ef26f946532b84c57409fb9d",
+  "sha256_duration_s": 1.083,
+  "verification_duration_s": 16.88,
+  "ALL_CHECKS_PASS": true
+}
+--- end ---
+Exit code: 0
+Child peak RSS (ru_maxrss, VmHWM-equivalent, max over reaped children): 22.40 MB
+Wall duration: 16.903 s

@@ -1,0 +1,28 @@
+{
+  "run_id": "run_3m_r1",
+  "command": "/home/z/.venv/bin/python -m runner.cli validate --csv data/generated/final_3m/consumer_3m_seed_20260909.csv --output data/generated/final_3m/consumer_3m_seed_20260909_out_run1.csv --run-id run_3m_r1 --evidence-dir evidence/final_5m_execution/11_largest_safe_execution_3m/run1",
+  "cwd": "/home/z/my-project/Data-Quality-V1-Final-Company-Integrated",
+  "start_utc": "2026-09-09T15:59:46.372162+00:00",
+  "end_utc": "2026-09-09T16:02:04.843720+00:00",
+  "duration_s": 138.472,
+  "exit_code": 0,
+  "status": "COMPLETED",
+  "input_csv": "data/generated/final_3m/consumer_3m_seed_20260909.csv",
+  "output_csv": "data/generated/final_3m/consumer_3m_seed_20260909_out_run1.csv",
+  "evidence_dir": "evidence/final_5m_execution/11_largest_safe_execution_3m/run1",
+  "stdout_lines": 19,
+  "flag_counts_from_stdout": {
+    "first_name_cleaning_candidate": 317185,
+    "last_name_cleaning_candidate": 210603,
+    "name_cleaning_candidate": 91020,
+    "email_blank": 240000,
+    "email_syntax_failure": 210000,
+    "proposed_email_export_eligible": 2550000,
+    "zip_state_assessable": 3000000,
+    "geography_mismatch_candidate": 149044
+  },
+  "flag_sum_from_stdout": 6767852,
+  "cli_verdict_line": "Validation PASSED",
+  "input_row_count": 3000000,
+  "output_row_count": 3000000
+}

@@ -1,0 +1,3 @@
+44e41bb8cfe1c0d2fbafbff5e91bb40b100f8331ef26f946532b84c57409fb9d  data/generated/final_5m/consumer_5m_seed_20260909.csv
+size_bytes: 1351673659
+verified_by: independent streaming verifier (scripts/five_m/verify_dataset_5m.py)

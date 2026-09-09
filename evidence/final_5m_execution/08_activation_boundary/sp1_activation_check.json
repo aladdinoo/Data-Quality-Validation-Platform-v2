@@ -1,0 +1,95 @@
+{
+  "REGISTERED": {
+    "value": "NO",
+    "evidence": {
+      "default_registry_rule_ids": [
+        "first_name_cleaning_candidate",
+        "last_name_cleaning_candidate",
+        "name_cleaning_candidate",
+        "email_blank",
+        "email_syntax_failure",
+        "proposed_email_export_eligible",
+        "zip_state_assessable",
+        "geography_mismatch_candidate"
+      ],
+      "count": 8,
+      "sp1_in_default_registry": false
+    }
+  },
+  "ACTIVE": {
+    "value": "NO",
+    "evidence": {
+      "run1_manifest_rule_hashes": [
+        "email_blank",
+        "email_syntax_failure",
+        "first_name_cleaning_candidate",
+        "geography_mismatch_candidate",
+        "last_name_cleaning_candidate",
+        "name_cleaning_candidate",
+        "proposed_email_export_eligible",
+        "zip_state_assessable"
+      ],
+      "run2_manifest_rule_hashes": [
+        "email_blank",
+        "email_syntax_failure",
+        "first_name_cleaning_candidate",
+        "geography_mismatch_candidate",
+        "last_name_cleaning_candidate",
+        "name_cleaning_candidate",
+        "proposed_email_export_eligible",
+        "zip_state_assessable"
+      ],
+      "exactly_8_v1_rule_ids": true,
+      "sp1_hash_in_run_manifests": false
+    }
+  },
+  "DEFAULT": {
+    "value": "NO",
+    "evidence": {
+      "config_files_scanned": 1,
+      "config_files_referencing_sp1_or_canonical_routing": []
+    }
+  },
+  "AUTHORIZED": {
+    "value": "NO",
+    "evidence": {
+      "activation_authorization_artifacts_found": [],
+      "company_contract_position": "SP1 contract semantics delivered/tested; physical canonical validation never authorized (docs/GEOGRAPHY_RULE_SP1_CONTRACT.md rev2, COMPANY-SUPPLIED)"
+    }
+  },
+  "PRODUCTION_CALL_SITES": {
+    "value": 0,
+    "evidence": {
+      "files_referencing_sp1_canonical_functions": [
+        "data_quality_platform/geography/canonical.py",
+        "data_quality_platform/geography/references.py",
+        "data_quality_platform/geography/__init__.py"
+      ],
+      "validation_path_call_sites": [],
+      "files_outside_geography_package_excl_scripts": [],
+      "sp1_home_package_internal_references": [
+        "data_quality_platform/geography/canonical.py",
+        "data_quality_platform/geography/references.py",
+        "data_quality_platform/geography/__init__.py"
+      ],
+      "note": "geography/__init__.py re-exports SP1 names inside SP1's own package (documented isolation topology, identical to fresh_execution_probe.py output since FINAL-CONSOLIDATION); the validation path itself has zero SP1 references"
+    }
+  },
+  "PHYSICAL_REFERENCE_BOUND": {
+    "value": "NO",
+    "evidence": {
+      "engine_imports_sp1_or_canonical": false,
+      "engine_geography_semantics": "V1 prefix-map via rules/v1_rules.py (zip_state_assessable, geography_mismatch_candidate)",
+      "flagship_runtime_rule_hashes_are_v1_only": true
+    }
+  },
+  "overall": {
+    "REGISTERED": "NO",
+    "ACTIVE": "NO",
+    "DEFAULT": "NO",
+    "AUTHORIZED": "NO",
+    "PRODUCTION_CALL_SITES": 0,
+    "PHYSICAL_REFERENCE_BOUND": "NO",
+    "PASS": true
+  }
+}

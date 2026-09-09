@@ -1,0 +1,24 @@
+COMMAND: /home/z/.venv/bin/python -m runner.cli validate --csv data/generated/final_5m/bench5m_1000000.csv --output data/generated/final_5m/bench5m_1000000_out.csv --run-id bench5m_1000000 --evidence-dir evidence/final_5m_execution/06_performance/bench_1000000_evidence
+[ALERT WARNING] sla_breach: SLA breach for completeness: score=0.9, threshold=0.95
+[ALERT WARNING] sla_breach: SLA breach for validity: score=0.85, threshold=0.95
+[ALERT WARNING] sla_breach: SLA breach for accuracy: score=0.8242, threshold=0.9
+[ALERT WARNING] sla_breach: SLA breach for email_quality: score=0.85, threshold=0.95
+Validation PASSED: 1000000 rows in, 1000000 rows out
+  Run ID: bench5m_1000000
+  Duration: 37.62s
+  Monitoring score: 0.9156
+  SLA passed: False
+  Reconciliation passed: True
+  Evidence: evidence/final_5m_execution/06_performance/bench_1000000_evidence
+    first_name_cleaning_candidate: 105724
+    last_name_cleaning_candidate: 70090
+    name_cleaning_candidate: 30331
+    email_blank: 80000
+    email_syntax_failure: 70000
+    proposed_email_export_eligible: 850000
+    zip_state_assessable: 1000000
+    geography_mismatch_candidate: 49682
+<frozen runpy>:128: RuntimeWarning: 'runner.cli' found in sys.modules after import of package 'runner', but prior to execution of 'runner.cli'; this may result in unpredictable behaviour
+Exit code: 0
+Wall duration: 45.917 s
+Child peak RSS (ru_maxrss): 735.71 MB

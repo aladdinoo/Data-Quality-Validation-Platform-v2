@@ -1,0 +1,11 @@
+$ python run_capture.py --out evidence/final_5m_execution/11_largest_safe_execution_3m/dataset_generation_terminal.txt --
+COMMAND: python -m runner.cli generate --rows 3000000 --seed 20260909 --output data/generated/final_3m/consumer_3m_seed_20260909.csv
+START_EPOCH: 1788969428.778
+--- captured stdout ---
+Generated 3000000 rows -> data/generated/final_3m/consumer_3m_seed_20260909.csv
+--- captured stderr ---
+<frozen runpy>:128: RuntimeWarning: 'runner.cli' found in sys.modules after import of package 'runner', but prior to execution of 'runner.cli'; this may result in unpredictable behaviour
+--- end ---
+Exit code: 0
+Child peak RSS (ru_maxrss, VmHWM-equivalent, max over reaped children): 22.33 MB
+Wall duration: 74.559 s

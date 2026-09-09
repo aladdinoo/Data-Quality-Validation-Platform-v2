@@ -1,0 +1,28 @@
+$ cd /home/z/my-project/Data-Quality-V1-Final-Company-Integrated
+$ /home/z/.venv/bin/python -m runner.cli validate --csv data/generated/final_3m/consumer_3m_seed_20260909.csv --output data/generated/final_3m/consumer_3m_seed_20260909_out_run1.csv --run-id run_3m_r1 --evidence-dir evidence/final_5m_execution/11_largest_safe_execution_3m/run1
+
+--- captured stdout ---
+[ALERT WARNING] sla_breach: SLA breach for completeness: score=0.9, threshold=0.95
+[ALERT WARNING] sla_breach: SLA breach for validity: score=0.85, threshold=0.95
+[ALERT WARNING] sla_breach: SLA breach for accuracy: score=0.8241, threshold=0.9
+[ALERT WARNING] sla_breach: SLA breach for email_quality: score=0.85, threshold=0.95
+Validation PASSED: 3000000 rows in, 3000000 rows out
+  Run ID: run_3m_r1
+  Duration: 112.80s
+  Monitoring score: 0.9156
+  SLA passed: False
+  Reconciliation passed: True
+  Evidence: evidence/final_5m_execution/11_largest_safe_execution_3m/run1
+    first_name_cleaning_candidate: 317185
+    last_name_cleaning_candidate: 210603
+    name_cleaning_candidate: 91020
+    email_blank: 240000
+    email_syntax_failure: 210000
+    proposed_email_export_eligible: 2550000
+    zip_state_assessable: 3000000
+    geography_mismatch_candidate: 149044
+--- captured stderr ---
+<frozen runpy>:128: RuntimeWarning: 'runner.cli' found in sys.modules after import of package 'runner', but prior to execution of 'runner.cli'; this may result in unpredictable behaviour
+--- end of captured output ---
+Exit code: 0
+Status: COMPLETED

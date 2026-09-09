@@ -1,0 +1,129 @@
+============================================================
+DATA QUALITY — FINAL 5M VALIDATION
+============================================================
+
+Dataset:
+Rows:            5,000,000 (exactly; independently verified)
+Seed:            20260909
+Columns:         33 (frozen V1 source contract)
+Input SHA256:    44e41bb8cfe1c0d2fbafbff5e91bb40b100f8331ef26f946532b84c57409fb9d
+Size:            1,351,673,659 bytes
+IDs:             1..5,000,000 strict sequence; no duplicates; no missing
+
+RUN 1 (5,000,000-row pipeline execution — real CLI):
+Status:          FAILED — ENVIRONMENT OOM (kernel OOM killer, SIGKILL, exit -9)
+Duration:        185.307 s (terminated at row 4,943,922 / 5,000,000 = 98.9%)
+Peak RSS:        3,592.0 MB anon-rss at kill (dmesg captured live:
+                 "Out of memory: Killed process 3565 (python) anon-rss:3592016kB")
+Output SHA256:   n/a (run failed; partial output measured — sha256
+                 a15936b2bdcb46180cd550748e368da38e4a2a8aeefa9e96c905c24323eca7ae,
+                 then deleted; deletion recorded)
+Note:            pre-registered linear model predicted 3,593.9 MB peak vs
+                 3,576 MB available (no swap, non-root) — kill matches within 0.1%
+
+RUN 2 (5M):
+Status:          NOT EXECUTED — deterministic failure mode, documented decision
+                 (evidence/final_5m_execution/05_run2/5M_RUN2_NOT_EXECUTED.md)
+
+LARGEST COMPLETED FULL PROTOCOL (3,000,000 rows — pre-registered safe scale):
+
+RUN 1 (run_3m_r1):
+Status:          COMPLETED ("Validation PASSED", exit 0)
+Duration:        138.472 s   (21,664.1 rows/s)
+Peak RSS:        2,192.27 MB (ru_maxrss; VmHWM-poll cross-check)
+Output SHA256:   22110e49d0276eeed1153fe16ddf00a2a87c49a379ece7363a84cfdca2cb1ef9
+
+RUN 2 (run_3m_r2, same frozen input, no regeneration):
+Status:          COMPLETED ("Validation PASSED", exit 0)
+Duration:        140.466 s   (21,357.6 rows/s)
+Peak RSS:        2,195.82 MB (ru_maxrss; VmHWM-poll cross-check)
+Output SHA256:   22110e49d0276eeed1153fe16ddf00a2a87c49a379ece7363a84cfdca2cb1ef9
+
+DETERMINISM:
+Byte-identical:  YES (cmp exit 0; identical SHA-256, size, flag counts,
+                 ordering; both manifests reconciliation PASSED)
+
+INDEPENDENT VERIFICATION (no production imports; predicates re-implemented):
+Rows checked:                3,000,000 x 2 runs
+Flag comparisons:            24,000,000 x 2 = 48,000,000 total
+                             (5M expectation was 40,000,000; 5M never completed)
+Mismatches:                  0
+Reconciliation deltas:       all 8 flags delta == 0, both runs
+Schema / IDs / preservation: clean (41-col output; 33 source columns preserved
+                             byte-exact; IDs strictly sequential)
+Lineage cross-check:         independent flag-event sum 6,767,852 ==
+                             pipeline lineage total_row_records
+
+TEST SUITE (fresh 2026-09-09, python -m pytest -q -rs):
+Collected: 331    Passed: 322    Skipped: 9    Failed: 0    Errors: 0
+Skips attributed: 7 x DL001-DL015 COMPANY-GATED + 1 x ClickHouse runtime +
+                  1 x Airflow runtime
+Golden hashes unchanged: 9ff2364f / fd2d9783 / c5084feb
+
+PERFORMANCE (methods labeled; ladder = official CLI runs, seed 20260909):
+1K      0.187 s   5,343.8 rows/s   peak RSS 22.43 MB
+10K     0.566 s  17,680.1 rows/s   peak RSS 28.91 MB
+100K    4.471 s  22,365.8 rows/s   peak RSS 93.87 MB   (tracemalloc 68.65 MB)
+1M     45.917 s  21,778.5 rows/s   peak RSS 735.71 MB
+3M     138.5 s   21,664.1 rows/s   peak RSS 2,192.27 MB (run 1)
+5M     FAILED (see RUN 1 above) — no performance claims made
+Memory: implementation-level O(N) (code inspection); observed empirical
+        scaling ~713-732 KB per 1K rows (RSS basis). No O(1) claim.
+
+V1 GEOGRAPHY (frozen prefix-map semantics only):
+Assessable:      3,000,000 / 3,000,000 — "100% assessable under the frozen V1
+                 prefix-map predicate" (NOT "100% valid ZIPs")
+Mismatch:        149,044 (4.9681%) — "V1 prefix-map geography mismatch
+                 candidates" (NOT canonical USPS errors, NOT confirmed errors)
+Limitations:     13 ambiguous prefixes, DC duplicate entry, 8 absent
+                 territory/military codes — all frozen and disclosed
+
+SP1:
+REGISTERED=NO · ACTIVE=NO · DEFAULT=NO · AUTHORIZED=NO
+PRODUCTION CALL SITES=0 · PHYSICAL REFERENCE BOUND=NO
+Contract semantics tested (63/63); never a physical validator in any run.
+
+COMPANY-GATED / EXTERNAL:
+DL001-DL015: COMPANY-GATED (external fixtures; 7 skip-gated tests)
+ClickHouse:  NOT RUNTIME EXECUTED (0 connections, 0 mutation SQL)
+Airflow:     STATICALLY VERIFIED only (DAG = 6 tasks; runtime NOT EXECUTED)
+E1:          NOT IMPLEMENTED / NOT EXECUTED / NOT AUTHORIZED
+721,141,364 / 590,011,545: COMPANY-SUPPLIED / ARITHMETIC-ONLY / NOT REPRODUCED
+
+DOCUMENTATION:
+Rebuilt from FINAL_RESULTS.json: README.md, docs/FINAL_5M_VALIDATION_REPORT.md,
+docs/REPRODUCIBILITY.md, docs/EVIDENCE_COVERAGE.md,
+docs/FINAL_AUDIT_DECISION_MATRIX.md + 10 evidence subdirectories.
+Consistency audit: 0 unexplained contradictions, 0 stale-current claims.
+Reporting forensic audit: 14 legacy contradictions identified pre-rebuild.
+
+MANIFEST & ARCHIVE:
+Manifest:        evidence/final_5m_execution/MANIFEST.json — 133 artifacts,
+                 133/133 hash-verified (self-excluded, non-circular)
+Commits:         baseline 0282e67bf1212b188915973b9449e09bcd22a11b;
+                 evidence/packaging commits ece1b8e2, 1574622c + final
+                 packaging commit — authoritative value recorded as
+                 built_at_commit in 13_archive/archive_sha256.txt
+                 (0 production content rows in any of them; docs/evidence/
+                 scripts/.gitignore only)
+Archive:         Data-Quality-Validation-Platform-5M-Revalidated-2026-09-09.zip
+SHA256:          AUTHORITATIVE RECORD: download/<archive>.sha256 sidecar and
+                 13_archive/archive_sha256.txt (self-reference avoided by
+                 design; this file is inside the archive it describes)
+Unpack check:    fresh directory; zip integrity OK; pytest 322 passed /
+                 9 skipped; 5/5 evidence spot-checks PRESENT (see
+                 13_archive/unpack_verification.txt for the recorded run)
+Prior archives:  preserved untouched in download/
+
+FINAL STATUS:
+PASS WITH DOCUMENTED LIMITATIONS
+
+LIMITATIONS:
+1. 5M end-to-end execution BLOCKED by environment RAM (kernel-evidenced);
+   5M is the verified DATASET scale, not the verified EXECUTION scale.
+2. Engine in-process memory is implementation-level O(N) (disclosed +
+   measured); 5M+ single-box runs need >= ~4.6 GB free RAM (no code change).
+3. Canonical geography validation COMPANY-GATED (DL001-DL015; SP1 unactivated).
+4. ClickHouse / Airflow runtimes NOT EXECUTED (environment).
+5. 721M company-scale figures are arithmetic-only here.
+============================================================

@@ -1,0 +1,8 @@
+$ python3 -m pytest tests/runtime -q -rs
+......s.s.                                                               [100%]
+=========================== short test summary info ============================
+SKIPPED [1] tests/runtime/test_runtime.py:119: Docker/ClickHouse unavailable
+SKIPPED [1] tests/runtime/test_runtime.py:156: Airflow not installed - DESIGNED_BUT_NOT_RUNTIME_VERIFIED
+8 passed, 2 skipped in 1.09s
+=== STDERR ===
+--- exit code: 0 ---

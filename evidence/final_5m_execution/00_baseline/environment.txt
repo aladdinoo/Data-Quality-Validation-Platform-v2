@@ -1,0 +1,19 @@
+PHASE 0 FORENSIC BASELINE — ENVIRONMENT — captured 2026-09-09T15:21:48.236791+00:00
+
+platform.platform(): Linux-5.10.134-013.8.3.kangaroo.al8.x86_64-x86_64-with-glibc2.41
+platform.system(): Linux 5.10.134-013.8.3.kangaroo.al8.x86_64
+sys.executable: /home/z/.venv/bin/python
+python: 3.12.14 (main, Aug 14 2026, 15:34:45) [Clang 22.1.3 ]
+pytest: pytest 9.0.2
+pyyaml: 6.0.3
+CPU: model name	: Intel(R) Xeon(R) Processor
+CPU count (os.cpu_count): 2
+
+Memory (/proc/meminfo):
+MemTotal:        4138548 kB
+MemAvailable:    3662988 kB
+SwapTotal:             0 kB
+
+Disk:
+Filesystem                               Size  Used Avail Use% Mounted on
+c-6aa1772a-14d96228-c5318e8eb0e5-rootfs  9.9G  250M  9.1G   3% /

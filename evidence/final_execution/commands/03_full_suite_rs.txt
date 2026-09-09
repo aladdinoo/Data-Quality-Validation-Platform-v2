@@ -1,0 +1,13 @@
+$ python3 -m pytest -q -rs
+......................sssssss........................................... [ 21%]
+............s.s......................................................... [ 43%]
+........................................................................ [ 65%]
+........................................................................ [ 87%]
+...........................................                              [100%]
+=========================== short test summary info ============================
+SKIPPED [7] tests/golden/test_dl_canonical_geography.py:62: Authoritative DL001-DL015 acceptance table not present at /home/z/my-project/Data-Quality-V1-Final-Company-Integrated/tests/golden/dl_geography_cases.csv. It is external evidence to be supplied verbatim by the repo owner; it is never reconstructed from existing fixtures.
+SKIPPED [1] tests/runtime/test_runtime.py:119: Docker/ClickHouse unavailable
+SKIPPED [1] tests/runtime/test_runtime.py:156: Airflow not installed - DESIGNED_BUT_NOT_RUNTIME_VERIFIED
+322 passed, 9 skipped in 4.66s
+=== STDERR ===
+--- exit code: 0 ---

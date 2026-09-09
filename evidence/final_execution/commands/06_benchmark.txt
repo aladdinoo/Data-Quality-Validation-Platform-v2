@@ -1,0 +1,22 @@
+$ python3 scripts/benchmark.py
+Benchmarking 1000 rows...
+[ALERT WARNING] sla_breach: SLA breach for completeness: score=0.9, threshold=0.95
+[ALERT WARNING] sla_breach: SLA breach for validity: score=0.85, threshold=0.95
+[ALERT WARNING] sla_breach: SLA breach for accuracy: score=0.832, threshold=0.9
+[ALERT WARNING] sla_breach: SLA breach for email_quality: score=0.85, threshold=0.95
+  1000: 0.207s, 4841.5 rows/sec, 1.01MB peak
+Benchmarking 10000 rows...
+[ALERT WARNING] sla_breach: SLA breach for completeness: score=0.9, threshold=0.95
+[ALERT WARNING] sla_breach: SLA breach for validity: score=0.85, threshold=0.95
+[ALERT WARNING] sla_breach: SLA breach for accuracy: score=0.8249, threshold=0.9
+[ALERT WARNING] sla_breach: SLA breach for email_quality: score=0.85, threshold=0.95
+  10000: 1.494s, 6694.0 rows/sec, 7.23MB peak
+Benchmarking 100000 rows...
+[ALERT WARNING] sla_breach: SLA breach for completeness: score=0.9, threshold=0.95
+[ALERT WARNING] sla_breach: SLA breach for validity: score=0.85, threshold=0.95
+[ALERT WARNING] sla_breach: SLA breach for accuracy: score=0.8226, threshold=0.9
+[ALERT WARNING] sla_breach: SLA breach for email_quality: score=0.85, threshold=0.95
+  100000: 15.325s, 6525.1 rows/sec, 68.65MB peak
+
+Benchmark report: /home/z/my-project/Data-Quality-V1-Final-Company-Integrated/evidence/benchmarks/benchmark.json
+--- exit code: 0 ---

@@ -1,0 +1,26 @@
+DETERMINISM BYTE COMPARISON — RUN 1 vs RUN 2 (3,000,000 rows each)
+====================================================================
+$ cmp data/generated/final_3m/consumer_3m_seed_20260909_out_run1.csv \
+      data/generated/final_3m/consumer_3m_seed_20260909_out_run2.csv
+(no output, exit code 0)
+BYTE-IDENTICAL: YES
+
+$ sha256sum <run1 output> <run2 output>
+22110e49d0276eeed1153fe16ddf00a2a87c49a379ece7363a84cfdca2cb1ef9  consumer_3m_seed_20260909_out_run1.csv
+22110e49d0276eeed1153fe16ddf00a2a87c49a379ece7363a84cfdca2cb1ef9  consumer_3m_seed_20260909_out_run2.csv
+
+Checks:
+- output SHA-256:      IDENTICAL (22110e49d0276eeed1153fe16ddf00a2a87c49a379ece7363a84cfdca2cb1ef9)
+- output byte length:  IDENTICAL (see hashes below)
+- row count:           3,000,000 == 3,000,000 (from both runs' captured stdout)
+- flag counts:         IDENTICAL (8/8 rules, sum 6,767,852 both runs)
+- reconciliation:      PASSED in both runs' pipeline manifests
+- ordering:            IDs strictly sequential in both (independent verifier)
+- terminal status:     exit 0 both runs ("Validation PASSED")
+
+Hashes & sizes:
+22110e49d0276eeed1153fe16ddf00a2a87c49a379ece7363a84cfdca2cb1ef9  data/generated/final_3m/consumer_3m_seed_20260909_out_run1.csv
+22110e49d0276eeed1153fe16ddf00a2a87c49a379ece7363a84cfdca2cb1ef9  data/generated/final_3m/consumer_3m_seed_20260909_out_run2.csv
+857834659 bytes  data/generated/final_3m/consumer_3m_seed_20260909_out_run1.csv
+857834659 bytes  data/generated/final_3m/consumer_3m_seed_20260909_out_run2.csv
+input: 9be5438ee082652968705add152ee7268272213249826043603f36cfd55ae09e  data/generated/final_3m/consumer_3m_seed_20260909.csv

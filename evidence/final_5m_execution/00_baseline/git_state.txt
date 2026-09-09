@@ -1,0 +1,64 @@
+PHASE 0 FORENSIC BASELINE — GIT STATE — captured 2026-09-09T15:21:48.236791+00:00
+
+$ git rev-parse --show-toplevel
+/home/z/my-project/Data-Quality-V1-Final-Company-Integrated
+
+$ git rev-parse HEAD
+0282e67bf1212b188915973b9449e09bcd22a11b
+
+$ git branch --show-current
+main
+
+$ git log -20 --oneline
+0282e67 Forensic closure audit (2026-09-09): minimal documentation corrections — reword 'verified scale ceiling' to 'largest freshly verified execution scale' with explicit not-a-capacity-limit disclaimer (README Executive Status + benchmark interpretation, BENCHMARK_REPORT §4); reclassify PROOF_MATRIX P-11 (291-passed, 2026-09-05 state) from CURRENT VERIFIED to HISTORICAL with supersession pointer and update its reproduction expectation to 322/9 (331 collected); index the previously unindexed reports/history/FINAL_VERIFICATION_REPORT_2026-08-25_HISTORICAL.md in HISTORY_INDEX with preservation hash c6d6c687; refresh the 4 affected artifact hashes in DELIVERY_MANIFEST.json. Documentation/evidence-documentation only: no production code, no tests, no fixtures, no semantic changes. Fresh suite at this commit: 331 collected / 322 passed / 9 skipped / 0 failed / 0 errors; DELIVERY_MANIFEST 34/34 and EVIDENCE_MANIFEST 127/127 hash-verified.
+0f0b681 Fresh end-to-end execution pass: 10-step execution harness (331 collected / 322 passed / 9 skipped / 0 failed, exit 0), deterministic CLI 1000-row run with evidence bundle, fresh 1K/10K/100K benchmark, regenerated verification evidence (matrix 20 PASS / 2 PARTIAL), static probes (8 V1 rules, SP1 isolation, 0 secrets, 0 mutation SQL); rebuild 9 required reports + README (required sections, 7 mermaid maps mmdc-validated, fresh/historical separation); classify historical verification report to reports/history/; evidence/final_execution/ 127 hash-anchored artifacts + 3 reproducibility scripts. No production code changes.
+71a303e Final-readiness pass: 7 Mermaid maps (GEO/SP1 separation + activation gates + evidence chain), Verification Proof section, measured performance/memory subsection, fresh benchmark evidence, structured P0-P3 recommendations R1-R12, manifest final_commit/archive_sha256 keys (null+notes), report addenda §H/§28 — documentation/evidence-level only, no production code changes
+ad43edf README: add Verification Proof terminal excerpt (task section 12) — real commands and outputs re-executed 2026-09-07; quoted state is HEAD~1 by construction
+a98dbfa README: add four Mermaid maps (project identity, architecture, data flow, evidence/company-gates) per final-consolidation task section 14; all blocks validated with mermaid-cli; content otherwise unchanged
+721a103 record consolidation commit 5abca22a in README/reports; add DELIVERY_MANIFEST.json
+5abca22 Data Quality — final consolidation: company-update integration (GEO/SP1/E1), evidence rebuild, report set consolidation
+a5ec759 fix(config): preserve legacy keys and harden config loading
+2a8b7e1 R3: honor configs/quality.yaml - fix PlatformConfig.from_yaml flattening and wire SLA thresholds into CLI/DAG
+bc81ee0 README rebuilt from full forensic re-review: actual GEO/PS1/E1/ClickHouse status, verified test results, proven statuses
+fb049ee Revision 3: eliminate last test-harness side effect (test_verify_command isolates evidence dir); reports re-verified
+30c161d SP1 successor geography contract: pure implementation, acceptance tests, provenance doc, final report revision 2
+beefcaa Forensic remediation final delivery: Q21 aggregation, golden integrity, canonical geography gate, final reports
+4065714 Initial commit: Data Quality Platform V2
+
+$ git remote -v
+origin	https://github.com/aladdinoo/data-quality-platformV2.git (fetch)
+origin	https://github.com/aladdinoo/data-quality-platformV2.git (push)
+
+$ git stash list
+(empty)
+
+$ git status --short (first 20 of N)
+ M .gitignore
+ M BENCHMARK_REPORT.md
+ M COMPANY_ALIGNMENT_FORENSIC_REPORT.md
+ M COMPANY_REQUIREMENTS_ANSWER.md
+ M CROSS_REFERENCE_PROVENANCE_REPORT.md
+ M DELIVERY_MANIFEST.json
+ M ENGINEERING_RECOMMENDATIONS.md
+ M EVIDENCE_MANIFEST.md
+ M EVIDENCE_MANIFEST_FORENSIC_AUDIT_REPORT.md
+ M FINAL_EXECUTION_REPORT.md
+ M FINAL_REMEDIATION_REPORT.md
+ M FINAL_SCALE_REPORT.md
+ M FINAL_SECURITY_REPORT.md
+ M FINAL_TEST_AND_FORENSIC_REPORT.md
+ M FINAL_TEST_REPORT.md
+ M FINAL_VERIFICATION_REPORT.md
+ M GEOGRAPHY_VALIDATION_REPORT.md
+ M LIMITATIONS.md
+ M README.md
+ M RECONCILIATION_REPORT.md
+... (250 total modified paths)
+
+$ git diff --stat (tail)
+ tests/unit/test_security.py                                              | 0
+ tests/unit/test_sp1_geography_contract.py                                | 0
+ 250 files changed, 0 insertions(+), 0 deletions(-)
+
+$ git diff --numstat → content-bearing (non mode-only) rows
+count: 0

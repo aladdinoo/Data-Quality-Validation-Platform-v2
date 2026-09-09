@@ -1,0 +1,5 @@
+archive: Data-Quality-Validation-Platform-5M-Revalidated-2026-09-09.zip
+sha256: 51fdf65d31df91a930aaaecf4e8f8fabfe2d0487372177b219d0b9bbe3463ea4
+size_bytes: 1149202
+entries: 414
+built_at_commit: 95868ccbf0585ae17d0570c7d378aa8f0aa5b635

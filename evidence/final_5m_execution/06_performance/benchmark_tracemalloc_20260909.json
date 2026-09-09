@@ -1,0 +1,35 @@
+{
+  "timestamp": "2026-09-09T16:11:25Z",
+  "environment": "linux",
+  "python_version": "3.12.14 (main, Aug 14 2026, 15:34:45) [Clang 22.1.3 ]",
+  "benchmarks": [
+    {
+      "rows": 1000,
+      "duration_seconds": 0.209,
+      "rows_per_second": 4791.7,
+      "peak_memory_mb": 1.0,
+      "success": true,
+      "monitoring_score": 0.9165,
+      "error": ""
+    },
+    {
+      "rows": 10000,
+      "duration_seconds": 1.471,
+      "rows_per_second": 6799.2,
+      "peak_memory_mb": 7.23,
+      "success": true,
+      "monitoring_score": 0.9156,
+      "error": ""
+    },
+    {
+      "rows": 100000,
+      "duration_seconds": 14.941,
+      "rows_per_second": 6692.9,
+      "peak_memory_mb": 68.65,
+      "success": true,
+      "monitoring_score": 0.9154,
+      "error": ""
+    }
+  ],
+  "note": "800M-row performance is NOT claimed. Production-scale execution is intended for ClickHouse. These benchmarks measure file-based processing throughput and peak memory on the machine that runs them. The engine is streaming per row, but total in-process memory is O(N) in the row count (id_set and row lineage buffers grow with every processed row); see the ValidationEngine docstring and FINAL_SCALE_REPORT.md for the measured evidence."
+}

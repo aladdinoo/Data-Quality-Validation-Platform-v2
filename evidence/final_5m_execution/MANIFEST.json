@@ -1,0 +1,946 @@
+{
+  "manifest": "FINAL 5M VALIDATION evidence manifest",
+  "generated_utc": "2026-09-09T17:20:09.624772+00:00",
+  "regeneration_note": "Regenerated during the 2026-09-09 documentation consolidation (documentation + packaging only; no validation evidence content changed). Scope and exclusions identical in kind to the task-time manifest.",
+  "hashing_semantics": {
+    "self_hash": "EXCLUDED \u2014 this manifest does not list or hash itself (self-exclusion; non-circular by construction)",
+    "post_write_exclusions": {
+      "paths": [
+        "evidence/final_5m_execution/13_archive/archive_v2_sha256.txt",
+        "evidence/final_5m_execution/13_archive/manifest_verification.txt",
+        "evidence/final_5m_execution/13_archive/unpack_verification_v2.txt"
+      ],
+      "reason": "manifest_verification.txt is written after this manifest (it records its verification) and is included in the archive; archive_v2_sha256.txt and unpack_verification_v2.txt are written after the archive build and live outside the archive (repo evidence + download sidecar), bound externally via README \u00a715 + DELIVERY_MANIFEST.json"
+    },
+    "v1_task_time_records": "13_archive/archive_sha256.txt and 13_archive/unpack_verification.txt are the preserved records of the task-time package (Data-Quality-Validation-Platform-5M-Revalidated-2026-09-09.zip, sha256 51fdf65d\u2026); they are listed here at their preserved content",
+    "integrity_anchor": "the manifest is bound into the v2 archive whose SHA-256 is recorded in the download/\u2026-v2.zip.sha256 sidecar and in 13_archive/archive_v2_sha256.txt",
+    "verification": "every listed artifact is hashed at build time; the artifact count below is computed from this list, never hardcoded"
+  },
+  "artifact_count": 132,
+  "artifacts": [
+    {
+      "path": "README.md",
+      "size_bytes": 16751,
+      "sha256": "d19f13bb4d8467fd70d4e9c030a8fd417693e19f56aa96edb140afcb67473932",
+      "type": "root-document",
+      "purpose": "rebuilt README / command index"
+    },
+    {
+      "path": "docs/ARCHITECTURE_MAP.md",
+      "size_bytes": 7255,
+      "sha256": "416b106810feb2794bd787909951e629ed74b202ff962f401036282e16dc6f46",
+      "type": "report",
+      "purpose": "current/historical report or documentation"
+    },
+    {
+      "path": "docs/CANONICAL_GEOGRAPHY_DESIGN.md",
+      "size_bytes": 17786,
+      "sha256": "077b8d85c6507e55843911124514db3ef9cebb6cabab864075c6e28c626e554d",
+      "type": "report",
+      "purpose": "current/historical report or documentation"
+    },
+    {
+      "path": "docs/DATA_FLOW_MAP.md",
+      "size_bytes": 8383,
+      "sha256": "a66a40e6e4a2ce8bf7f43876b24f3486719b7c15bb49e9c3522e6eb962c225e7",
+      "type": "report",
+      "purpose": "current/historical report or documentation"
+    },
+    {
+      "path": "docs/EVIDENCE_COVERAGE.md",
+      "size_bytes": 5874,
+      "sha256": "c95e6388de4a62d5050ab48a8c121b3c0fd1c5ed9aa4d049d76bfd59a2879230",
+      "type": "report",
+      "purpose": "current/historical report or documentation"
+    },
+    {
+      "path": "docs/FALSE_POSITIVE_REVIEW.md",
+      "size_bytes": 3212,
+      "sha256": "7491afefd4d7aa85845eadd20e614032070d4cb7b17d2100b75688c9cd991431",
+      "type": "report",
+      "purpose": "current/historical report or documentation"
+    },
+    {
+      "path": "docs/FINAL_5M_VALIDATION_REPORT.md",
+      "size_bytes": 16532,
+      "sha256": "82dc6967e6090fab04760b5449d7f9437625b2b8e2f8bb3637a97d0429215553",
+      "type": "report",
+      "purpose": "current/historical report or documentation"
+    },
+    {
+      "path": "docs/FINAL_AUDIT_DECISION_MATRIX.md",
+      "size_bytes": 4179,
+      "sha256": "4e5b3e031fefa52827682884185ef91c161af65d4bf3b6ee68ef96d35ac1299d",
+      "type": "report",
+      "purpose": "current/historical report or documentation"
+    },
+    {
+      "path": "docs/GEOGRAPHY_RULE_SP1_CONTRACT.md",
+      "size_bytes": 13206,
+      "sha256": "22c5eb3b337a978fb98d2991730a892141a6b677ea004a448e4cc0b41de8cabb",
+      "type": "report",
+      "purpose": "current/historical report or documentation"
+    },
+    {
+      "path": "docs/GULNARA_REVIEW.md",
+      "size_bytes": 3170,
+      "sha256": "5f251e1ee11aebf739de63aea163fbe464bb77b93df50c99bbc9ae104e0e4ff2",
+      "type": "report",
+      "purpose": "current/historical report or documentation"
+    },
+    {
+      "path": "docs/REPRODUCIBILITY.md",
+      "size_bytes": 10938,
+      "sha256": "7b97ed5ec4b555eef9d8de971f6567ad5f0a2b3ffd8ae241db0fb1f890add784",
+      "type": "report",
+      "purpose": "current/historical report or documentation"
+    },
+    {
+      "path": "evidence/final_5m_execution/00_baseline/baseline_assessment.md",
+      "size_bytes": 4872,
+      "sha256": "8f586b5ffb288695a2d707588061f39bc9003c9c1f49c762bf18ecfbbc4fc81a",
+      "type": "baseline-forensics",
+      "purpose": "pre-execution forensic baseline"
+    },
+    {
+      "path": "evidence/final_5m_execution/00_baseline/environment.txt",
+      "size_bytes": 703,
+      "sha256": "eaebc35338fa9e6cd00d28b47f7c1fe5bf0f5402c32d4d2fc8d2f9e2d116bc48",
+      "type": "baseline-forensics",
+      "purpose": "pre-execution forensic baseline"
+    },
+    {
+      "path": "evidence/final_5m_execution/00_baseline/existing_evidence_inventory.txt",
+      "size_bytes": 15032,
+      "sha256": "349d463fa26f117770b6e6201e7e3243db3ec79d1a546ecf2cbdc67b84fcee4b",
+      "type": "baseline-forensics",
+      "purpose": "pre-execution forensic baseline"
+    },
+    {
+      "path": "evidence/final_5m_execution/00_baseline/existing_reports_inventory.txt",
+      "size_bytes": 4760,
+      "sha256": "0fb054c893246f82dfe5133f17162c64f61ebdca5e33fe775fd0c1a7b810513e",
+      "type": "baseline-forensics",
+      "purpose": "pre-execution forensic baseline"
+    },
+    {
+      "path": "evidence/final_5m_execution/00_baseline/feasibility_probe.txt",
+      "size_bytes": 1301,
+      "sha256": "9cbc920d26cae1b6935af43770a2b59ec0d898454f77227f44021abe64ed273e",
+      "type": "baseline-forensics",
+      "purpose": "pre-execution forensic baseline"
+    },
+    {
+      "path": "evidence/final_5m_execution/00_baseline/git_state.txt",
+      "size_bytes": 4742,
+      "sha256": "742dabe0948373af25c00ee8c6c6ed0ea3eeed35814c920a647ee187c26e55db",
+      "type": "baseline-forensics",
+      "purpose": "pre-execution forensic baseline"
+    },
+    {
+      "path": "evidence/final_5m_execution/00_baseline/probe_1m_evidence/alerts.json",
+      "size_bytes": 1284,
+      "sha256": "c57490bcd9308c661b36585e1661962cc4766a946733d6601e969353de7f0af6",
+      "type": "baseline-forensics",
+      "purpose": "pre-execution forensic baseline"
+    },
+    {
+      "path": "evidence/final_5m_execution/00_baseline/probe_1m_evidence/audit.json",
+      "size_bytes": 3081,
+      "sha256": "ae01c2ce6d2e5eb477a62673f5bc390caef3ebb38bb1b7c7b2bc8f6e13c0284c",
+      "type": "baseline-forensics",
+      "purpose": "pre-execution forensic baseline"
+    },
+    {
+      "path": "evidence/final_5m_execution/00_baseline/probe_1m_evidence/lineage.json",
+      "size_bytes": 91207,
+      "sha256": "dc1ff7aced2d712fffe2ff1ade8149b6c13f33057cb2377cdeacff924e1bd277",
+      "type": "baseline-forensics",
+      "purpose": "pre-execution forensic baseline"
+    },
+    {
+      "path": "evidence/final_5m_execution/00_baseline/probe_1m_evidence/manifest.json",
+      "size_bytes": 4347,
+      "sha256": "2da017ac873b15f5dd4d4870d6762d5272efdaf0e72b85799de6bef3441ce8d0",
+      "type": "baseline-forensics",
+      "purpose": "pre-execution forensic baseline"
+    },
+    {
+      "path": "evidence/final_5m_execution/00_baseline/probe_1m_evidence/monitoring.json",
+      "size_bytes": 719,
+      "sha256": "c1c341093148b1bc925300ff67b2e70e400cc36458a1c95db771ea22c62bdeec",
+      "type": "baseline-forensics",
+      "purpose": "pre-execution forensic baseline"
+    },
+    {
+      "path": "evidence/final_5m_execution/00_baseline/probe_2m_evidence/alerts.json",
+      "size_bytes": 1284,
+      "sha256": "4e90dbb7fcd90e29756def305194255f22c8991f36250aafad9297d1f8cd9485",
+      "type": "baseline-forensics",
+      "purpose": "pre-execution forensic baseline"
+    },
+    {
+      "path": "evidence/final_5m_execution/00_baseline/probe_2m_evidence/audit.json",
+      "size_bytes": 3089,
+      "sha256": "078f510f5bd41d36fd255cac5b24078bc61f4375fd34a6e50d327137c18ef518",
+      "type": "baseline-forensics",
+      "purpose": "pre-execution forensic baseline"
+    },
+    {
+      "path": "evidence/final_5m_execution/00_baseline/probe_2m_evidence/lineage.json",
+      "size_bytes": 91207,
+      "sha256": "a3e6e4bc7b3f4b6c1e3cf598f63d95fe6008e6b62a593c11bc8aa09161deefad",
+      "type": "baseline-forensics",
+      "purpose": "pre-execution forensic baseline"
+    },
+    {
+      "path": "evidence/final_5m_execution/00_baseline/probe_2m_evidence/manifest.json",
+      "size_bytes": 4355,
+      "sha256": "12d9a511a1b4dcfc46689cd1713fb88aba887f56a803e9ae211dcfdc3343674f",
+      "type": "baseline-forensics",
+      "purpose": "pre-execution forensic baseline"
+    },
+    {
+      "path": "evidence/final_5m_execution/00_baseline/probe_2m_evidence/monitoring.json",
+      "size_bytes": 719,
+      "sha256": "04d2e8547fb66e1986dd657a6cb5e59ab4b6069ece5a829920366455c693f4ed",
+      "type": "baseline-forensics",
+      "purpose": "pre-execution forensic baseline"
+    },
+    {
+      "path": "evidence/final_5m_execution/00_baseline/repository_structure.txt",
+      "size_bytes": 3431,
+      "sha256": "3cd37296ef11ceed9f4db59a3f7ed600facbe29aa94edd0205498ccb380d519c",
+      "type": "baseline-forensics",
+      "purpose": "pre-execution forensic baseline"
+    },
+    {
+      "path": "evidence/final_5m_execution/01_reporting_audit/REPORTING_FORENSIC_AUDIT.md",
+      "size_bytes": 10806,
+      "sha256": "16099505df4cf4ceff7e752117106c926447b9ed2901d14371ece37a931f6afc",
+      "type": "reporting-audit",
+      "purpose": "legacy-report claim audit (A-F classes)"
+    },
+    {
+      "path": "evidence/final_5m_execution/02_dataset/consumer_5m_metadata.json",
+      "size_bytes": 2391,
+      "sha256": "759bf598e1847f5ee03da7f514d25ca2d806d8cdc2b63387da7083340964240f",
+      "type": "dataset-evidence",
+      "purpose": "5M dataset generation/integrity evidence"
+    },
+    {
+      "path": "evidence/final_5m_execution/02_dataset/dataset_generation_result.json",
+      "size_bytes": 2047,
+      "sha256": "4d8d938626a0ae9e679c8f43cd7d016a9587270e6c0cd6233c1744929ace7b1f",
+      "type": "dataset-evidence",
+      "purpose": "5M dataset generation/integrity evidence"
+    },
+    {
+      "path": "evidence/final_5m_execution/02_dataset/dataset_generation_terminal.txt",
+      "size_bytes": 711,
+      "sha256": "c65fee76be168e8173cd6663825167f69dd91ba31e322b713e1025045422b0ef",
+      "type": "dataset-evidence",
+      "purpose": "5M dataset generation/integrity evidence"
+    },
+    {
+      "path": "evidence/final_5m_execution/02_dataset/dataset_integrity.txt",
+      "size_bytes": 1509,
+      "sha256": "569f5c23608bad58ae15c08dc70c3c00dca38897f45636d208e5df84ec655d75",
+      "type": "dataset-evidence",
+      "purpose": "5M dataset generation/integrity evidence"
+    },
+    {
+      "path": "evidence/final_5m_execution/02_dataset/dataset_sha256.txt",
+      "size_bytes": 225,
+      "sha256": "8cbc4354195afa5ad936ac058f0f9f835ac32e59a26b4e07a654e3a56b84678f",
+      "type": "dataset-evidence",
+      "purpose": "5M dataset generation/integrity evidence"
+    },
+    {
+      "path": "evidence/final_5m_execution/03_run1/EXECUTION_BLOCKED_SUMMARY.md",
+      "size_bytes": 4134,
+      "sha256": "9ef3de1b9918f07121f33c2a00433070d7d0b3a36ff349ef983777ecf78ceee2",
+      "type": "execution-failure-evidence",
+      "purpose": "5M run attempt + kernel OOM record"
+    },
+    {
+      "path": "evidence/final_5m_execution/03_run1/oom_kernel_log.txt",
+      "size_bytes": 697,
+      "sha256": "b38c95b1b2672cf9b4d32768a56a94c0c5a93454c7e3f68788b9492e026fe81e",
+      "type": "execution-failure-evidence",
+      "purpose": "5M run attempt + kernel OOM record"
+    },
+    {
+      "path": "evidence/final_5m_execution/03_run1/partial_output_record.txt",
+      "size_bytes": 437,
+      "sha256": "f0b7e03b20ff528ac93ca33d1c2d6dc9db4677daf1e710951676f0beed627092",
+      "type": "execution-failure-evidence",
+      "purpose": "5M run attempt + kernel OOM record"
+    },
+    {
+      "path": "evidence/final_5m_execution/03_run1/pipeline_evidence/command.txt",
+      "size_bytes": 335,
+      "sha256": "1d4a491b981f9878eecd1838a5112e276d497f9309483a3769505b3421fc900c",
+      "type": "execution-failure-evidence",
+      "purpose": "5M run attempt + kernel OOM record"
+    },
+    {
+      "path": "evidence/final_5m_execution/03_run1/pipeline_evidence/hashes.txt",
+      "size_bytes": 358,
+      "sha256": "e736875f935c29335fa4e36395f5d19c4643cefa1f4e3d19002f080522b891a5",
+      "type": "execution-failure-evidence",
+      "purpose": "5M run attempt + kernel OOM record"
+    },
+    {
+      "path": "evidence/final_5m_execution/03_run1/pipeline_evidence/memory.txt",
+      "size_bytes": 686,
+      "sha256": "d620779d55b498171ab980cbe0ff805724f93c00fc5375fac2cdd33ccea7a339",
+      "type": "execution-failure-evidence",
+      "purpose": "5M run attempt + kernel OOM record"
+    },
+    {
+      "path": "evidence/final_5m_execution/03_run1/pipeline_evidence/result.json",
+      "size_bytes": 822,
+      "sha256": "fa68d60255902103fdde94aa933f121b2c2ef6bc6ddda2dd346d00e13a351ab7",
+      "type": "execution-failure-evidence",
+      "purpose": "5M run attempt + kernel OOM record"
+    },
+    {
+      "path": "evidence/final_5m_execution/03_run1/pipeline_evidence/runtime.txt",
+      "size_bytes": 561,
+      "sha256": "8315c5032cbcb0245d0a379957ac2138359a84d668ce4c4df92307ea1f803cb2",
+      "type": "execution-failure-evidence",
+      "purpose": "5M run attempt + kernel OOM record"
+    },
+    {
+      "path": "evidence/final_5m_execution/03_run1/pipeline_evidence/terminal_output.txt",
+      "size_bytes": 666,
+      "sha256": "1887f5af72469c2ab65467033c3e3fecfe7f4ce11384e3e9e177c613c71728a5",
+      "type": "execution-failure-evidence",
+      "purpose": "5M run attempt + kernel OOM record"
+    },
+    {
+      "path": "evidence/final_5m_execution/04_independent_verification/command.txt",
+      "size_bytes": 1069,
+      "sha256": "1facb31a8ccf0960f7439107b97077dbb2f419693043b93975cf05b0f9a8673a",
+      "type": "independent-verification",
+      "purpose": "verifier source + 24M-comparison results"
+    },
+    {
+      "path": "evidence/final_5m_execution/04_independent_verification/independent_verifier.py",
+      "size_bytes": 12559,
+      "sha256": "4fce3dcfe1904e444a2669610259b4bba1ed277de752be232b72e616aff818db",
+      "type": "independent-verification",
+      "purpose": "verifier source + 24M-comparison results"
+    },
+    {
+      "path": "evidence/final_5m_execution/04_independent_verification/verification_result_run1.json",
+      "size_bytes": 2928,
+      "sha256": "4e6095802d1542f2fc1ac9cf63fc378545d7e17cd3efa288861733478ce4e67a",
+      "type": "independent-verification",
+      "purpose": "verifier source + 24M-comparison results"
+    },
+    {
+      "path": "evidence/final_5m_execution/04_independent_verification/verification_result_run2.json",
+      "size_bytes": 2928,
+      "sha256": "f2e67cdc064b0a7eecf0a4095cc75a5b04bca136e6703f96501f34347c668cc6",
+      "type": "independent-verification",
+      "purpose": "verifier source + 24M-comparison results"
+    },
+    {
+      "path": "evidence/final_5m_execution/04_independent_verification/verifier_run1_terminal.txt",
+      "size_bytes": 3737,
+      "sha256": "756360f5e1bbb289ad9d11e31ed00d94994db87a1bd8cda2083e01e8c11934cc",
+      "type": "independent-verification",
+      "purpose": "verifier source + 24M-comparison results"
+    },
+    {
+      "path": "evidence/final_5m_execution/04_independent_verification/verifier_run2_terminal.txt",
+      "size_bytes": 3737,
+      "sha256": "05a829d58264e2110105bf4b9d5764ec1f4c3b5e8df57d155d5484c284a8de1d",
+      "type": "independent-verification",
+      "purpose": "verifier source + 24M-comparison results"
+    },
+    {
+      "path": "evidence/final_5m_execution/05_run2/5M_RUN2_NOT_EXECUTED.md",
+      "size_bytes": 805,
+      "sha256": "846ce2155dfed7388881714e9246176505c7181fe36f90650d21d9032f7b82f0",
+      "type": "decision-record",
+      "purpose": "5M run 2 NOT EXECUTED decision"
+    },
+    {
+      "path": "evidence/final_5m_execution/06_performance/PERFORMANCE_REPORT.md",
+      "size_bytes": 6071,
+      "sha256": "70e4dde1289418766249d96bcd67f24f29cc28e76ab718ef1690d5573dadfbda",
+      "type": "performance-evidence",
+      "purpose": "ladder captures + performance report"
+    },
+    {
+      "path": "evidence/final_5m_execution/06_performance/bench_1000000_evidence/alerts.json",
+      "size_bytes": 1312,
+      "sha256": "9c1e556d8fa21331b3cc1c81c671f2563e4fcbf98e8dbc522880ff15ffaf9966",
+      "type": "performance-evidence",
+      "purpose": "ladder captures + performance report"
+    },
+    {
+      "path": "evidence/final_5m_execution/06_performance/bench_1000000_evidence/audit.json",
+      "size_bytes": 3191,
+      "sha256": "984991c2d6c49945a27c1a84cd5e9a06fd0c95163ef65af63be4eb390deb20a0",
+      "type": "performance-evidence",
+      "purpose": "ladder captures + performance report"
+    },
+    {
+      "path": "evidence/final_5m_execution/06_performance/bench_1000000_evidence/lineage.json",
+      "size_bytes": 91260,
+      "sha256": "d67fc004327f34ab771a45346dd01993472585accc40f4b98a600006ac9a02f2",
+      "type": "performance-evidence",
+      "purpose": "ladder captures + performance report"
+    },
+    {
+      "path": "evidence/final_5m_execution/06_performance/bench_1000000_evidence/manifest.json",
+      "size_bytes": 4410,
+      "sha256": "90aec6a3785da776602b1ea37fa5de4427227dee82ffc327024f42760e11d815",
+      "type": "performance-evidence",
+      "purpose": "ladder captures + performance report"
+    },
+    {
+      "path": "evidence/final_5m_execution/06_performance/bench_1000000_evidence/monitoring.json",
+      "size_bytes": 719,
+      "sha256": "c1c341093148b1bc925300ff67b2e70e400cc36458a1c95db771ea22c62bdeec",
+      "type": "performance-evidence",
+      "purpose": "ladder captures + performance report"
+    },
+    {
+      "path": "evidence/final_5m_execution/06_performance/bench_1000000_generation_terminal.txt",
+      "size_bytes": 472,
+      "sha256": "8c8917ad6af7dba182fecf34223b61c8c866f8ca6d2bc6c4977ad43a3f9c4a86",
+      "type": "performance-evidence",
+      "purpose": "ladder captures + performance report"
+    },
+    {
+      "path": "evidence/final_5m_execution/06_performance/bench_1000000_validation_terminal.txt",
+      "size_bytes": 1403,
+      "sha256": "27d88c0d50e02ac1d6a957e9c39ca405ffd06fe68204d671f2493e34bc2b7db0",
+      "type": "performance-evidence",
+      "purpose": "ladder captures + performance report"
+    },
+    {
+      "path": "evidence/final_5m_execution/06_performance/bench_100000_evidence/alerts.json",
+      "size_bytes": 1308,
+      "sha256": "bf70c0d524eeb140072dbd2799f60f6eb67e7a7d0c010f6779efbf9fdacae5d2",
+      "type": "performance-evidence",
+      "purpose": "ladder captures + performance report"
+    },
+    {
+      "path": "evidence/final_5m_execution/06_performance/bench_100000_evidence/audit.json",
+      "size_bytes": 3157,
+      "sha256": "c97db844894b9beb4b296b381939d7a0c7525bbaa2925fb96836d63fb709dedd",
+      "type": "performance-evidence",
+      "purpose": "ladder captures + performance report"
+    },
+    {
+      "path": "evidence/final_5m_execution/06_performance/bench_100000_evidence/lineage.json",
+      "size_bytes": 91253,
+      "sha256": "7367d69d84c8d890821dccfa6feb7a37b1813d4b7fba40a76c282054407bc7f8",
+      "type": "performance-evidence",
+      "purpose": "ladder captures + performance report"
+    },
+    {
+      "path": "evidence/final_5m_execution/06_performance/bench_100000_evidence/manifest.json",
+      "size_bytes": 4383,
+      "sha256": "3ab44057423cf21abe23d6d09afe0da0a8ea18a118d4dc9c60ae7737ef926f3f",
+      "type": "performance-evidence",
+      "purpose": "ladder captures + performance report"
+    },
+    {
+      "path": "evidence/final_5m_execution/06_performance/bench_100000_evidence/monitoring.json",
+      "size_bytes": 719,
+      "sha256": "fea6ad15f9a6d8f27b7d5e019d1382ffe631bf5cbe2079b51167d4e012367c5c",
+      "type": "performance-evidence",
+      "purpose": "ladder captures + performance report"
+    },
+    {
+      "path": "evidence/final_5m_execution/06_performance/bench_100000_generation_terminal.txt",
+      "size_bytes": 467,
+      "sha256": "c0298ec2b2ad30766cd6e18c4f7af35d2e175ec8389618cae70de5d8d593592f",
+      "type": "performance-evidence",
+      "purpose": "ladder captures + performance report"
+    },
+    {
+      "path": "evidence/final_5m_execution/06_performance/bench_100000_validation_terminal.txt",
+      "size_bytes": 1384,
+      "sha256": "ebf82bb9f2a79a608a0f45355054f51527a0531671b37a08d949eeb35244791a",
+      "type": "performance-evidence",
+      "purpose": "ladder captures + performance report"
+    },
+    {
+      "path": "evidence/final_5m_execution/06_performance/bench_10000_evidence/alerts.json",
+      "size_bytes": 1302,
+      "sha256": "b70b39ccd16d7bd78870e78a774bc7f8f62eaf69378c962eb990d75f97c1dd24",
+      "type": "performance-evidence",
+      "purpose": "ladder captures + performance report"
+    },
+    {
+      "path": "evidence/final_5m_execution/06_performance/bench_10000_evidence/audit.json",
+      "size_bytes": 3125,
+      "sha256": "608ad04ac5aabd8421fd36b304d3b5cc1fc65ae8a4c5d247c218e9ae04948904",
+      "type": "performance-evidence",
+      "purpose": "ladder captures + performance report"
+    },
+    {
+      "path": "evidence/final_5m_execution/06_performance/bench_10000_evidence/lineage.json",
+      "size_bytes": 91246,
+      "sha256": "a035053a2e4cac7bea95cfd13d4c8f30042ba6f3d09d14061ea3c8f640e32e12",
+      "type": "performance-evidence",
+      "purpose": "ladder captures + performance report"
+    },
+    {
+      "path": "evidence/final_5m_execution/06_performance/bench_10000_evidence/manifest.json",
+      "size_bytes": 4355,
+      "sha256": "cb83b4ca65f84ad6c9edf377466bd3a2d7c10ac8ef44ae29cb64cd3c91ce0f55",
+      "type": "performance-evidence",
+      "purpose": "ladder captures + performance report"
+    },
+    {
+      "path": "evidence/final_5m_execution/06_performance/bench_10000_evidence/monitoring.json",
+      "size_bytes": 718,
+      "sha256": "1416e8b0bc9236646f08165d99abf59bb15c9fbcd68f6dea484f8d1cbe2b4cb8",
+      "type": "performance-evidence",
+      "purpose": "ladder captures + performance report"
+    },
+    {
+      "path": "evidence/final_5m_execution/06_performance/bench_10000_generation_terminal.txt",
+      "size_bytes": 463,
+      "sha256": "16fb914e52263d8c3514da3022e88f0b6a9dbe375ee592078a1e61c54da58db6",
+      "type": "performance-evidence",
+      "purpose": "ladder captures + performance report"
+    },
+    {
+      "path": "evidence/final_5m_execution/06_performance/bench_10000_validation_terminal.txt",
+      "size_bytes": 1367,
+      "sha256": "04af6dd164b7d002d410303c452d2553010bd28dbc72be3acc31d4d18c5f3e7c",
+      "type": "performance-evidence",
+      "purpose": "ladder captures + performance report"
+    },
+    {
+      "path": "evidence/final_5m_execution/06_performance/bench_1000_evidence/alerts.json",
+      "size_bytes": 1298,
+      "sha256": "8849728aad3775b14d8aa5f3cdd3b0aca630fb13fd617c2c5568e2c07eb2bfda",
+      "type": "performance-evidence",
+      "purpose": "ladder captures + performance report"
+    },
+    {
+      "path": "evidence/final_5m_execution/06_performance/bench_1000_evidence/audit.json",
+      "size_bytes": 3091,
+      "sha256": "24a4cbc413d5eda63593819402463829bb5db76c2a32fc83333e75b9412ab628",
+      "type": "performance-evidence",
+      "purpose": "ladder captures + performance report"
+    },
+    {
+      "path": "evidence/final_5m_execution/06_performance/bench_1000_evidence/lineage.json",
+      "size_bytes": 91239,
+      "sha256": "395b70bcafae6919485f340cb962ad8d214bb40f7772ab66d1a0813164d060c5",
+      "type": "performance-evidence",
+      "purpose": "ladder captures + performance report"
+    },
+    {
+      "path": "evidence/final_5m_execution/06_performance/bench_1000_evidence/manifest.json",
+      "size_bytes": 4326,
+      "sha256": "f43368f657685cc0919908eea074bbb18115140efe5615d398efd8c43e6f78d1",
+      "type": "performance-evidence",
+      "purpose": "ladder captures + performance report"
+    },
+    {
+      "path": "evidence/final_5m_execution/06_performance/bench_1000_evidence/monitoring.json",
+      "size_bytes": 716,
+      "sha256": "d324f9a998ba593116e4506d09aef1d698a0d4edc1e69afc2436a8544204f2b3",
+      "type": "performance-evidence",
+      "purpose": "ladder captures + performance report"
+    },
+    {
+      "path": "evidence/final_5m_execution/06_performance/bench_1000_generation_terminal.txt",
+      "size_bytes": 459,
+      "sha256": "94d01ea12ed6192ac0c478203d3963baa8fde60d015f33a249ad6c338ad27e38",
+      "type": "performance-evidence",
+      "purpose": "ladder captures + performance report"
+    },
+    {
+      "path": "evidence/final_5m_execution/06_performance/bench_1000_validation_terminal.txt",
+      "size_bytes": 1351,
+      "sha256": "52b90b98e9c648f0c760e754251e6d3551113e212df0e56b728dc15f0249a65b",
+      "type": "performance-evidence",
+      "purpose": "ladder captures + performance report"
+    },
+    {
+      "path": "evidence/final_5m_execution/06_performance/bench_ladder.json",
+      "size_bytes": 3060,
+      "sha256": "d05026db48b75d8a495282a003efdca5041f592ea796aa275d5367d17602b0f4",
+      "type": "performance-evidence",
+      "purpose": "ladder captures + performance report"
+    },
+    {
+      "path": "evidence/final_5m_execution/06_performance/benchmark_prior_20260907_backup.json",
+      "size_bytes": 1231,
+      "sha256": "47c3ad402107daa280c3be8edcab8311feeb25e2392953beec985b2b5af26305",
+      "type": "performance-evidence",
+      "purpose": "ladder captures + performance report"
+    },
+    {
+      "path": "evidence/final_5m_execution/06_performance/benchmark_tracemalloc_20260909.json",
+      "size_bytes": 1230,
+      "sha256": "884e1bb3100e27ff483d344bdb3ace1cc67503c66b9f833d2ff9e9f119977802",
+      "type": "performance-evidence",
+      "purpose": "ladder captures + performance report"
+    },
+    {
+      "path": "evidence/final_5m_execution/07_geography/GEOGRAPHY_V1_RESULTS.md",
+      "size_bytes": 6461,
+      "sha256": "491c35c3a42d16999996db778b727d2358d04f024f07595103593705844db484",
+      "type": "geography-evidence",
+      "purpose": "V1 geography results + per-state data"
+    },
+    {
+      "path": "evidence/final_5m_execution/07_geography/geography_per_state_3m.json",
+      "size_bytes": 9129,
+      "sha256": "2536b594520fc6a37a1b3efa8cb8da977dfff5b1060e00e54bb065a3e7440c5f",
+      "type": "geography-evidence",
+      "purpose": "V1 geography results + per-state data"
+    },
+    {
+      "path": "evidence/final_5m_execution/08_activation_boundary/SP1_NEGATIVE_ACTIVATION_PROOF.md",
+      "size_bytes": 2922,
+      "sha256": "fd0bbfbd25bce5788d28c5751a62f8ac43f95b0cce1051374e038f469b22336f",
+      "type": "sp1-boundary",
+      "purpose": "SP1 negative activation proof"
+    },
+    {
+      "path": "evidence/final_5m_execution/08_activation_boundary/sp1_activation_check.json",
+      "size_bytes": 3091,
+      "sha256": "0310c3bb6901a1832b6dbd85cddcee322f30881dde4ab866f9e012608449ca98",
+      "type": "sp1-boundary",
+      "purpose": "SP1 negative activation proof"
+    },
+    {
+      "path": "evidence/final_5m_execution/09_consistency/DOCUMENT_CONSISTENCY_REPORT.md",
+      "size_bytes": 1190,
+      "sha256": "ee9d10a93c89559e1726d05a1794e817157bf941f4853b8f317197d9c27f3168",
+      "type": "consistency-audit",
+      "purpose": "document consistency sweep"
+    },
+    {
+      "path": "evidence/final_5m_execution/10_final_summary/FINAL_TERMINAL_SUMMARY.txt",
+      "size_bytes": 6876,
+      "sha256": "2031b0397b0beccffa306b1bdc842bea6393ff4d218bfea159849f490b256c1b",
+      "type": "final-summary",
+      "purpose": "terminal-readable final summary"
+    },
+    {
+      "path": "evidence/final_5m_execution/11_largest_safe_execution_3m/byte_comparison/comparison.txt",
+      "size_bytes": 1650,
+      "sha256": "bc6b01216375e4fc876517008c6303e55e3a4064c288bc683e52a6e7e8ca6b60",
+      "type": "flagship-protocol",
+      "purpose": "3M dual-run protocol evidence"
+    },
+    {
+      "path": "evidence/final_5m_execution/11_largest_safe_execution_3m/dataset_generation_terminal.txt",
+      "size_bytes": 728,
+      "sha256": "de939b8e66a1c741e61d2ec7184a4fd56b6bf8d90b406809212aee97e651221e",
+      "type": "flagship-protocol",
+      "purpose": "3M dual-run protocol evidence"
+    },
+    {
+      "path": "evidence/final_5m_execution/11_largest_safe_execution_3m/dataset_prefix_property.txt",
+      "size_bytes": 507,
+      "sha256": "b8f30614b3b01bad2d2102eb987131cea161c68df3c57706a51c592baf2758d1",
+      "type": "flagship-protocol",
+      "purpose": "3M dual-run protocol evidence"
+    },
+    {
+      "path": "evidence/final_5m_execution/11_largest_safe_execution_3m/dataset_verification.json",
+      "size_bytes": 2044,
+      "sha256": "879b871e946b4cefdec9fc91017047f1fe639ac356e71da82395bda26a245c37",
+      "type": "flagship-protocol",
+      "purpose": "3M dual-run protocol evidence"
+    },
+    {
+      "path": "evidence/final_5m_execution/11_largest_safe_execution_3m/run1/alerts.json",
+      "size_bytes": 1288,
+      "sha256": "412b0fca643c69e547cbe07ddb598f25d1a18b6f9054f07cfdcd17e2cff906d6",
+      "type": "flagship-protocol",
+      "purpose": "3M dual-run protocol evidence"
+    },
+    {
+      "path": "evidence/final_5m_execution/11_largest_safe_execution_3m/run1/audit.json",
+      "size_bytes": 3163,
+      "sha256": "9f8f97ee43010ca39c8b0c9e5302908751abb08c07f8ad8b653fafc2c70c78dd",
+      "type": "flagship-protocol",
+      "purpose": "3M dual-run protocol evidence"
+    },
+    {
+      "path": "evidence/final_5m_execution/11_largest_safe_execution_3m/run1/command.txt",
+      "size_bytes": 343,
+      "sha256": "c1c613ebdcdfd8bfc7a137d4baf075f95f95df2b21780ec735128f283d62fee1",
+      "type": "flagship-protocol",
+      "purpose": "3M dual-run protocol evidence"
+    },
+    {
+      "path": "evidence/final_5m_execution/11_largest_safe_execution_3m/run1/hashes.txt",
+      "size_bytes": 356,
+      "sha256": "3f81b6343252f6d0bc10d579e478a00214f1b04ef44beee853316a2b4f1ecdff",
+      "type": "flagship-protocol",
+      "purpose": "3M dual-run protocol evidence"
+    },
+    {
+      "path": "evidence/final_5m_execution/11_largest_safe_execution_3m/run1/lineage.json",
+      "size_bytes": 91262,
+      "sha256": "c38bf0016a9563c5df16653dba76e05066eb275cd337999b2986e1b5da5a1fae",
+      "type": "flagship-protocol",
+      "purpose": "3M dual-run protocol evidence"
+    },
+    {
+      "path": "evidence/final_5m_execution/11_largest_safe_execution_3m/run1/manifest.json",
+      "size_bytes": 4409,
+      "sha256": "1027f92bbe363d8080d3b89fc4ef3dd926033af4d59ef57564015e93d5b3bb5a",
+      "type": "flagship-protocol",
+      "purpose": "3M dual-run protocol evidence"
+    },
+    {
+      "path": "evidence/final_5m_execution/11_largest_safe_execution_3m/run1/memory.txt",
+      "size_bytes": 686,
+      "sha256": "2612f21b465b576527e61ca2bb43623d01c7194856bfff83c65951d1c72ced51",
+      "type": "flagship-protocol",
+      "purpose": "3M dual-run protocol evidence"
+    },
+    {
+      "path": "evidence/final_5m_execution/11_largest_safe_execution_3m/run1/monitoring.json",
+      "size_bytes": 719,
+      "sha256": "04d2e8547fb66e1986dd657a6cb5e59ab4b6069ece5a829920366455c693f4ed",
+      "type": "flagship-protocol",
+      "purpose": "3M dual-run protocol evidence"
+    },
+    {
+      "path": "evidence/final_5m_execution/11_largest_safe_execution_3m/run1/result.json",
+      "size_bytes": 1310,
+      "sha256": "06b94509ca2f4f6b2107e44063ca4db7cbd024114777d8a00a72414fb2150a9f",
+      "type": "flagship-protocol",
+      "purpose": "3M dual-run protocol evidence"
+    },
+    {
+      "path": "evidence/final_5m_execution/11_largest_safe_execution_3m/run1/runtime.txt",
+      "size_bytes": 568,
+      "sha256": "611b8ebd128ca481ac78fb0914ba5da03b73c7b78d22e20369b4d40357ce8eb3",
+      "type": "flagship-protocol",
+      "purpose": "3M dual-run protocol evidence"
+    },
+    {
+      "path": "evidence/final_5m_execution/11_largest_safe_execution_3m/run1/terminal_output.txt",
+      "size_bytes": 1508,
+      "sha256": "b1738d13cfeedf150915154325226901a5dab912f46cc7afabbe92e077b7b95e",
+      "type": "flagship-protocol",
+      "purpose": "3M dual-run protocol evidence"
+    },
+    {
+      "path": "evidence/final_5m_execution/11_largest_safe_execution_3m/run2/alerts.json",
+      "size_bytes": 1288,
+      "sha256": "a7969cfd91dd226f1fd751e579a59882d90b8125a24eeae8bfec8c01e2f177cf",
+      "type": "flagship-protocol",
+      "purpose": "3M dual-run protocol evidence"
+    },
+    {
+      "path": "evidence/final_5m_execution/11_largest_safe_execution_3m/run2/audit.json",
+      "size_bytes": 3163,
+      "sha256": "9d8109afbf5e8820ed3a61f9ad1e6f3d8de8eade0faa32c42ab033b413bb622c",
+      "type": "flagship-protocol",
+      "purpose": "3M dual-run protocol evidence"
+    },
+    {
+      "path": "evidence/final_5m_execution/11_largest_safe_execution_3m/run2/command.txt",
+      "size_bytes": 343,
+      "sha256": "daaed674f43f31ca0b0ad38453fa196da68a7a784decd7e99d9a52f740eb88ad",
+      "type": "flagship-protocol",
+      "purpose": "3M dual-run protocol evidence"
+    },
+    {
+      "path": "evidence/final_5m_execution/11_largest_safe_execution_3m/run2/hashes.txt",
+      "size_bytes": 356,
+      "sha256": "c980e7bafe3abc79cca024f042c095eaf82e22ed043480f178fb242dca770e5c",
+      "type": "flagship-protocol",
+      "purpose": "3M dual-run protocol evidence"
+    },
+    {
+      "path": "evidence/final_5m_execution/11_largest_safe_execution_3m/run2/lineage.json",
+      "size_bytes": 91262,
+      "sha256": "12b13783a0f49aa3d035775a3713bd52205616b8281b483608e0bfef3c9537cd",
+      "type": "flagship-protocol",
+      "purpose": "3M dual-run protocol evidence"
+    },
+    {
+      "path": "evidence/final_5m_execution/11_largest_safe_execution_3m/run2/manifest.json",
+      "size_bytes": 4409,
+      "sha256": "b07ada783175424690f0fbb94dcb045c28b42b997d485316dcf13f5ea5374a8f",
+      "type": "flagship-protocol",
+      "purpose": "3M dual-run protocol evidence"
+    },
+    {
+      "path": "evidence/final_5m_execution/11_largest_safe_execution_3m/run2/memory.txt",
+      "size_bytes": 686,
+      "sha256": "b45244c328381ea079b5485e51558a0e45b4ec46f3b78570413f284a64eb09b2",
+      "type": "flagship-protocol",
+      "purpose": "3M dual-run protocol evidence"
+    },
+    {
+      "path": "evidence/final_5m_execution/11_largest_safe_execution_3m/run2/monitoring.json",
+      "size_bytes": 719,
+      "sha256": "04d2e8547fb66e1986dd657a6cb5e59ab4b6069ece5a829920366455c693f4ed",
+      "type": "flagship-protocol",
+      "purpose": "3M dual-run protocol evidence"
+    },
+    {
+      "path": "evidence/final_5m_execution/11_largest_safe_execution_3m/run2/result.json",
+      "size_bytes": 1310,
+      "sha256": "b18c135bce537808d0a2a7d7bd3ac6c8501a0f37fa70990ad94fa86990796380",
+      "type": "flagship-protocol",
+      "purpose": "3M dual-run protocol evidence"
+    },
+    {
+      "path": "evidence/final_5m_execution/11_largest_safe_execution_3m/run2/runtime.txt",
+      "size_bytes": 568,
+      "sha256": "9cf64a7e658fe2eb46afa8e4d26613b5670bc904872c159bbb8d5ab01999e7e5",
+      "type": "flagship-protocol",
+      "purpose": "3M dual-run protocol evidence"
+    },
+    {
+      "path": "evidence/final_5m_execution/11_largest_safe_execution_3m/run2/terminal_output.txt",
+      "size_bytes": 1508,
+      "sha256": "9cb3d4a1591da1d1d78756ac0cd49eb1aeae811714cdae8ea6affbe1f343102a",
+      "type": "flagship-protocol",
+      "purpose": "3M dual-run protocol evidence"
+    },
+    {
+      "path": "evidence/final_5m_execution/12_test_suite/consolidation_probe.txt",
+      "size_bytes": 2549,
+      "sha256": "8906d65a4fb2e4e1eca1793b9f665ad81144e7fc2f8f0cc6a451521913aaf5d6",
+      "type": "test-evidence",
+      "purpose": "pytest captures + probe"
+    },
+    {
+      "path": "evidence/final_5m_execution/12_test_suite/pytest_full_rs.txt",
+      "size_bytes": 1335,
+      "sha256": "feb65b5ccd07091b9e1fe2025c64ebf9a42a5e08f103e9afdddb304f3c884904",
+      "type": "test-evidence",
+      "purpose": "pytest captures + probe"
+    },
+    {
+      "path": "evidence/final_5m_execution/13_archive/archive_sha256.txt",
+      "size_bytes": 236,
+      "sha256": "1d90823a35507afb9c7f9145bc2de7771963208566712b0a95ee8c20b60f1dc9",
+      "type": "archive-verification",
+      "purpose": "package records (v1 task-time + v2 consolidation)"
+    },
+    {
+      "path": "evidence/final_5m_execution/13_archive/unpack_verification.txt",
+      "size_bytes": 481,
+      "sha256": "0d084be59419384a7a1ab63dfb54238227eaa2560757df09b0f37c66849f1634",
+      "type": "archive-verification",
+      "purpose": "package records (v1 task-time + v2 consolidation)"
+    },
+    {
+      "path": "evidence/final_5m_execution/FINAL_RESULTS.json",
+      "size_bytes": 14656,
+      "sha256": "1647e2b0e5c11680acc4838ed7b2202c21901ba7e08513aa8f7ef90e0068cc61",
+      "type": "single-source-of-truth",
+      "purpose": "authoritative machine-readable result"
+    },
+    {
+      "path": "evidence/final_5m_execution/commands.txt",
+      "size_bytes": 4253,
+      "sha256": "de50902bc305538576feecea703a77046c5e22ea9e61d2f210edd37b3fe48787",
+      "type": "other",
+      "purpose": "task artifact"
+    },
+    {
+      "path": "scripts/five_m/consolidation_package_v2.py",
+      "size_bytes": 16162,
+      "sha256": "734d81fe7f40d54528dd9070af695dc8807e7dcef900906d81bcfa9e8daeb129",
+      "type": "task-script",
+      "purpose": "executed task harness/verifier script"
+    },
+    {
+      "path": "scripts/five_m/independent_verifier.py",
+      "size_bytes": 12559,
+      "sha256": "4fce3dcfe1904e444a2669610259b4bba1ed277de752be232b72e616aff818db",
+      "type": "task-script",
+      "purpose": "executed task harness/verifier script"
+    },
+    {
+      "path": "scripts/five_m/phase13_results.py",
+      "size_bytes": 15381,
+      "sha256": "ff257782ad55289ad1c060daeb09b3d73b282fd487957a08eff416e72eb2bbc9",
+      "type": "task-script",
+      "purpose": "executed task harness/verifier script"
+    },
+    {
+      "path": "scripts/five_m/phase17_consistency.py",
+      "size_bytes": 9041,
+      "sha256": "ec8b46e6417374ee6e8a79efdb48df7d65e8074cd4a558a4858fc3b3b0e191c5",
+      "type": "task-script",
+      "purpose": "executed task harness/verifier script"
+    },
+    {
+      "path": "scripts/five_m/phase18_manifest_archive.py",
+      "size_bytes": 11508,
+      "sha256": "588e06aa89ffd2da838d5f153510dd75c962cd7ca75787eb12a64564ca1a32df",
+      "type": "task-script",
+      "purpose": "executed task harness/verifier script"
+    },
+    {
+      "path": "scripts/five_m/phase2_3_meta.py",
+      "size_bytes": 4519,
+      "sha256": "d7a5fc5be5a206d0d3a2bbce2326f17b984b7fabaea47dde127e8a342a7e8174",
+      "type": "task-script",
+      "purpose": "executed task harness/verifier script"
+    },
+    {
+      "path": "scripts/five_m/phase4_run.py",
+      "size_bytes": 8009,
+      "sha256": "b97def367bc9b2883d979a590e219815273e4bd5b4138bd3560878f5bcc6c271",
+      "type": "task-script",
+      "purpose": "executed task harness/verifier script"
+    },
+    {
+      "path": "scripts/five_m/phase7_bench.py",
+      "size_bytes": 6073,
+      "sha256": "93112548ca079204731eaba5e5a6b08596bbd7449adb6469f1d6e11fee22d27a",
+      "type": "task-script",
+      "purpose": "executed task harness/verifier script"
+    },
+    {
+      "path": "scripts/five_m/phase8_geography.py",
+      "size_bytes": 5079,
+      "sha256": "896e43f109ffccb2f1aa6401c92cfe93a2cc6d9cca8673d0d9d2f46c80e01749",
+      "type": "task-script",
+      "purpose": "executed task harness/verifier script"
+    },
+    {
+      "path": "scripts/five_m/phase9_sp1.py",
+      "size_bytes": 7653,
+      "sha256": "8ccab7280e3ab6afb650fc62ade1ede7ab4b52cab9999a99cd85eaae99fdffd6",
+      "type": "task-script",
+      "purpose": "executed task harness/verifier script"
+    },
+    {
+      "path": "scripts/five_m/run_capture.py",
+      "size_bytes": 2269,
+      "sha256": "76a6c43e5ba43095aff77b800faa420a6fc7b87b15292b156efb1655aa694d8c",
+      "type": "task-script",
+      "purpose": "executed task harness/verifier script"
+    },
+    {
+      "path": "scripts/five_m/verify_dataset_5m.py",
+      "size_bytes": 5201,
+      "sha256": "3282bbf61abaf973ee47df7d0b74472959bd48a4b383f6e8eea949d7525224fd",
+      "type": "task-script",
+      "purpose": "executed task harness/verifier script"
+    }
+  ]
+}

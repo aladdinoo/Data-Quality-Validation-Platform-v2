@@ -1,0 +1,111 @@
+{
+  "archive": "Data-Quality-Validation-Platform-V2-SP1-Successor-Validated-2026-09-10.zip",
+  "archive_sha256": "8b9be92b80cf64fa736f4a8215445f397117cc91aa38d82a0f6e05688fcea914",
+  "extract_dir": "/home/z/my-project/dqvp-work/verify-extract",
+  "checks": [
+    {
+      "name": "archive SHA-256 matches sidecar",
+      "status": "PASS",
+      "detail": "8b9be92b80cf64fa736f4a8215445f397117cc91aa38d82a0f6e05688fcea914"
+    },
+    {
+      "name": "zip integrity (testzip)",
+      "status": "PASS",
+      "detail": "None"
+    },
+    {
+      "name": "extraction produced files",
+      "status": "PASS",
+      "detail": "439 files"
+    },
+    {
+      "name": "extracted git HEAD == integration commit",
+      "status": "PASS",
+      "detail": "f26fceb78628c5bc417a174aae158099fa312431"
+    },
+    {
+      "name": "extracted git status clean",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "extracted history preserved",
+      "status": "PASS",
+      "detail": "f26fceb Integrate SP1 successor geography contract validation (2026-09-10)\necf476a Revise README with updated validation and execution details\neaf3429 Initial commit: Data Quality Validation Platform V2"
+    },
+    {
+      "name": "remote untouched (URLs only, nothing pushed)",
+      "status": "PASS",
+      "detail": "origin\thttps://github.com/aladdinoo/Data-Quality-Validation-Platform-v2.git (fetch)\norigin\thttps://g"
+    },
+    {
+      "name": "full suite re-run from extracted archive",
+      "status": "PASS",
+      "detail": "391 passed, 9 skipped in 4.53s"
+    },
+    {
+      "name": "targeted SP1 successor tests re-run",
+      "status": "PASS",
+      "detail": "132 passed in 0.31s"
+    },
+    {
+      "name": "V1 rule hashes frozen (extracted copy)",
+      "status": "PASS",
+      "detail": "FROZEN\n8\n"
+    },
+    {
+      "name": "artifact present in archive: README.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "artifact present in archive: docs/SP1_SUCCESSOR_FORENSIC_VALIDATION_REPORT_2026-09-10.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "artifact present in archive: docs/GEOGRAPHY_RULE_SP1_CONTRACT.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "artifact present in archive: evidence/sp1_successor_2026-09-10/successor_provenance_record.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "artifact present in archive: evidence/sp1_successor_2026-09-10/dl001_dl015_derived_divergence_analysis.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "artifact present in archive: evidence/sp1_successor_2026-09-10/test_runs/summary.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "artifact present in archive: tests/unit/test_sp1_successor_contract_validation.py",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "artifact present in archive: tests/golden/test_dl_canonical_geography.py",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "artifact present in archive: DELIVERY_MANIFEST.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "no secrets / .env / credentials in archive",
+      "status": "PASS",
+      "detail": "[]"
+    }
+  ],
+  "full_suite": "391 passed, 9 skipped in 4.53s",
+  "sp1_targeted": "132 passed in 0.31s",
+  "git_head_extracted": "f26fceb78628c5bc417a174aae158099fa312431",
+  "verdict": "PASS"
+}

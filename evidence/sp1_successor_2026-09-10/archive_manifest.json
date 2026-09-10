@@ -1,0 +1,14 @@
+{
+  "archive": "Data-Quality-Validation-Platform-V2-SP1-Successor-Validated-2026-09-10.zip",
+  "archive_sha256": "8b9be92b80cf64fa736f4a8215445f397117cc91aa38d82a0f6e05688fcea914",
+  "archive_size_bytes": 1770061,
+  "archive_size_mb": 1.69,
+  "tracked_files_included": 390,
+  "git_traceability_files": 49,
+  "excluded": {
+    "ephemeral_or_ignored": [],
+    "rule": "no secrets, no credentials, no caches, no virtualenvs, no ephemeral runtime evidence, no large generated datasets"
+  },
+  "git_head": "f26fceb78628c5bc417a174aae158099fa312431",
+  "pushed": false
+}

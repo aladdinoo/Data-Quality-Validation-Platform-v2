@@ -1,0 +1,27 @@
+=
+PASS  archive SHA-256 matches sidecar
+PASS  zip integrity (testzip)
+PASS  extraction produced files
+PASS  extracted git HEAD == integration commit
+PASS  extracted git status clean
+PASS  extracted history preserved
+PASS  remote untouched (URLs only, nothing pushed)
+PASS  full suite re-run from extracted archive
+PASS  targeted SP1 successor tests re-run
+PASS  V1 rule hashes frozen (extracted copy)
+PASS  artifact present in archive: README.md
+PASS  artifact present in archive: docs/SP1_SUCCESSOR_FORENSIC_VALIDATION_REPORT_2026-09-10.md
+PASS  artifact present in archive: docs/GEOGRAPHY_RULE_SP1_CONTRACT.md
+PASS  artifact present in archive: evidence/sp1_successor_2026-09-10/successor_provenance_record.json
+PASS  artifact present in archive: evidence/sp1_successor_2026-09-10/dl001_dl015_derived_divergence_analysis.json
+PASS  artifact present in archive: evidence/sp1_successor_2026-09-10/test_runs/summary.json
+PASS  artifact present in archive: tests/unit/test_sp1_successor_contract_validation.py
+PASS  artifact present in archive: tests/golden/test_dl_canonical_geography.py
+PASS  artifact present in archive: DELIVERY_MANIFEST.json
+PASS  no secrets / .env / credentials in archive
+=
+TOTAL: 20 checks, 20 PASS, 0 FAIL
+Full suite (extracted): 391 passed, 9 skipped in 4.53s
+SP1 targeted (extracted): 132 passed in 0.31s
+Extracted git HEAD: f26fceb78628c5bc417a174aae158099fa312431
+VERDICT: PASS

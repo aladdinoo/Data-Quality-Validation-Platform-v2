@@ -1,0 +1,23 @@
+$ python3 -m pytest tests/golden/test_dl_canonical_geography.py -v -rs
+
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.2, pluggy-1.6.0 -- /home/z/.venv/bin/python3
+cachedir: .pytest_cache
+metadata: {'Python': '3.12.14', 'Platform': 'Linux-5.10.134-013.8.3.kangaroo.al8.x86_64-x86_64-with-glibc2.41', 'Packages': {'pytest': '9.0.2', 'pluggy': '1.6.0'}, 'Plugins': {'Faker': '40.1.2', 'metadata': '3.1.1', 'asyncio': '1.3.0', 'ddtrace': '4.2.2', 'cov': '7.0.0', 'json-report': '1.5.0', 'anyio': '4.13.0'}}
+rootdir: /home/z/my-project/dqvp-work/Data-Quality-Validation-Platform-v2
+configfile: pyproject.toml
+plugins: Faker-40.1.2, metadata-3.1.1, asyncio-1.3.0, ddtrace-4.2.2, cov-7.0.0, json-report-1.5.0, anyio-4.13.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 7 items
+
+tests/golden/test_dl_canonical_geography.py::TestDLTableStructure::test_table_present_with_15_cases SKIPPED [ 14%]
+tests/golden/test_dl_canonical_geography.py::TestDLTableStructure::test_required_canonical_columns SKIPPED [ 28%]
+tests/golden/test_dl_canonical_geography.py::TestDLTableStructure::test_canonical_values_are_boolean SKIPPED [ 42%]
+tests/golden/test_dl_canonical_geography.py::TestDLTableStructure::test_canonical_invariant_mismatch_implies_assessable SKIPPED [ 57%]
+tests/golden/test_dl_canonical_geography.py::TestDLTableStructure::test_dl013_is_non_defect_control SKIPPED [ 71%]
+tests/golden/test_dl_canonical_geography.py::TestDLCanonicalBehavior::test_all_15_cases_match_canonical SKIPPED [ 85%]
+tests/golden/test_dl_canonical_geography.py::TestDLCurrentVsCanonicalDivergence::test_exact_disagreements_against_v1_prefix_map SKIPPED [100%]
+
+=========================== short test summary info ============================
+SKIPPED [7] tests/golden/test_dl_canonical_geography.py:62: Authoritative DL001-DL015 acceptance table not present at /home/z/my-project/dqvp-work/Data-Quality-Validation-Platform-v2/tests/golden/dl_geography_cases.csv. It is external evidence to be supplied verbatim by the repo owner; it is never reconstructed from existing fixtures.
+============================== 7 skipped in 0.07s ==============================

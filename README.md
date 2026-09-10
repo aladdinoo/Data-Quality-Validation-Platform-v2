@@ -1,16 +1,16 @@
 # Data Quality Validation Platform
 
-> **V1 frozen rule engine · independently validated at 3M-row execution scale · 5M dataset forensically verified · 2026-09-09**
+> **V1 frozen rule engine · independently validated at 3M-row execution scale · 5M dataset forensically verified · SP1 successor geography contract implemented for validation only · 2026-09-10**
 
 [![Status](https://img.shields.io/badge/status-PASS%20WITH%20DOCUMENTED%20LIMITATIONS-yellow)](#1-executive-status)
-[![Tests](https://img.shields.io/badge/tests-322%20passed-brightgreen)](#4-test-suite)
+[![Tests](https://img.shields.io/badge/tests-391%20passed-brightgreen)](#7-test-suite)
 [![3M Validation](https://img.shields.io/badge/3M-2%20successful%20runs-brightgreen)](#2-validation-results)
 [![5M Dataset](https://img.shields.io/badge/5M-dataset%20verified-orange)](#2-validation-results)
-[![SP1](https://img.shields.io/badge/SP1-isolated%20%7C%20not%20active-blue)](#7-sp1-successor-semantics)
+[![SP1](https://img.shields.io/badge/SP1-successor%20contract%20%7C%20validation--only%20%7C%20inactive-blue)](#10-sp1-successor-geography-contract)
 
 > **Final status: PASS WITH DOCUMENTED LIMITATIONS**
 >
-> The V1 rule engine is frozen and independently validated. The largest fully completed flagship execution is **3,000,000 rows**, executed twice with byte-identical outputs and **48,000,000 independent flag comparisons with 0 mismatches**. A separate **5,000,000-row dataset** was forensically verified and the 5M pipeline was genuinely stress-tested to **98.9%** before the execution environment reached its RAM/OOM boundary.
+> The V1 rule engine is frozen and independently validated. The largest fully completed flagship execution is **3,000,000 rows**, executed twice with byte-identical outputs and **48,000,000 independent flag comparisons with 0 mismatches**. A separate **5,000,000-row dataset** was forensically verified and the 5M pipeline was genuinely stress-tested to **98.9%** before the execution environment reached its RAM/OOM boundary. The **SP1 successor geography contract** (Gulnara, prepared 2026-09-01) is implemented and tested **for local validation only** — inactive, non-default, not production validated, and not authorized for execution.
 
 ## 1. Executive Status
 
@@ -22,12 +22,15 @@
 | 3M flagship execution | PASS | Two complete runs |
 | Independent verification | PASS | 48,000,000 comparisons; 0 mismatches |
 | Determinism | PASS | Run 1 and Run 2 byte-identical |
-| Test suite | PASS WITH SKIPS | 331 collected / 322 passed / 9 skipped / 0 failed |
+| Test suite | PASS WITH SKIPS | 400 collected / 391 passed / 9 skipped / 0 failed / 0 errors (2026-09-10) |
 | Geography V1 | PASS WITH LIMITATIONS | Frozen prefix-map semantics only |
-| SP1 geography | INACTIVE | Implemented/tested in isolation; not activated |
+| SP1 successor geography | INACTIVE | Contract defined; implemented/tested for validation only; not activated |
+| SP1 activation | NOT AUTHORIZED | No production call sites; physical references not bound |
+| DL001–DL015 | COMPANY-GATED | Authoritative table never delivered; 7 tests skip-gated; count of 8 divergences preserved and corroborated by derived analysis |
 | ClickHouse | NOT RUNTIME EXECUTED | No connections; no mutation SQL |
 | Airflow | STATICALLY VERIFIED | DAG structure verified; runtime unavailable/not installed |
 | E1 | NOT IMPLEMENTED / NOT EXECUTED / NOT AUTHORIZED | Explicitly outside current execution boundary |
+| R3 formula | UNRESOLVED | Business meaning approved; exact computational formula remains unresolved |
 
 ## 2. Validation Map
 
@@ -179,21 +182,35 @@ Across the two complete 3M executions:
 
 ## 7. Test Suite
 
-Fresh final test execution on 2026-09-09:
+Fresh final test execution on **2026-09-10** (SP1 successor contract integration):
 
-**331 collected / 322 passed / 9 skipped / 0 failed / 0 errors**
+**400 collected / 391 passed / 9 skipped / 0 failed / 0 errors**
 
-The 9 skips are explicitly bounded:
+The 9 skips are explicitly bounded (unchanged from the 2026-09-09 state):
 
-- 7 company-gated authoritative geography acceptance tests
+- 7 company-gated authoritative geography acceptance tests (DL001–DL015 table never delivered)
 - 1 ClickHouse runtime test because the runtime was unavailable
 - 1 Airflow runtime test because the runtime was unavailable/not installed
+
+Test-count movement vs the 2026-09-09 state (331/322/9): +69 newly added
+successor-contract validation tests
+(`tests/unit/test_sp1_successor_contract_validation.py`). No pre-existing
+test was modified, weakened, or deleted. Category runs:
+
+- unit 306 passed · contract 22 passed · golden 25 passed + 7 skipped ·
+  integration 24 passed · security 6 passed · runtime 8 passed + 2 skipped
+- targeted SP1 successor tests: **132 passed**
+  (63 pre-existing + 69 new) · V1 rules regression: 54 passed
 
 Golden fixture hashes remained unchanged:
 
 - `9ff2364f`
 - `fd2d9783`
 - `c5084feb`
+
+Historical test evidence for prior states (331/322/9 of 2026-09-09) is
+preserved in `evidence/final_5m_execution/12_test_suite/` and
+`evidence/final_execution/`.
 
 ## 8. Performance and Memory
 
@@ -231,9 +248,152 @@ Known V1 geography limitations include:
 - Documentation-only exclusion policy remains documented
 - Known Austin false-positive golden cases remain known and bounded
 
-## 10. SP1 Activation Boundary
+## 10. SP1 Successor Geography Contract
 
-SP1 successor geography semantics are isolated and are **not active** in the current V1 production path.
+The **authoritative current contract** is the Gulnara successor geography
+document ("Geography rule - canonical definition and acceptance cases",
+prepared 2026-09-01, measurements 2026-08-31). It **supersedes the previous
+SP1 policy**; the old rule is retained only as frozen V1 history.
+
+### 10.1 Current SP1 selection policy (supersedes the old policy)
+
+```
+exclude when:
+    geography_mismatch_candidate = 1
+    OR
+    NOT field_present(requested geography field)
+```
+
+This **supersedes** the old policy `exclude when zip_state_assessable = 0
+OR geography_mismatch_candidate = 1`. The core principle of the successor
+contract is **UNASSESSABLE ≠ MISMATCH**: an unassessable row is not a
+negative geography finding; only a mismatch row (which is assessable by
+definition) is excluded on geography grounds. This applies to **every
+targeted geography field** — it is not ZIP/state-only logic, and presence
+is evaluated **per field, not once per row**.
+
+### 10.2 `zip_state_assessable` semantics (successor)
+
+All fields are read as text; surrounding whitespace is trimmed; NULL
+becomes empty; state is uppercased.
+
+```
+zip5 = zip if trimmed zip matches ^[0-9]{5}$ else ''
+
+reference_resolved =
+    zip5 != ''
+    AND canonical_state_count = 1
+    AND cross_state_count <= 1
+    AND (cross_state_count = 0 OR canonical_state = cross_state)
+
+zip_state_assessable =
+    reference_resolved
+    AND NOT blank_state
+    AND NOT invalid_state_format
+    AND NOT numeric_state_review
+    AND NOT unknown_state_code
+```
+
+with `blank_state = state = ''`;
+`invalid_state_format = state != '' AND not ^[A-Za-z]{2}$ AND not all digits`;
+`numeric_state_review = state != '' AND all digits`;
+`unknown_state_code = two-letter state AND not in the approved 62-code
+allowlist` (50 states + DC + 8 territories + 3 military codes, including
+GU/AS/AA/AE/AP).
+
+### 10.3 `geography_mismatch_candidate` semantics (successor)
+
+Mismatch is evaluated **only when the row is assessable**:
+
+```
+geography_mismatch_candidate = zip_state_assessable AND consumer_state != canonical_state
+```
+
+Therefore mismatch ≠ unassessable: a malformed ZIP or a reference conflict
+makes the row unassessable (mismatch = 0), never a negative geography
+finding. This distinction is preserved in the implementation, tests, and
+evidence.
+
+### 10.4 `field_present` semantics (per field)
+
+```
+field_present(zip)     = zip5 != ''
+field_present(state)   = NOT blank/invalid/numeric/unknown state
+field_present(city)    = trimmed city != ''
+field_present(address) = trimmed address != ''
+field_present(county)  = NOT DEFINED   (refused - no invented logic)
+field_present(country) = NOT DEFINED   (refused - no invented logic)
+```
+
+A row with a valid state and a malformed ZIP is present for
+state-targeted selection and not present for ZIP-targeted selection.
+County/country are out of scope; the implementation raises rather than
+invent presence logic.
+
+### 10.5 Canonical / cross reference model
+
+The contract defines **two references** (canonical and cross), each
+filtered to valid 5-digit ZIPs and two-letter states and grouped by ZIP:
+
+- canonical must resolve a ZIP to exactly one state
+- cross may have no row (not a conflict) or agree with canonical
+- cross disagreement or canonical ambiguity → **not assessable**
+
+The physical reference datasets (derived from `tips_data.tblZipStCtyIB`)
+are **not available** in this repository. Per the no-fabrication rule, no
+physical database/table binding is configured; the successor is implemented
+behind an injectable `TwoReferenceProvider` interface, and all tests use
+**clearly-labeled validation fixtures only** — never called production
+references, and no objective production correctness is claimed.
+
+### 10.6 Seven authoritative acceptance cases (all passing)
+
+| # | State / ZIP | assessable | match | mismatch | Note |
+|---|---|---:|---:|---:|---|
+| 1 | CA / 90210 | 1 | 1 | 0 | baseline match |
+| 2 | CA / 00USA | 0 | 0 | 0 | malformed ZIP → unassessable, NOT mismatch |
+| 3 | CA / 0 | 0 | 0 | 0 | unassessable |
+| 4 | CA / 000CA | 0 | 0 | 0 | unassessable |
+| 5 | CA / "015 8" | 0 | 0 | 0 | unassessable |
+| 6 | WA / 99501 | 1 | 0 | 1 | canonical resolution = AK |
+| 7 | GU / 96910 | 1 | 1 | 0 | GU recognized; cross row absent is NOT a conflict |
+
+### 10.7 DL001–DL015 forensic distinction
+
+The authoritative DL001–DL015 acceptance table
+(`tests/golden/dl_geography_cases.csv`) **was never delivered** to this
+repository: the 7-test DL module is skip-gated by design and the table is
+"never reconstructed" from other fixtures. Per the authoritative
+description, the prefix-map (frozen V1) and canonical expected outputs
+disagree on **8 of 15** cases; DL013 (UT / 84501) is a **control case**
+(84501 resolves to Utah; a shared ZIP prefix is not automatically
+erroneous). A 2026-09-10 derived forensic analysis
+(`evidence/sp1_successor_2026-09-10/`) executed the real frozen V1 rules
+against contract-derived canonical expectations for the 12 exactly-specified
+cases and reproduced **exactly 8 disagreements** (DL001, DL002, DL003,
+DL010, DL011, DL012, DL014, DL015), with DL005/DL007 provably agreeing and
+DL006 consistent under the non-US-state reading. The repository's recorded
+count of 8 is preserved; the authoritative count itself remains **not
+verified against the external table** (never delivered).
+
+### 10.8 SP1 status boundary (validation-only)
+
+| Status field | Value |
+|---|---|
+| DEFINED | YES |
+| IMPLEMENTED_FOR_VALIDATION | YES |
+| ACTIVE | NO |
+| DEFAULT | NO |
+| PRODUCTION_VALIDATED | NO |
+| AUTHORIZED_TO_EXECUTE | NO |
+
+SP1 successor semantics live in `data_quality_platform/geography/` (pure,
+isolated, injectable reference provider). The production `RuleRegistry`
+still registers **exactly the 8 frozen V1 rules**; the successor is not
+registered, not routed into the validation engine, has no production call
+sites, and no physical reference binding. V1 prefix-map semantics, the
+33→41 column contract, V1 rule hashes, and all historical evidence are
+unchanged.
 
 ```mermaid
 flowchart LR
@@ -252,7 +412,29 @@ flowchart LR
     class H,I,J,K pass;
 ```
 
-The SP1 contract semantics are implemented/tested in isolation, but the final evidence does **not** claim physical canonical geography validation.
+### 10.9 Provenance and company figures
+
+- The successor provenance (contract_v3 / decision_record_v2 /
+  pinned_template / geography_rule_summary.md hashes, source commit
+  `ee7859e1…`) is recorded as **provenance metadata only, not execution
+  evidence**, in `evidence/sp1_successor_2026-09-10/successor_provenance_record.json`.
+- The manual delivery manifest **`manual_delivery_v1` is provenance, not
+  execution evidence** — it is distinct from, and never merged with,
+  Evidence Manifest v1. Recipient receipt: **not verified**.
+- The 721M population figures (721,141,364 rows; 590,011,545 five-digit
+  ZIP; 3,495,452 reference_missing; 37,195 reference_conflict;
+  586,478,898 reference_resolved; 14,607,754 removed by state condition;
+  571,871,144 assessable; 569,070,112 match; 2,801,032 mismatch) are
+  **company-supplied / historical measurements; not independently
+  reproduced in this repository**.
+- ClickHouse production was **not executed**: zero connections, zero
+  statements, zero mutations in this pass.
+- **E1 was not implemented and not executed** (latitude/longitude backfill
+  remains separately controlled; implementation_authorized = NO).
+- **R3** (`name_cleaning_candidate`): business meaning approved
+  (flag-only, inherited from R1/R2, summary/review signal); **exact
+  computational formula remains unresolved** — the frozen V1
+  implementation is preserved unchanged.
 
 ## 11. Architecture
 
@@ -299,8 +481,11 @@ The validation was deliberately conducted without modifying production or read-o
 | ClickHouse | No runtime connection; no production statements; no writes/mutations |
 | Airflow | Static verification only; runtime not executed |
 | E1 | Not implemented, not executed, not authorized |
-| SP1 | Registered/active/default/authorized: NO |
-| Company authoritative geography | Company-gated; not substituted with a local guess |
+| SP1 | Defined + implemented for validation only; registered/active/default/authorized: NO |
+| SP1 physical references | Not bound; validation fixtures only; no production reference claim |
+| Company authoritative geography (DL001–DL015) | Company-gated; not substituted with a local guess; derived analysis clearly labeled |
+| manual_delivery_v1 | Provenance only — not execution evidence, not merged with Evidence Manifest v1 |
+| R3 formula | Unresolved; frozen V1 implementation preserved |
 | 721,141,364 / 590,011,545 population figures | Company-supplied / historical / arithmetic-only; not locally reproduced |
 
 This boundary is intentional: missing company-authorized evidence is reported as a limitation rather than replaced with an unsupported claim.
@@ -310,30 +495,26 @@ This boundary is intentional: missing company-authorized evidence is reported as
 The final evidence root is:
 
 ```text
-evidence/final_5m_execution/
-├── FINAL_RESULTS.json
-├── MANIFEST.json
-├── 00_baseline/
-├── 01_reporting_audit/
-├── 02_dataset/
-├── 03_run1/
-├── 04_independent_verification/
-├── 05_run2/
-├── 06_performance/
-├── 07_geography/
-├── 08_activation_boundary/
-├── 09_consistency/
-├── 10_final_summary/
-├── 11_largest_safe_execution_3m/
-├── 12_test_suite/
-└── 13_archive/
+evidence/final_5m_execution/          (V1 validation evidence, 2026-09-09 - historical, preserved)
+evidence/sp1_successor_2026-09-10/    (SP1 successor integration evidence - NEW)
+├── successor_provenance_record.json
+├── dl001_dl015_derived_divergence_analysis.json
+├── dl001_dl015_derived_divergence_report.txt
+├── v1_preservation_and_evidence_integrity.json / .txt
+├── phase3_contract_reconciliation.txt
+├── test_runs/ (full_suite, sp1_targeted, v1_rules_regression,
+│   golden_fixture_integrity, unit, contract, golden, integration,
+│   security, runtime, dl_module_status + summary.json)
+└── baseline / git state captures
 ```
 
 ### Primary source-of-truth files
 
-1. `evidence/final_5m_execution/FINAL_RESULTS.json`
-2. `docs/FINAL_5M_VALIDATION_REPORT.md`
-3. Evidence files under `evidence/final_5m_execution/`
+1. `evidence/final_5m_execution/FINAL_RESULTS.json` (V1, 2026-09-09)
+2. `docs/FINAL_5M_VALIDATION_REPORT.md` (V1, 2026-09-09)
+3. `evidence/sp1_successor_2026-09-10/` (SP1 successor integration, 2026-09-10)
+4. `docs/SP1_SUCCESSOR_FORENSIC_VALIDATION_REPORT_2026-09-10.md` (NEW forensic report)
+5. Evidence files under `evidence/`
 
 ## 14. Reproducibility
 
@@ -376,16 +557,23 @@ python3 -m runner.cli validate \
 
 ## 15. Archive
 
-Current validated archive:
+Current validated archive (SP1 successor integration):
 
 ```text
-download/Data-Quality-Validation-Platform-5M-Revalidated-2026-09-09-v2.zip
-download/Data-Quality-Validation-Platform-5M-Revalidated-2026-09-09-v2.zip.sha256
+download/Data-Quality-Validation-Platform-V2-SP1-Successor-Validated-2026-09-10.zip
+download/Data-Quality-Validation-Platform-V2-SP1-Successor-Validated-2026-09-10.zip.sha256
 ```
 
-The current archive was unpack-verified. The archive evidence records its SHA-256. Tests were not rerun during the documentation-only consolidation step.
+The archive was unpack-verified in a second clean directory and the full
+test suite was re-run from the extracted copy (see the forensic report,
+section "Extracted-archive verification"). The archive contains source code,
+tests, docs, the updated README, the new forensic report, the new SP1
+successor evidence, provenance artifacts, and the validation artifacts
+required for reproducibility; it contains no secrets, no credentials, no
+caches, no virtual environments, and no large generated datasets.
 
-The prior archive remains preserved and unmodified:
+Prior archives remain preserved and unmodified in the historical delivery
+area (recorded in `DELIVERY_MANIFEST.json`):
 
 ```text
 download/Data-Quality-Validation-Platform-5M-Revalidated-2026-09-09.zip
@@ -395,9 +583,9 @@ download/Data-Quality-Validation-Platform-5M-Revalidated-2026-09-09.zip
 
 The evidence supports the following precise conclusion:
 
-> **The frozen V1 Data Quality Validation Platform is independently validated at the 3M-row execution scale, with two complete deterministic runs and 48M independent flag comparisons producing zero mismatches. The 5M dataset is forensically verified, and the 5M pipeline was genuinely stress-tested to 98.9% before the environment's memory boundary terminated execution.**
+> **The frozen V1 Data Quality Validation Platform is independently validated at the 3M-row execution scale, with two complete deterministic runs and 48M independent flag comparisons producing zero mismatches. The 5M dataset is forensically verified, and the 5M pipeline was genuinely stress-tested to 98.9% before the environment's memory boundary terminated execution. The SP1 successor geography contract (2026-09-01, integrated 2026-09-10) is defined and locally implemented/tested under the authoritative contract, while remaining inactive, non-default, not production validated, and not authorized for execution.**
 
-The project therefore passes the implemented local validation scope **with documented limitations**. It does not claim successful 5M completion, live ClickHouse execution, Airflow runtime execution, canonical company-authoritative geography acceptance, or E1 authorization where those conditions were not available or authorized.
+The project therefore passes the implemented local validation scope **with documented limitations**. It does not claim successful 5M completion, live ClickHouse execution, Airflow runtime execution, canonical company-authoritative geography acceptance (DL001–DL015 remains company-gated), E1 authorization, or SP1 production activation where those conditions were not available or authorized.
 
 ## 17. Final Verdict
 
@@ -405,7 +593,7 @@ The project therefore passes the implemented local validation scope **with docum
 
 ### What is proven
 
-- Frozen V1 rule behavior
+- Frozen V1 rule behavior (8 rule hashes unchanged)
 - Deterministic 3M execution
 - Two complete 3M runs
 - Byte-identical outputs
@@ -415,19 +603,25 @@ The project therefore passes the implemented local validation scope **with docum
 - 5M dataset integrity
 - Real 5M stress behavior and memory boundary
 - Evidence and provenance boundary
+- SP1 successor contract semantics: 132/132 targeted tests, 7/7 authoritative acceptance cases, per-field presence, two-reference resolution, UNASSESSABLE ≠ MISMATCH invariant
+- V1 freeze preservation: rule hashes, golden fixtures, 33→41 contract, and all historical evidence byte-identical after the 2026-09-10 integration
 
 ### What remains externally gated or unexecuted
 
-- Company-authoritative canonical geography acceptance
+- Company-authoritative canonical geography acceptance (DL001–DL015 table never delivered)
+- Physical canonical/cross reference datasets (ClickHouse `tips_data.tblZipStCtyIB` not accessible)
+- SP1 production activation and physical reference binding
 - ClickHouse runtime execution
 - Airflow runtime execution
-- E1 execution
+- E1 implementation/execution
 - Any production mutation
+- Recipient receipt of manual_delivery_v1 (not verified)
+- R3 exact computational formula (unresolved)
 
 ---
 
 **Product:** Data Quality Validation Platform  
 **Repository:** `Data-Quality-Validation-Platform-v2`  
 **Python package:** `data_quality_platform`  
-**Validation date:** 2026-09-09  
+**V1 validation date:** 2026-09-09 · **SP1 successor integration:** 2026-09-10  
 **Final verdict:** **PASS WITH DOCUMENTED LIMITATIONS**

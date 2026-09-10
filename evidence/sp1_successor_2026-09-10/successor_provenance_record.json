@@ -1,0 +1,73 @@
+{
+  "record_type": "BUSINESS-RULE DELIVERY PROVENANCE (metadata only)",
+  "not_execution_evidence": true,
+  "recorded_utc": "2026-09-10",
+  "authoritative_contract": {
+    "title": "Geography rule - canonical definition and acceptance cases",
+    "prepared": "2026-09-01",
+    "measurements": "2026-08-31",
+    "contract_recorded": "2026-09-01",
+    "document_sha256_company_provided": "0cf6eb930149e975397b348709d8f7e83f96eb6eb70d2361cf66551ada311bc0",
+    "source_commit": "ee7859e1ad521cb68ba32b604498d951c7690b19",
+    "superseded_prepared_version_sha256": "3297179ea3527f56091191c48e8f72606e000fc7b885da906a7e59b97e1aebc8",
+    "superseded_document_in_this_repository": false
+  },
+  "successor_provenance_block": {
+    "contract_v3_sha256": "8ae3256b362d218849a688cc8f0a76d86c4ffb886607f69848030c2e6ba1fe74",
+    "decision_record_v2_sha256": "4dd8914f4d5ed7ab47f5245fd762d9e06983e43aba0858d1e38b3c1cf21fac4c",
+    "pinned_template_sha256": "47b3361b22ee9882c17e70886c3d5e3c493107881ed9f86345b96c5aa1cd521a",
+    "geography_rule_summary_md_sha256": "410bbf294e20692db616962884523bd3ef67d13c3bef0771ac9b92d4c2b0b708",
+    "source_commit": "ee7859e1ad521cb68ba32b604498d951c7690b19",
+    "measurements": "2026-08-31",
+    "contract_recorded": "2026-09-01",
+    "recipient_receipt": "NOT VERIFIED"
+  },
+  "manual_delivery_manifest": {
+    "identifier": "manual_delivery_v1",
+    "classification": "manual business-rule delivery manifest (provenance)",
+    "is_evidence_manifest_v1": false,
+    "merged_with_execution_evidence": false
+  },
+  "hash_verification_status": {
+    "contract_v3": "company-provided value; physical file not present in this repository; NOT re-computed locally (NOT VERIFIED)",
+    "decision_record_v2": "company-provided value; NOT re-computed locally (NOT VERIFIED)",
+    "pinned_template": "company-provided value; NOT re-computed locally (NOT VERIFIED)",
+    "geography_rule_summary_md": "company-provided value; physical file not found in this repository; NOT re-computed locally (NOT VERIFIED)",
+    "source_commit": "commit ee7859e1... is NOT part of this repository's 2-commit history (eaf3429, ecf476a); recorded as external provenance only (NOT VERIFIED)"
+  },
+  "recorded_discrepancies": {
+    "allowlist_rendering": "The 2026-09-10 instruction enumerates 61 allowlist tokens under a '62-code' label (omits WY). The repository allowlist has exactly 62 codes including WY (all 50 states + DC + 8 territories + 3 military codes), consistent with the 62-code label and with the previously recorded rule that the delivered contract governs. Repository list preserved unchanged.",
+    "dl001_dl015": "The authoritative DL table (tests/golden/dl_geography_cases.csv) was never delivered; the 7-test DL module remains skip-gated; the recorded 8-of-15 disagreement count is preserved and corroborated by derived analysis of the 12 exactly-specified cases."
+  },
+  "company_supplied_721m_figures": {
+    "classification": "COMPANY-SUPPLIED / HISTORICAL MEASUREMENT - not independently reproduced in this repository",
+    "values": {
+      "total_rows": 721141364,
+      "five_digit_zip": 590011545,
+      "reference_missing": 3495452,
+      "reference_conflict": 37195,
+      "reference_resolved": 586478898,
+      "removed_by_state_condition": 14607754,
+      "zip_state_assessable": 571871144,
+      "match": 569070112,
+      "mismatch": 2801032
+    }
+  },
+  "r3_status": {
+    "rule": "name_cleaning_candidate (V1, frozen)",
+    "business_meaning": "flag-only, inherited from R1 and R2, summary/review signal, no independent action authority",
+    "exact_computational_formula": "UNRESOLVED",
+    "statement": "Business meaning approved; exact computational formula remains unresolved.",
+    "v1_implementation_changed": false
+  },
+  "sp1_status_boundary": {
+    "DEFINED": "YES",
+    "IMPLEMENTED_FOR_VALIDATION": "YES",
+    "ACTIVE": "NO",
+    "DEFAULT": "NO",
+    "PRODUCTION_VALIDATED": "NO",
+    "AUTHORIZED_TO_EXECUTE": "NO",
+    "registered_in_production_registry": false
+  },
+  "allowlist_size": 62
+}

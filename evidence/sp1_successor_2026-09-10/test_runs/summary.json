@@ -1,0 +1,90 @@
+{
+  "full_suite": {
+    "exit_code": 0,
+    "passed": 391,
+    "skipped": 9,
+    "failed": 0,
+    "errors": 0,
+    "tail": "391 passed, 9 skipped in 4.90s"
+  },
+  "sp1_targeted": {
+    "exit_code": 0,
+    "passed": 132,
+    "skipped": 0,
+    "failed": 0,
+    "errors": 0,
+    "tail": "132 passed in 0.31s"
+  },
+  "v1_rules_regression": {
+    "exit_code": 0,
+    "passed": 54,
+    "skipped": 0,
+    "failed": 0,
+    "errors": 0,
+    "tail": "54 passed in 0.39s"
+  },
+  "golden_fixture_integrity": {
+    "exit_code": 0,
+    "passed": 25,
+    "skipped": 7,
+    "failed": 0,
+    "errors": 0,
+    "tail": "25 passed, 7 skipped in 0.34s"
+  },
+  "unit": {
+    "exit_code": 0,
+    "passed": 306,
+    "skipped": 0,
+    "failed": 0,
+    "errors": 0,
+    "tail": "306 passed in 2.37s"
+  },
+  "contract": {
+    "exit_code": 0,
+    "passed": 22,
+    "skipped": 0,
+    "failed": 0,
+    "errors": 0,
+    "tail": "22 passed in 0.18s"
+  },
+  "golden": {
+    "exit_code": 0,
+    "passed": 25,
+    "skipped": 7,
+    "failed": 0,
+    "errors": 0,
+    "tail": "25 passed, 7 skipped in 0.35s"
+  },
+  "integration": {
+    "exit_code": 0,
+    "passed": 24,
+    "skipped": 0,
+    "failed": 0,
+    "errors": 0,
+    "tail": "24 passed in 1.18s"
+  },
+  "security": {
+    "exit_code": 0,
+    "passed": 6,
+    "skipped": 0,
+    "failed": 0,
+    "errors": 0,
+    "tail": "6 passed in 0.07s"
+  },
+  "runtime": {
+    "exit_code": 0,
+    "passed": 8,
+    "skipped": 2,
+    "failed": 0,
+    "errors": 0,
+    "tail": "8 passed, 2 skipped in 1.06s"
+  },
+  "dl_module_status": {
+    "exit_code": 0,
+    "passed": 0,
+    "skipped": 7,
+    "failed": 0,
+    "errors": 0,
+    "tail": "============================== 7 skipped in 0.07s =============================="
+  }
+}

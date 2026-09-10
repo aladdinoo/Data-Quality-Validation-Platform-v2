@@ -1,0 +1,6 @@
+$ python3 -m pytest tests/golden/ -q -rs
+
+sssssss.........................                                         [100%]
+=========================== short test summary info ============================
+SKIPPED [7] tests/golden/test_dl_canonical_geography.py:62: Authoritative DL001-DL015 acceptance table not present at /home/z/my-project/dqvp-work/Data-Quality-Validation-Platform-v2/tests/golden/dl_geography_cases.csv. It is external evidence to be supplied verbatim by the repo owner; it is never reconstructed from existing fixtures.
+25 passed, 7 skipped in 0.35s

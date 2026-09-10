@@ -1,0 +1,23 @@
+=== BASELINE GIT STATE (captured at clone, 2026-09-10, before any modification) ===
+repository: https://github.com/aladdinoo/Data-Quality-Validation-Platform-v2.git
+branch: main
+HEAD: ecf476a44190840994d32d2300ca12229fa91f76
+commits: 2 (eaf3429 initial, ecf476a README revision)
+status: clean
+baseline tests: 331 collected / 322 passed / 9 skipped / 0 failed / 0 errors
+baseline skips: 7 DL company-gated + 1 ClickHouse runtime + 1 Airflow runtime
+runtime: Python 3.12.14, pytest 9.0.2
+
+=== FINAL GIT STATE (2026-09-10, after integration) ===
+final commit: see delivery report (local commit, nothing pushed)
+ M README.md
+ M data_quality_platform/geography/__init__.py
+ M data_quality_platform/geography/canonical.py
+?? docs/SP1_SUCCESSOR_FORENSIC_VALIDATION_REPORT_2026-09-10.md
+?? evidence/sp1_successor_2026-09-10/
+?? tests/unit/test_sp1_successor_contract_validation.py
+
+ README.md                                    | 286 ++++++++++++++++++++++-----
+ data_quality_platform/geography/__init__.py  |   6 +
+ data_quality_platform/geography/canonical.py |  22 +++
+ 3 files changed, 268 insertions(+), 46 deletions(-)

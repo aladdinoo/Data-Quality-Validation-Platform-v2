@@ -1,0 +1,27 @@
+==========================================================================
+PHASE 7+8: V1 REGRESSION PRESERVATION + EVIDENCE INTEGRITY
+Run: 2026-09-10 (post-integration)
+==========================================================================
+
+PASS   git: modified files == allow-list
+PASS   git: no deletions
+PASS   git: added files == new-evidence allow-list
+PASS   baseline scope: untracked ephemeral test outputs excluded from historical comparison
+PASS   historical evidence/docs/reports byte-identical
+PASS   V1 rule hashes == historical flagship run manifests (FROZEN)
+PASS   registry: exactly 8 V1 rules
+PASS   golden fixture hashes unchanged (vs DELIVERY_MANIFEST.json)
+PASS   33 -> 41 column contract unchanged
+PASS   E1: not implemented anywhere in production packages
+PASS   ClickHouse: no client library in application code (no connections made)
+
+Intentionally modified (documented, all additive):
+  M README.md
+  M data_quality_platform/geography/__init__.py
+  M data_quality_platform/geography/canonical.py
+Intentionally added (new evidence/tests):
+  A evidence/sp1_successor_2026-09-10/
+  A tests/unit/test_sp1_successor_contract_validation.py
+Deleted: none
+
+TOTAL: 11 checks, 11 PASS, 0 FAIL

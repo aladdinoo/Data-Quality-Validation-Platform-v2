@@ -1,0 +1,79 @@
+{
+  "checks": [
+    {
+      "section": "git: modified files == allow-list",
+      "status": "PASS",
+      "detail": "modified=['README.md', 'data_quality_platform/geography/__init__.py', 'data_quality_platform/geography/canonical.py'] unexpected=[] missing=[]"
+    },
+    {
+      "section": "git: no deletions",
+      "status": "PASS",
+      "detail": "deleted=[]"
+    },
+    {
+      "section": "git: added files == new-evidence allow-list",
+      "status": "PASS",
+      "detail": "unexpected_added=[]"
+    },
+    {
+      "section": "baseline scope: untracked ephemeral test outputs excluded from historical comparison",
+      "status": "PASS",
+      "detail": "15 untracked paths (regenerated per test run, gitignored): ['evidence/q20_cli/alerts.json', 'evidence/q20_cli/audit.json', 'evidence/q20_cli/lineage.json', 'evidence/q20_cli/manifest.json', 'evidence/q20_cli/monitoring.json', 'evidence/rt_1k/alerts.json']"
+    },
+    {
+      "section": "historical evidence/docs/reports byte-identical",
+      "status": "PASS",
+      "detail": "changed=[]"
+    },
+    {
+      "section": "V1 rule hashes == historical flagship run manifests (FROZEN)",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "registry: exactly 8 V1 rules",
+      "status": "PASS",
+      "detail": "count=8"
+    },
+    {
+      "section": "golden fixture hashes unchanged (vs DELIVERY_MANIFEST.json)",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "33 -> 41 column contract unchanged",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "E1: not implemented anywhere in production packages",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "ClickHouse: no client library in application code (no connections made)",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "rule_hashes_current": {
+    "first_name_cleaning_candidate": "575e9d4588334d364bdcfae6ca3c44b9bf35120a371b78fecfde8ee19373ca69",
+    "last_name_cleaning_candidate": "c553b7f4484b54135e2b84c6b37a84b15df328544256577984e61f6ede900122",
+    "name_cleaning_candidate": "3a128ec85d196cd3a42720347ba8790f5fbf0f386bd617e4ec508ee050b661c8",
+    "email_blank": "157ccc2127334bac03534f80868a3d7ea3bc8df77c132e8c237874321164f2bc",
+    "email_syntax_failure": "5caaba13a73c90c5aac7a52cf756713c8ecc3dc73d30c2949206efa8d2b712f7",
+    "proposed_email_export_eligible": "6732e6bfed6fae3c23439f0e69b5c39e2843a5b74f2f8f3fdaf6ad5d536da98c",
+    "zip_state_assessable": "e7730c1b848f32790a56bfb79f7ef5dbc8c88b3919f9903421adc7dde5393885",
+    "geography_mismatch_candidate": "7967b59ef7a14b83284a12eb298d63c6140e0837bfafdf3ac4e758baf74c4e93"
+  },
+  "modified": [
+    "README.md",
+    "data_quality_platform/geography/__init__.py",
+    "data_quality_platform/geography/canonical.py"
+  ],
+  "added": [
+    "evidence/sp1_successor_2026-09-10/",
+    "tests/unit/test_sp1_successor_contract_validation.py"
+  ],
+  "deleted": []
+}

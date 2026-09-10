@@ -1,0 +1,41 @@
+========================================================================
+PHASE 3 CONTRACT RECONCILIATION — 35 checks
+========================================================================
+PASS   S3 normalization: trim + state uppercased
+PASS   S3 normalization: NULL -> empty
+PASS   S3 zip5: valid 5-digit
+PASS   S3 zip5: malformed -> '' (00USA / 0 / 000CA / '015 8' / six-digit / ABCDE)
+PASS   S3 reference_resolved: canonical=1, cross=0/1 agree
+PASS   S3 reference_resolved: cross conflict -> NOT resolved
+PASS   S3 reference_resolved: canonical multiple states -> NOT resolved
+PASS   S3 reference_resolved: cross absent is NOT a conflict (GU case)
+PASS   S3 blank_state: '' -> assessable=0
+PASS   S3 invalid_state_format: 'C1'/'000CA'/'015 8'/'CALIF' -> unassessable
+PASS   S3 numeric_state_review: '63'/'60'/'01' -> unassessable
+PASS   S3 unknown_state_code: 'ZZ' -> unassessable
+PASS   S3 assessable: valid state + resolved zip
+PASS   Allowlist: master-prompt-listed codes all present  [master prompt enumerates 61 tokens labeled '62-code'; repo has 62]
+PASS   Allowlist: repo = 62 codes (adds WY vs prompt rendering)  [prompt rendering omits WY; repo includes it — consistent with the '62-code' label and a complete 50-state set; repo doc records the delivered contract governs]
+PASS   S5 mismatch implies assessable
+PASS   S5 unassessable -> mismatch=0 AND match=0 (UNASSESSABLE != MISMATCH)
+PASS   S6 field_present(zip): zip5 != ''
+PASS   S6 field_present(state): valid predicate (valid/lower/whitespace ok; blank/numeric/malformed/unknown not)
+PASS   S6 field_present(city): trimmed non-blank
+PASS   S6 field_present(address): trimmed non-blank
+PASS   S6 field_present(county)/field_present(country): NOT DEFINED (refused)
+PASS   S7 per-field policy: valid state + malformed ZIP -> state-eligible, zip-NOT-eligible
+PASS   S7 mismatch -> excluded (every targeted field)
+PASS   S7 assessable+match+present -> eligible
+PASS   S7 valid ZIP + blank state -> state-targeted exclusion (absent field)
+PASS   S8 CASE1 CA/90210  [assessable/match/mismatch = (True, True, False)]
+PASS   S8 CASE2 CA/00USA  [assessable/match/mismatch = (False, False, False)]
+PASS   S8 CASE3 CA/0  [assessable/match/mismatch = (False, False, False)]
+PASS   S8 CASE4 CA/000CA  [assessable/match/mismatch = (False, False, False)]
+PASS   S8 CASE5 CA/'015 8'  [assessable/match/mismatch = (False, False, False)]
+PASS   S8 CASE6 WA/99501  [assessable/match/mismatch = (True, False, True)]
+PASS   S8 CASE7 GU/96910  [assessable/match/mismatch = (True, True, False)]
+PASS   S8 CASE6 canonical resolution = AK
+PASS   S8 CASE7 GU recognized under allowlist/reference
+------------------------------------------------------------------------
+TOTAL: 35 checks, 35 PASS, 0 FAIL
+VERDICT: existing implementation conforms to the successor contract

@@ -1,0 +1,314 @@
+{
+  "summary": {
+    "analysis_type": "DERIVED FORENSIC ANALYSIS - not authoritative acceptance evidence",
+    "authoritative_dl_table_present": false,
+    "authoritative_dl_table_expected_path": "tests/golden/dl_geography_cases.csv",
+    "dl_test_module_state": "7 tests SKIP-GATED by design (external evidence gate preserved; never reconstructed)",
+    "exact_cases_analyzed": 12,
+    "exact_case_derived_disagreements": 8,
+    "exact_case_disagreement_ids": [
+      "DL001",
+      "DL002",
+      "DL003",
+      "DL010",
+      "DL011",
+      "DL012",
+      "DL014",
+      "DL015"
+    ],
+    "exact_case_agreement_ids": [
+      "DL004",
+      "DL008",
+      "DL009",
+      "DL013"
+    ],
+    "unspecified_cases": [
+      {
+        "case_id": "DL005",
+        "description": "blank/non-US state case (exact value not specified)",
+        "analysis": "blank state: V1 = (0,0) and canonical = (0,0) for EVERY zip (zip-invariance proven); a non-US two-letter state (e.g. ON) is likewise unassessable in both -> AGREE under either reading.",
+        "provable_agreement": true
+      },
+      {
+        "case_id": "DL007",
+        "description": "NULL/string-null case (exact value not specified)",
+        "analysis": "state 'null' string: V1 not in prefix map -> (0,0); canonical invalid_state_format (4 letters) -> (0,0); missing/NULL state: (0,0) in both -> AGREE under either reading, zip-invariant.",
+        "provable_agreement": true
+      },
+      {
+        "case_id": "DL006",
+        "description": "six-digit/non-US format case (exact values not specified)",
+        "analysis": "agreement depends on the (unspecified) state value: valid-US-state -> DISAGREE; non-US/blank/numeric state -> AGREE. The authoritative '8 of 15' disagreement count is consistent with DL006 ONLY under the AGREE branch (non-US state), which is also consistent with the case description 'six-digit/non-US format'.",
+        "provable_agreement": null,
+        "branches": [
+          {
+            "branch": "state = valid US state (e.g. CA)",
+            "v1": {
+              "zip_state_assessable": 1,
+              "geography_mismatch_candidate": 0
+            },
+            "canonical": {
+              "zip_state_assessable": 0,
+              "geography_mismatch_candidate": 0
+            },
+            "agree": false,
+            "note": "V1 does not validate ZIP length -> assessable=1, mismatch=1 (902101 matches no CA prefix); canonical zip5='' -> (0,0). DISAGREE."
+          },
+          {
+            "branch": "state = non-US/blank/numeric (e.g. ON)",
+            "v1": {
+              "zip_state_assessable": 0,
+              "geography_mismatch_candidate": 0
+            },
+            "canonical": {
+              "zip_state_assessable": 0,
+              "geography_mismatch_candidate": 0
+            },
+            "agree": true,
+            "note": "state not in V1 prefix map and not in canonical allowlist -> (0,0) in both. AGREE."
+          }
+        ]
+      }
+    ],
+    "repo_recorded_authoritative_count": 8,
+    "repo_recorded_count_preserved": true,
+    "count_consistency": {
+      "derived_from_12_exact_cases": 8,
+      "dl005": "provably agrees (any reading)",
+      "dl007": "provably agrees (any reading)",
+      "dl006": "agrees IFF state is non-US/blank/numeric (consistent with the 'six-digit/non-US format' description); disagrees iff state is a valid US state",
+      "conclusion": "The authoritative '8 of 15' claim is exactly reproducible from the 12 exactly-specified cases alone, with DL005/DL007 provably agreeing and DL006 consistent-with-8 under the non-US-state reading. The repository's recorded count of 8 is PRESERVED; the authoritative count itself remains NOT VERIFIED against the external table (never delivered)."
+    },
+    "dl013_control_case": {
+      "description": "UT / 84501, shared ZIP prefix must NOT be auto-erroneous",
+      "canonical_mismatch": 0,
+      "v1_agrees_with_canonical": true,
+      "control_holds": true
+    },
+    "analysis_provider_provenance": {
+      "class": "InMemoryTwoReferenceProvider (ANALYSIS-ONLY)",
+      "rows": {
+        "90210->CA": "acceptance case 1 (authoritative)",
+        "99501->AK": "acceptance case 6 (authoritative)",
+        "96910->GU": "acceptance case 7 (authoritative)",
+        "84501->UT": "master prompt s10 DL013 control statement",
+        "96501->AP": "recorded prose in docs/GEOGRAPHY_RULE_SP1_CONTRACT.md s9",
+        "96799->AS": "recorded prose in docs/GEOGRAPHY_RULE_SP1_CONTRACT.md s9 ('becomes assessable'; AS resolution is the USPS convention reading, mismatch value not asserted)"
+      },
+      "disclaimer": "VALIDATION FIXTURES ONLY - not company canonical production reference data; no canonical production validation is claimed."
+    }
+  },
+  "cases": [
+    {
+      "case_id": "DL001",
+      "state": "CA",
+      "zip": "00USA",
+      "source": "master prompt s10",
+      "v1_prefix_map": {
+        "zip_state_assessable": 1,
+        "geography_mismatch_candidate": 1
+      },
+      "canonical_derived": {
+        "zip_state_assessable": 0,
+        "geography_mismatch_candidate": 0
+      },
+      "agree": false,
+      "disagreed_fields": [
+        "zip_state_assessable",
+        "geography_mismatch_candidate"
+      ]
+    },
+    {
+      "case_id": "DL002",
+      "state": "TX",
+      "zip": "0",
+      "source": "master prompt s10",
+      "v1_prefix_map": {
+        "zip_state_assessable": 1,
+        "geography_mismatch_candidate": 1
+      },
+      "canonical_derived": {
+        "zip_state_assessable": 0,
+        "geography_mismatch_candidate": 0
+      },
+      "agree": false,
+      "disagreed_fields": [
+        "zip_state_assessable",
+        "geography_mismatch_candidate"
+      ]
+    },
+    {
+      "case_id": "DL003",
+      "state": "MD",
+      "zip": "000MD",
+      "source": "master prompt s10",
+      "v1_prefix_map": {
+        "zip_state_assessable": 1,
+        "geography_mismatch_candidate": 1
+      },
+      "canonical_derived": {
+        "zip_state_assessable": 0,
+        "geography_mismatch_candidate": 0
+      },
+      "agree": false,
+      "disagreed_fields": [
+        "zip_state_assessable",
+        "geography_mismatch_candidate"
+      ]
+    },
+    {
+      "case_id": "DL004",
+      "state": "ON",
+      "zip": "K2H 8E9",
+      "source": "master prompt s10",
+      "v1_prefix_map": {
+        "zip_state_assessable": 0,
+        "geography_mismatch_candidate": 0
+      },
+      "canonical_derived": {
+        "zip_state_assessable": 0,
+        "geography_mismatch_candidate": 0
+      },
+      "agree": true,
+      "disagreed_fields": []
+    },
+    {
+      "case_id": "DL008",
+      "state": "63",
+      "zip": "<zip-invariant>",
+      "source": "state-only: 'numeric state 63' (zip not specified)",
+      "v1_prefix_map": {
+        "geography_mismatch_candidate": 0,
+        "zip_state_assessable": 0
+      },
+      "canonical_derived": {
+        "geography_mismatch_candidate": 0,
+        "zip_state_assessable": 0
+      },
+      "agree": true,
+      "disagreed_fields": []
+    },
+    {
+      "case_id": "DL009",
+      "state": "60",
+      "zip": "<zip-invariant>",
+      "source": "state-only: 'numeric state 60' (zip not specified)",
+      "v1_prefix_map": {
+        "geography_mismatch_candidate": 0,
+        "zip_state_assessable": 0
+      },
+      "canonical_derived": {
+        "geography_mismatch_candidate": 0,
+        "zip_state_assessable": 0
+      },
+      "agree": true,
+      "disagreed_fields": []
+    },
+    {
+      "case_id": "DL010",
+      "state": "MA",
+      "zip": "015 8",
+      "source": "master prompt s10",
+      "v1_prefix_map": {
+        "zip_state_assessable": 1,
+        "geography_mismatch_candidate": 0
+      },
+      "canonical_derived": {
+        "zip_state_assessable": 0,
+        "geography_mismatch_candidate": 0
+      },
+      "agree": false,
+      "disagreed_fields": [
+        "zip_state_assessable"
+      ]
+    },
+    {
+      "case_id": "DL011",
+      "state": "WA",
+      "zip": "99501",
+      "source": "master prompt s10 + acceptance case 6",
+      "v1_prefix_map": {
+        "zip_state_assessable": 1,
+        "geography_mismatch_candidate": 0
+      },
+      "canonical_derived": {
+        "zip_state_assessable": 1,
+        "geography_mismatch_candidate": 1
+      },
+      "agree": false,
+      "disagreed_fields": [
+        "geography_mismatch_candidate"
+      ]
+    },
+    {
+      "case_id": "DL012",
+      "state": "HI",
+      "zip": "96501",
+      "source": "master prompt s10 + recorded prose 96501->AP",
+      "v1_prefix_map": {
+        "zip_state_assessable": 1,
+        "geography_mismatch_candidate": 0
+      },
+      "canonical_derived": {
+        "zip_state_assessable": 1,
+        "geography_mismatch_candidate": 1
+      },
+      "agree": false,
+      "disagreed_fields": [
+        "geography_mismatch_candidate"
+      ]
+    },
+    {
+      "case_id": "DL013",
+      "state": "UT",
+      "zip": "84501",
+      "source": "master prompt s10: CONTROL CASE, resolves to Utah",
+      "v1_prefix_map": {
+        "zip_state_assessable": 1,
+        "geography_mismatch_candidate": 0
+      },
+      "canonical_derived": {
+        "zip_state_assessable": 1,
+        "geography_mismatch_candidate": 0
+      },
+      "agree": true,
+      "disagreed_fields": []
+    },
+    {
+      "case_id": "DL014",
+      "state": "GU",
+      "zip": "96910",
+      "source": "master prompt s10 + acceptance case 7",
+      "v1_prefix_map": {
+        "zip_state_assessable": 0,
+        "geography_mismatch_candidate": 0
+      },
+      "canonical_derived": {
+        "zip_state_assessable": 1,
+        "geography_mismatch_candidate": 0
+      },
+      "agree": false,
+      "disagreed_fields": [
+        "zip_state_assessable"
+      ]
+    },
+    {
+      "case_id": "DL015",
+      "state": "AS",
+      "zip": "96799",
+      "source": "master prompt s10 + recorded prose 'becomes assessable'",
+      "v1_prefix_map": {
+        "zip_state_assessable": 0,
+        "geography_mismatch_candidate": 0
+      },
+      "canonical_derived": {
+        "zip_state_assessable": 1,
+        "geography_mismatch_candidate": 0
+      },
+      "agree": false,
+      "disagreed_fields": [
+        "zip_state_assessable"
+      ]
+    }
+  ]
+}

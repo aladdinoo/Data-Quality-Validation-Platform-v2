@@ -78,6 +78,28 @@ SP1_CONTRACT_SUPERSEDES_SHA256 = (
 )
 
 # ---------------------------------------------------------------------------
+# Provenance additions recorded from the 2026-09-10 successor-contract
+# instruction delivery (GEOGRAPHY SUCCESSOR CONTRACT INTEGRATION master
+# prompt, section 13 "GULNARA PROVENANCE"). These are PROVENANCE METADATA
+# ONLY - they are not execution evidence and must never be merged with
+# Evidence Manifest v1. The manual delivery manifest identifier refers to
+# the business-rule delivery channel, NOT to a repository evidence
+# manifest.
+# ---------------------------------------------------------------------------
+
+# geography_rule_summary.md SHA-256 (company-provided value; the physical
+# file is not present in this repository and the hash could not be
+# re-computed locally):
+SP1_GEOGRAPHY_RULE_SUMMARY_SHA256 = (
+    "410bbf294e20692db616962884523bd3ef67d13c3bef0771ac9b92d4c2b0b708"
+)
+# Manual delivery manifest identifier (provenance only, NOT execution
+# evidence and NOT Evidence Manifest v1):
+SP1_MANUAL_DELIVERY_MANIFEST = "manual_delivery_v1"
+# Recipient receipt of the manual delivery: not verified.
+SP1_RECIPIENT_RECEIPT = "NOT VERIFIED"
+
+# ---------------------------------------------------------------------------
 # Authoritative state allowlist (verbatim from the company contract;
 # territories and military codes are included).
 # ---------------------------------------------------------------------------

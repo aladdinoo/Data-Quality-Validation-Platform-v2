@@ -1,0 +1,42 @@
+==============================================================================
+DL001-DL015 DERIVED DIVERGENCE ANALYSIS (forensic, read-only)
+Authoritative table tests/golden/dl_geography_cases.csv: ABSENT
+DL test module: 7 tests skip-gated by design (gate preserved)
+==============================================================================
+
+case    st   zip       | V1 (prefix map)      | canonical (derived)  | verdict
+------------------------------------------------------------------------------
+DL001   CA   00USA     | (a=1, m=1)           | (a=0, m=0)           | DISAGREE [assessable, mismatch]
+DL002   TX   0         | (a=1, m=1)           | (a=0, m=0)           | DISAGREE [assessable, mismatch]
+DL003   MD   000MD     | (a=1, m=1)           | (a=0, m=0)           | DISAGREE [assessable, mismatch]
+DL004   ON   K2H 8E9   | (a=0, m=0)           | (a=0, m=0)           | AGREE
+DL008   63   <zip-inv~ | (a=0, m=0)           | (a=0, m=0)           | AGREE
+DL009   60   <zip-inv~ | (a=0, m=0)           | (a=0, m=0)           | AGREE
+DL010   MA   015 8     | (a=1, m=0)           | (a=0, m=0)           | DISAGREE [assessable]
+DL011   WA   99501     | (a=1, m=0)           | (a=1, m=1)           | DISAGREE [mismatch]
+DL012   HI   96501     | (a=1, m=0)           | (a=1, m=1)           | DISAGREE [mismatch]
+DL013   UT   84501     | (a=1, m=0)           | (a=1, m=0)           | AGREE
+DL014   GU   96910     | (a=0, m=0)           | (a=1, m=0)           | DISAGREE [assessable]
+DL015   AS   96799     | (a=0, m=0)           | (a=1, m=0)           | DISAGREE [assessable]
+------------------------------------------------------------------------------
+Exact cases analyzed: 12 | derived disagreements: 8 | agreements: 4
+Disagreements: DL001, DL002, DL003, DL010, DL011, DL012, DL014, DL015
+Agreements:    DL004, DL008, DL009, DL013
+
+Unspecified cases (exact values never delivered):
+  DL005: blank/non-US state case (exact value not specified)
+    -> blank state: V1 = (0,0) and canonical = (0,0) for EVERY zip (zip-invariance proven); a non-US two-letter state (e.g. ON) is likewise unassessable in both -> AGREE under either reading.
+  DL007: NULL/string-null case (exact value not specified)
+    -> state 'null' string: V1 not in prefix map -> (0,0); canonical invalid_state_format (4 letters) -> (0,0); missing/NULL state: (0,0) in both -> AGREE under either reading, zip-invariant.
+  DL006: six-digit/non-US format case (exact values not specified)
+    -> agreement depends on the (unspecified) state value: valid-US-state -> DISAGREE; non-US/blank/numeric state -> AGREE. The authoritative '8 of 15' disagreement count is consistent with DL006 ONLY under the AGREE branch (non-US state), which is also consistent with the case description 'six-digit/non-US format'.
+
+DL013 CONTROL CASE: canonical mismatch=0, V1 agrees=True -> shared-prefix control HOLDS (84501 -> UT is not auto-erroneous)
+
+Repository-recorded authoritative count: 8 of 15 (PRESERVED)
+Derived count from the 12 specified cases: 8 of 12
+Consistency: the authoritative 8-of-15 is exactly reproduced if
+DL005/DL007 (provably agree) and DL006 (agree iff non-US state)
+also agree - consistent with the recorded case descriptions.
+The authoritative count itself remains NOT VERIFIED against the
+external DL table (never delivered to this repository).

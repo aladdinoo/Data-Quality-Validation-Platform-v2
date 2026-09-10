@@ -1,0 +1,30 @@
+$ python -m pytest -q (full suite)
+........................................                                 [100%]
+391 passed, 9 skipped in 4.92s
+
+$ python -m pytest tests/unit/test_sp1_geography_contract.py tests/unit/test_sp1_successor_contract_validation.py -q (SP1 targeted)
+132 passed in 0.32s
+
+$ python -m pytest tests/unit/test_rules.py -q (V1 rules regression)
+54 passed in 0.42s
+
+$ python -m pytest tests/golden/ -q (golden + acceptance + DL module)
+25 passed, 7 skipped in 0.32s
+
+$ python -m pytest tests/unit/ -q (unit)
+306 passed in 2.38s
+
+$ python -m pytest tests/contract/ -q (contract)
+22 passed in 0.18s
+
+$ python -m pytest tests/integration/ -q (integration)
+24 passed in 1.20s
+
+$ python -m pytest tests/security/ -q (security)
+6 passed in 0.07s
+
+$ python -m pytest tests/runtime/ -q (runtime)
+8 passed, 2 skipped in 1.09s
+
+$ python -m pytest tests/golden/test_dl_canonical_geography.py -q (DL module status)
+7 skipped in 0.07s

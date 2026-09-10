@@ -1,0 +1,109 @@
+{
+  "run_id": "final_3m_pass2",
+  "events": [
+    {
+      "event_type": "run_started",
+      "run_id": "final_3m_pass2",
+      "timestamp": "2026-09-10T16:26:30.081785+00:00",
+      "details": {
+        "source": "/home/z/my-project/dqvp-work/Data-Quality-Validation-Platform-v2/data/generated/final_3m/consumer_3m_seed_20260910_pass2.csv"
+      }
+    },
+    {
+      "event_type": "schema_validated",
+      "run_id": "final_3m_pass2",
+      "timestamp": "2026-09-10T16:26:30.081927+00:00",
+      "details": {
+        "schema_hash": "",
+        "errors": []
+      }
+    },
+    {
+      "event_type": "rules_loaded",
+      "run_id": "final_3m_pass2",
+      "timestamp": "2026-09-10T16:26:30.082019+00:00",
+      "details": {
+        "rule_count": 8,
+        "registry_hash": "2b9130fdcc656d32191b122e6ea863c3dc228f20679827ba7dde7f4749273192"
+      }
+    },
+    {
+      "event_type": "validation_started",
+      "run_id": "final_3m_pass2",
+      "timestamp": "2026-09-10T16:26:30.082034+00:00",
+      "details": {
+        "row_count": 0
+      }
+    },
+    {
+      "event_type": "reconciliation_completed",
+      "run_id": "final_3m_pass2",
+      "timestamp": "2026-09-10T16:28:49.032657+00:00",
+      "details": {
+        "passed": true,
+        "details": {
+          "passed": true,
+          "errors": [],
+          "input_row_count": 3000000,
+          "output_row_count": 3000000,
+          "flag_counts": {
+            "first_name_cleaning_candidate": 475812,
+            "last_name_cleaning_candidate": 239623,
+            "name_cleaning_candidate": 3322,
+            "email_blank": 239249,
+            "email_syntax_failure": 269952,
+            "proposed_email_export_eligible": 2490799,
+            "zip_state_assessable": 2770129,
+            "geography_mismatch_candidate": 397033
+          }
+        }
+      }
+    },
+    {
+      "event_type": "monitoring_completed",
+      "run_id": "final_3m_pass2",
+      "timestamp": "2026-09-10T16:28:49.033859+00:00",
+      "details": {
+        "overall_score": 0.8745,
+        "sla_passed": false
+      }
+    },
+    {
+      "event_type": "validation_completed",
+      "run_id": "final_3m_pass2",
+      "timestamp": "2026-09-10T16:28:49.034038+00:00",
+      "details": {
+        "input_rows": 3000000,
+        "output_rows": 3000000,
+        "flag_counts": {
+          "first_name_cleaning_candidate": 475812,
+          "last_name_cleaning_candidate": 239623,
+          "name_cleaning_candidate": 3322,
+          "email_blank": 239249,
+          "email_syntax_failure": 269952,
+          "proposed_email_export_eligible": 2490799,
+          "zip_state_assessable": 2770129,
+          "geography_mismatch_candidate": 397033
+        },
+        "duration_seconds": 114.5136661529541
+      }
+    },
+    {
+      "event_type": "output_written",
+      "run_id": "final_3m_pass2",
+      "timestamp": "2026-09-10T16:28:49.034043+00:00",
+      "details": {
+        "path": "/home/z/my-project/dqvp-work/Data-Quality-Validation-Platform-v2/data/generated/final_3m/consumer_3m_seed_20260910_pass2_out.csv",
+        "rows": 3000000
+      }
+    },
+    {
+      "event_type": "lineage_recorded",
+      "run_id": "final_3m_pass2",
+      "timestamp": "2026-09-10T16:28:49.036526+00:00",
+      "details": {
+        "path": "/home/z/my-project/dqvp-work/Data-Quality-Validation-Platform-v2/evidence/final_3m_validation/pass2_engine/lineage.json"
+      }
+    }
+  ]
+}

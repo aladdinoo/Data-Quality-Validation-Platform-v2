@@ -1,0 +1,39 @@
+=== POST-CHANGE FULL SUITE ===
+414 passed, 9 skipped in 5.28s
+
+=== SP1 targeted (132 expected) ===
+132 passed in 0.31s
+
+=== V1 rules regression (54 expected) ===
+54 passed in 0.43s
+
+=== acceptance cases (7/7 within SP1 suite) ===
+7 passed in 0.15s
+
+=== hardening tripwires (23 expected) ===
+23 passed in 0.55s
+
+=== golden + preservation ===
+25 passed, 7 skipped in 0.37s
+
+=== safety scan re-run ===
+ - CLICKHOUSE CLIENT LIB: tests/unit/test_final_3m_hardening.py
+ - CONN-LIKE LINE .env.example: 'DQ_CLICKHOUSE_HOST=localhost'
+ - CONN-LIKE LINE .env.example: 'DQ_CLICKHOUSE_PORT=8123'
+ - CONN-LIKE LINE configs/quality.yaml: 'port: 8123'
+
+NOTE on safety scan finding "CLICKHOUSE CLIENT LIB: tests/unit/test_final_3m_hardening.py":
+false positive of the raw scanner — that TEST file contains the literal detection
+patterns ("clickhouse_connect", "clickhouse_driver") inside its DANGEROUS_PATTERNS
+tuple, which it uses to SCAN the production packages for those exact strings.
+Production packages (data_quality_platform/, runner/) remain 100% clean; the
+tripwire test itself asserts zero hits in production code and passed (23/23).
+The three .env.example / quality.yaml lines are the same pre-existing inert
+documentation placeholders already documented in phase1_safety_scan.txt.
+OK  data_quality_platform/rules/v1_rules.py
+OK  data_quality_platform/rules/registry.py
+OK  data_quality_platform/contracts.py
+OK  tests/golden/golden_cases.csv
+OK  tests/golden/expected_results.csv
+OK  tests/golden/geography_edge_cases.csv
+V1 FROZEN (final): PASS

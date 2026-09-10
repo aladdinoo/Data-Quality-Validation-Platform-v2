@@ -1,0 +1,87 @@
+{
+  "report": "FINAL 3M VALIDATION RESULTS",
+  "generated_utc": "2026-09-10T16:30:04Z",
+  "rows": 3000000,
+  "columns": 33,
+  "output_columns": 41,
+  "seed": 20260910,
+  "input_sha256": "208154653ca965dd50a27c8a7b42e59ef2c7d65e6353ffb1d156b8c3029f1a6f",
+  "output_sha256": "b02872e3ee0a1471c369793a76e292758e339a199ef7253c84d91152f657af69",
+  "input_size_bytes": 734288183,
+  "output_size_bytes": 782288380,
+  "runtime_seconds": 573.965,
+  "runtime_note": "sum of staged phase runtimes (generation+validation+verify per pass)",
+  "stage_runtime_seconds": {
+    "generation_pass1": 82.59,
+    "validation_pass1": 138.007,
+    "verify_oracle_pass1": 66.068,
+    "generation_pass2": 81.437,
+    "validation_pass2": 140.84,
+    "verify_oracle_pass2": 65.023
+  },
+  "peak_memory_mb": 2226.79,
+  "peak_memory_note": "engine subprocess peak RSS via resource.getrusage(RUSAGE_CHILDREN) measured post-exit in the validate phase (authoritative); harness verify-process peak was 19.6 MB",
+  "oracle_comparisons": 24000000,
+  "oracle_mismatches": 0,
+  "mismatches_by_rule": {
+    "first_name_cleaning_candidate": 0,
+    "last_name_cleaning_candidate": 0,
+    "name_cleaning_candidate": 0,
+    "email_blank": 0,
+    "email_syntax_failure": 0,
+    "proposed_email_export_eligible": 0,
+    "zip_state_assessable": 0,
+    "geography_mismatch_candidate": 0
+  },
+  "first_mismatches": [],
+  "flag_totals_output_csv": {
+    "first_name_cleaning_candidate": 475812,
+    "last_name_cleaning_candidate": 239623,
+    "name_cleaning_candidate": 3322,
+    "email_blank": 239249,
+    "email_syntax_failure": 269952,
+    "proposed_email_export_eligible": 2490799,
+    "zip_state_assessable": 2770129,
+    "geography_mismatch_candidate": 397033
+  },
+  "flag_totals_engine_cli": "[ALERT WARNING] sla_breach: SLA breach for completeness: score=0.8606, threshold=0.95\n[ALERT WARNING] sla_breach: SLA breach for validity: score=0.8303, threshold=0.95\n[ALERT WARNING] sla_breach: SLA breach for consistency: score=0.8567, threshold=0.9\n[ALERT WARNING] sla_breach: SLA breach for accuracy: score=0.7615, threshold=0.9\n[ALERT WARNING] sla_breach: SLA breach for geography_quality: score=0.8567, threshold=0.9\n[ALERT WARNING] sla_breach: SLA breach for email_quality: score=0.8303, threshold=0.95\nValidation PASSED: 3000000 rows in, 3000000 rows out\n  Run ID: final_3m_pass1\n  Duration: 113.77s\n  Monitoring score: 0.8745\n  SLA passed: False\n  Reconciliation passed: True\n  Evidence: /home/z/my-project/dqvp-work/Data-Quality-Validation-Platform-v2/evidence/final_3m_validation/pass1_engine\n    first_name_cleaning_candidate: 475812\n    last_name_cleaning_candidate: 239623\n    name_cleaning_candidate: 3322\n    email_blank: 239249\n    email_syntax_failure: 269952\n    proposed_email_export_eligible: 2490799\n    zip_state_assessable: 2770129\n    geography_mismatch_candidate: 397033\n",
+  "schema_status": "PASS",
+  "preservation_status": "PASS",
+  "determinism_status": "PASS (byte-identical on repeated execution)",
+  "determinism_detail": {
+    "input_hash_equal": true,
+    "output_hash_equal": true,
+    "byte_identical_output": true
+  },
+  "safety_status": "PASS \u2014 no ClickHouse, no network, no production data, no credentials, no mutations; production path exercised only via local CLI subprocess on synthetic data",
+  "sp1_isolation_status": "PASS",
+  "sp1_isolation_detail": {
+    "status": "PASS",
+    "rules_in_manifest": [
+      "email_blank",
+      "email_syntax_failure",
+      "first_name_cleaning_candidate",
+      "geography_mismatch_candidate",
+      "last_name_cleaning_candidate",
+      "name_cleaning_candidate",
+      "proposed_email_export_eligible",
+      "zip_state_assessable"
+    ]
+  },
+  "cli_verdict": "Validation PASSED",
+  "final_status": "PASS",
+  "environment": {
+    "python": "3.12.14",
+    "os": "linux"
+  },
+  "pass2": {
+    "dataset_sha256": "208154653ca965dd50a27c8a7b42e59ef2c7d65e6353ffb1d156b8c3029f1a6f",
+    "output_sha256": "b02872e3ee0a1471c369793a76e292758e339a199ef7253c84d91152f657af69",
+    "cli_returncode": 0,
+    "oracle_mismatches": 0
+  },
+  "pass2_files_removed_after_byte_identical_proof": [
+    "/home/z/my-project/dqvp-work/Data-Quality-Validation-Platform-v2/data/generated/final_3m/consumer_3m_seed_20260910_pass2.csv",
+    "/home/z/my-project/dqvp-work/Data-Quality-Validation-Platform-v2/data/generated/final_3m/consumer_3m_seed_20260910_pass2_out.csv"
+  ]
+}

@@ -1,0 +1,11 @@
+NON-TEST importers of the geography (SP1 successor) package: []
+registry ids == 8 V1 rules only: True ['email_blank', 'email_syntax_failure', 'first_name_cleaning_candidate', 'geography_mismatch_candidate', 'last_name_cleaning_candidate', 'name_cleaning_candidate', 'proposed_email_export_eligible', 'zip_state_assessable']
+engine imports geography: True
+engine imports registry: True
+SP1/GEOGRAPHY reference in runner/cli.py
+quality.yaml mentions sp1/geography/canonical: True
+
+FINDINGS (potential issues):
+ - CONN-LIKE LINE .env.example: 'DQ_CLICKHOUSE_HOST=localhost'
+ - CONN-LIKE LINE .env.example: 'DQ_CLICKHOUSE_PORT=8123'
+ - CONN-LIKE LINE configs/quality.yaml: 'port: 8123'

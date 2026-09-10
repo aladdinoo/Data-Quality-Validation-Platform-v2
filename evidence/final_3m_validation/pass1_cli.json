@@ -1,0 +1,16 @@
+{
+  "pass": "pass1",
+  "cli": {
+    "command": "/home/z/.venv/bin/python -m runner.cli validate --csv /home/z/my-project/dqvp-work/Data-Quality-Validation-Platform-v2/data/generated/final_3m/consumer_3m_seed_20260910_pass1.csv --output /home/z/my-project/dqvp-work/Data-Quality-Validation-Platform-v2/data/generated/final_3m/consumer_3m_seed_20260910_pass1_out.csv --run-id final_3m_pass1 --evidence-dir /home/z/my-project/dqvp-work/Data-Quality-Validation-Platform-v2/evidence/final_3m_validation/pass1_engine",
+    "returncode": 0,
+    "stdout": "[ALERT WARNING] sla_breach: SLA breach for completeness: score=0.8606, threshold=0.95\n[ALERT WARNING] sla_breach: SLA breach for validity: score=0.8303, threshold=0.95\n[ALERT WARNING] sla_breach: SLA breach for consistency: score=0.8567, threshold=0.9\n[ALERT WARNING] sla_breach: SLA breach for accuracy: score=0.7615, threshold=0.9\n[ALERT WARNING] sla_breach: SLA breach for geography_quality: score=0.8567, threshold=0.9\n[ALERT WARNING] sla_breach: SLA breach for email_quality: score=0.8303, threshold=0.95\nValidation PASSED: 3000000 rows in, 3000000 rows out\n  Run ID: final_3m_pass1\n  Duration: 113.77s\n  Monitoring score: 0.8745\n  SLA passed: False\n  Reconciliation passed: True\n  Evidence: /home/z/my-project/dqvp-work/Data-Quality-Validation-Platform-v2/evidence/final_3m_validation/pass1_engine\n    first_name_cleaning_candidate: 475812\n    last_name_cleaning_candidate: 239623\n    name_cleaning_candidate: 3322\n    email_blank: 239249\n    email_syntax_failure: 269952\n    proposed_email_export_eligible: 2490799\n    zip_state_assessable: 2770129\n    geography_mismatch_candidate: 397033\n",
+    "stderr": "<frozen runpy>:128: RuntimeWarning: 'runner.cli' found in sys.modules after import of package 'runner', but prior to execution of 'runner.cli'; this may result in unpredictable behaviour\n",
+    "duration_seconds": 138.007
+  },
+  "output_path": "/home/z/my-project/dqvp-work/Data-Quality-Validation-Platform-v2/data/generated/final_3m/consumer_3m_seed_20260910_pass1_out.csv",
+  "output_size_bytes": 782288380,
+  "output_sha256": "b02872e3ee0a1471c369793a76e292758e339a199ef7253c84d91152f657af69",
+  "input_sha256_after_validation": "208154653ca965dd50a27c8a7b42e59ef2c7d65e6353ffb1d156b8c3029f1a6f",
+  "engine_evidence_dir": "/home/z/my-project/dqvp-work/Data-Quality-Validation-Platform-v2/evidence/final_3m_validation/pass1_engine",
+  "engine_peak_rss_mb": 2226.79
+}

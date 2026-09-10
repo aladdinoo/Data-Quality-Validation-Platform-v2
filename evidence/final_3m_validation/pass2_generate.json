@@ -1,0 +1,10 @@
+{
+  "pass": "pass2",
+  "path": "/home/z/my-project/dqvp-work/Data-Quality-Validation-Platform-v2/data/generated/final_3m/consumer_3m_seed_20260910_pass2.csv",
+  "rows": 3000000,
+  "seed": 20260910,
+  "columns": 33,
+  "size_bytes": 734288183,
+  "sha256": "208154653ca965dd50a27c8a7b42e59ef2c7d65e6353ffb1d156b8c3029f1a6f",
+  "generation_seconds": 81.437
+}

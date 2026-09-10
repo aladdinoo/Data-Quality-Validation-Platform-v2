@@ -1,0 +1,347 @@
+========================================================================
+FINAL 3M VALIDATION — independent harness
+phase=generate rows=3,000,000 seed=20260910 pass_no=1 passes=2
+started_utc=2026-09-10T16:10:20Z
+========================================================================
+[pass1] GENERATE dataset (3,000,000 rows, seed 20260910) ...
+  generate: 250,000/3,000,000 rows (6.8s)
+  generate: 500,000/3,000,000 rows (13.7s)
+  generate: 750,000/3,000,000 rows (20.5s)
+  generate: 1,000,000/3,000,000 rows (27.4s)
+  generate: 1,250,000/3,000,000 rows (34.3s)
+  generate: 1,500,000/3,000,000 rows (41.2s)
+  generate: 1,750,000/3,000,000 rows (48.1s)
+  generate: 2,000,000/3,000,000 rows (55.0s)
+  generate: 2,250,000/3,000,000 rows (61.9s)
+  generate: 2,500,000/3,000,000 rows (68.8s)
+  generate: 2,750,000/3,000,000 rows (75.7s)
+  generate: 3,000,000/3,000,000 rows (82.6s)
+[pass1] dataset: 734,288,183 bytes, sha256=208154653ca965dd50a27c8a7b42e59ef2c7d65e6353ffb1d156b8c3029f1a6f, generated in 82.6s
+========================================================================
+FINAL 3M VALIDATION — independent harness
+phase=validate rows=3,000,000 seed=20260910 pass_no=1 passes=2
+started_utc=2026-09-10T16:11:51Z
+========================================================================
+[pass1] VALIDATE via production CLI subprocess ...
+[pass1] CLI exit=0 in 141.407s
+[pass1] CLI> [ALERT WARNING] sla_breach: SLA breach for completeness: score=0.8606, threshold=0.95
+[pass1] CLI> [ALERT WARNING] sla_breach: SLA breach for validity: score=0.8303, threshold=0.95
+[pass1] CLI> [ALERT WARNING] sla_breach: SLA breach for consistency: score=0.8567, threshold=0.9
+[pass1] CLI> [ALERT WARNING] sla_breach: SLA breach for accuracy: score=0.7615, threshold=0.9
+[pass1] CLI> [ALERT WARNING] sla_breach: SLA breach for geography_quality: score=0.8567, threshold=0.9
+[pass1] CLI> [ALERT WARNING] sla_breach: SLA breach for email_quality: score=0.8303, threshold=0.95
+[pass1] CLI> Validation PASSED: 3000000 rows in, 3000000 rows out
+[pass1] CLI>   Run ID: final_3m_pass1
+[pass1] CLI>   Duration: 115.80s
+[pass1] CLI>   Monitoring score: 0.8745
+[pass1] CLI>   SLA passed: False
+[pass1] CLI>   Reconciliation passed: True
+[pass1] CLI>   Evidence: /home/z/my-project/dqvp-work/Data-Quality-Validation-Platform-v2/evidence/final_3m_validation/pass1_engine
+[pass1] CLI>     first_name_cleaning_candidate: 475812
+[pass1] CLI>     last_name_cleaning_candidate: 239623
+[pass1] CLI>     name_cleaning_candidate: 3322
+[pass1] CLI>     email_blank: 239249
+[pass1] CLI>     email_syntax_failure: 269952
+[pass1] CLI>     proposed_email_export_eligible: 2490799
+[pass1] CLI>     zip_state_assessable: 2770129
+[pass1] CLI>     geography_mismatch_candidate: 397033
+[pass1] CLI(err)> <frozen runpy>:128: RuntimeWarning: 'runner.cli' found in sys.modules after import of package 'runner', but prior to execution of 'runner.cli'; this may result in unpredictable behaviour
+[pass1] output: 782,288,380 bytes, sha256=b02872e3ee0a1471c369793a76e292758e339a199ef7253c84d91152f657af69
+[pass1] source immutability: input hash before=208154653ca965dd after=208154653ca965dd -> UNCHANGED
+========================================================================
+FINAL 3M VALIDATION — independent harness
+phase=verify rows=3,000,000 seed=20260910 pass_no=1 passes=2
+started_utc=2026-09-10T16:14:24Z
+========================================================================
+[pass1] VERIFY + INDEPENDENT ORACLE (streaming 3,000,000 rows) ...
+  verify+oracle: 250,000 rows (5.4s, mismatches so far: 0)
+  verify+oracle: 500,000 rows (10.9s, mismatches so far: 0)
+  verify+oracle: 750,000 rows (16.3s, mismatches so far: 0)
+  verify+oracle: 1,000,000 rows (21.8s, mismatches so far: 0)
+  verify+oracle: 1,250,000 rows (27.2s, mismatches so far: 0)
+  verify+oracle: 1,500,000 rows (32.6s, mismatches so far: 0)
+  verify+oracle: 1,750,000 rows (38.1s, mismatches so far: 0)
+  verify+oracle: 2,000,000 rows (43.6s, mismatches so far: 0)
+  verify+oracle: 2,250,000 rows (49.0s, mismatches so far: 0)
+  verify+oracle: 2,500,000 rows (54.5s, mismatches so far: 0)
+  verify+oracle: 2,750,000 rows (59.9s, mismatches so far: 0)
+  verify+oracle: 3,000,000 rows (65.4s, mismatches so far: 0)
+[pass1]   schema_status: PASS
+[pass1]   row_count_status: PASS
+[pass1]   column_count_status: PASS
+[pass1]   column_order_status: PASS
+[pass1]   row_identity_status: PASS
+[pass1]   row_ordering_status: PASS
+[pass1]   source_values_preserved_status: PASS
+[pass1]   output_shape_status: PASS
+[pass1]   flag_domain_status: PASS
+[pass1]   oracle comparisons=24,000,000 mismatches=0
+[pass1] SP1 isolation (manifest rule set): PASS
+========================================================================
+FINAL 3M VALIDATION — independent harness
+phase=generate rows=3,000,000 seed=20260910 pass_no=2 passes=2
+started_utc=2026-09-10T16:15:41Z
+========================================================================
+[pass2] GENERATE dataset (3,000,000 rows, seed 20260910) ...
+  generate: 250,000/3,000,000 rows (6.9s)
+  generate: 500,000/3,000,000 rows (13.7s)
+  generate: 750,000/3,000,000 rows (20.4s)
+  generate: 1,000,000/3,000,000 rows (27.1s)
+  generate: 1,250,000/3,000,000 rows (34.0s)
+  generate: 1,500,000/3,000,000 rows (40.7s)
+  generate: 1,750,000/3,000,000 rows (47.7s)
+  generate: 2,000,000/3,000,000 rows (54.4s)
+  generate: 2,250,000/3,000,000 rows (61.3s)
+  generate: 2,500,000/3,000,000 rows (68.1s)
+  generate: 2,750,000/3,000,000 rows (74.9s)
+  generate: 3,000,000/3,000,000 rows (81.7s)
+[pass2] dataset: 734,288,183 bytes, sha256=208154653ca965dd50a27c8a7b42e59ef2c7d65e6353ffb1d156b8c3029f1a6f, generated in 81.7s
+========================================================================
+FINAL 3M VALIDATION — independent harness
+phase=validate rows=3,000,000 seed=20260910 pass_no=2 passes=2
+started_utc=2026-09-10T16:17:03Z
+========================================================================
+[pass2] VALIDATE via production CLI subprocess ...
+[pass2] CLI exit=0 in 138.356s
+[pass2] CLI> [ALERT WARNING] sla_breach: SLA breach for completeness: score=0.8606, threshold=0.95
+[pass2] CLI> [ALERT WARNING] sla_breach: SLA breach for validity: score=0.8303, threshold=0.95
+[pass2] CLI> [ALERT WARNING] sla_breach: SLA breach for consistency: score=0.8567, threshold=0.9
+[pass2] CLI> [ALERT WARNING] sla_breach: SLA breach for accuracy: score=0.7615, threshold=0.9
+[pass2] CLI> [ALERT WARNING] sla_breach: SLA breach for geography_quality: score=0.8567, threshold=0.9
+[pass2] CLI> [ALERT WARNING] sla_breach: SLA breach for email_quality: score=0.8303, threshold=0.95
+[pass2] CLI> Validation PASSED: 3000000 rows in, 3000000 rows out
+[pass2] CLI>   Run ID: final_3m_pass2
+[pass2] CLI>   Duration: 113.27s
+[pass2] CLI>   Monitoring score: 0.8745
+[pass2] CLI>   SLA passed: False
+[pass2] CLI>   Reconciliation passed: True
+[pass2] CLI>   Evidence: /home/z/my-project/dqvp-work/Data-Quality-Validation-Platform-v2/evidence/final_3m_validation/pass2_engine
+[pass2] CLI>     first_name_cleaning_candidate: 475812
+[pass2] CLI>     last_name_cleaning_candidate: 239623
+[pass2] CLI>     name_cleaning_candidate: 3322
+[pass2] CLI>     email_blank: 239249
+[pass2] CLI>     email_syntax_failure: 269952
+[pass2] CLI>     proposed_email_export_eligible: 2490799
+[pass2] CLI>     zip_state_assessable: 2770129
+[pass2] CLI>     geography_mismatch_candidate: 397033
+[pass2] CLI(err)> <frozen runpy>:128: RuntimeWarning: 'runner.cli' found in sys.modules after import of package 'runner', but prior to execution of 'runner.cli'; this may result in unpredictable behaviour
+[pass2] output: 782,288,380 bytes, sha256=b02872e3ee0a1471c369793a76e292758e339a199ef7253c84d91152f657af69
+[pass2] source immutability: input hash before=208154653ca965dd after=208154653ca965dd -> UNCHANGED
+========================================================================
+FINAL 3M VALIDATION — independent harness
+phase=verify rows=3,000,000 seed=20260910 pass_no=2 passes=2
+started_utc=2026-09-10T16:19:29Z
+========================================================================
+[pass2] VERIFY + INDEPENDENT ORACLE (streaming 3,000,000 rows) ...
+  verify+oracle: 250,000 rows (5.5s, mismatches so far: 0)
+  verify+oracle: 500,000 rows (10.9s, mismatches so far: 0)
+  verify+oracle: 750,000 rows (16.3s, mismatches so far: 0)
+  verify+oracle: 1,000,000 rows (21.8s, mismatches so far: 0)
+  verify+oracle: 1,250,000 rows (27.3s, mismatches so far: 0)
+  verify+oracle: 1,500,000 rows (32.7s, mismatches so far: 0)
+  verify+oracle: 1,750,000 rows (38.2s, mismatches so far: 0)
+  verify+oracle: 2,000,000 rows (43.6s, mismatches so far: 0)
+  verify+oracle: 2,250,000 rows (49.1s, mismatches so far: 0)
+  verify+oracle: 2,500,000 rows (54.5s, mismatches so far: 0)
+  verify+oracle: 2,750,000 rows (60.0s, mismatches so far: 0)
+  verify+oracle: 3,000,000 rows (65.5s, mismatches so far: 0)
+[pass2]   schema_status: PASS
+[pass2]   row_count_status: PASS
+[pass2]   column_count_status: PASS
+[pass2]   column_order_status: PASS
+[pass2]   row_identity_status: PASS
+[pass2]   row_ordering_status: PASS
+[pass2]   source_values_preserved_status: PASS
+[pass2]   output_shape_status: PASS
+[pass2]   flag_domain_status: PASS
+[pass2]   oracle comparisons=24,000,000 mismatches=0
+[pass2] SP1 isolation (manifest rule set): PASS
+========================================================================
+FINAL 3M VALIDATION — independent harness
+phase=finalize rows=3,000,000 seed=20260910 pass_no=1 passes=2
+started_utc=2026-09-10T16:20:35Z
+========================================================================
+DETERMINISM: input_hash_equal=True output_hash_equal=True byte_identical_output=True
+FINAL_RESULTS.json written (atomic): /home/z/my-project/dqvp-work/Data-Quality-Validation-Platform-v2/evidence/final_3m_validation/FINAL_RESULTS.json
+pass2 bulk CSVs removed after byte-identity proof: ['/home/z/my-project/dqvp-work/Data-Quality-Validation-Platform-v2/data/generated/final_3m/consumer_3m_seed_20260910_pass2.csv', '/home/z/my-project/dqvp-work/Data-Quality-Validation-Platform-v2/data/generated/final_3m/consumer_3m_seed_20260910_pass2_out.csv']
+========================================================================
+FINAL 3M VALIDATION SUMMARY
+  final_status: PASS
+  rows: 3,000,000  columns: 33 -> 41
+  seed: 20260910
+  input_sha256:  208154653ca965dd50a27c8a7b42e59ef2c7d65e6353ffb1d156b8c3029f1a6f
+  output_sha256: b02872e3ee0a1471c369793a76e292758e339a199ef7253c84d91152f657af69
+  runtime_seconds: 574.949
+  peak_memory_mb: 18.08
+  oracle_comparisons: 24,000,000
+  oracle_mismatches: 0
+  determinism_status: PASS (byte-identical on repeated execution)
+  schema_status: PASS
+  preservation_status: PASS
+  sp1_isolation_status: PASS
+========================================================================
+========================================================================
+FINAL 3M VALIDATION — independent harness
+phase=validate rows=3,000,000 seed=20260910 pass_no=1 passes=2
+started_utc=2026-09-10T16:21:35Z
+========================================================================
+[pass1] VALIDATE via production CLI subprocess ...
+[pass1] CLI exit=0 in 138.007s
+[pass1] CLI> [ALERT WARNING] sla_breach: SLA breach for completeness: score=0.8606, threshold=0.95
+[pass1] CLI> [ALERT WARNING] sla_breach: SLA breach for validity: score=0.8303, threshold=0.95
+[pass1] CLI> [ALERT WARNING] sla_breach: SLA breach for consistency: score=0.8567, threshold=0.9
+[pass1] CLI> [ALERT WARNING] sla_breach: SLA breach for accuracy: score=0.7615, threshold=0.9
+[pass1] CLI> [ALERT WARNING] sla_breach: SLA breach for geography_quality: score=0.8567, threshold=0.9
+[pass1] CLI> [ALERT WARNING] sla_breach: SLA breach for email_quality: score=0.8303, threshold=0.95
+[pass1] CLI> Validation PASSED: 3000000 rows in, 3000000 rows out
+[pass1] CLI>   Run ID: final_3m_pass1
+[pass1] CLI>   Duration: 113.77s
+[pass1] CLI>   Monitoring score: 0.8745
+[pass1] CLI>   SLA passed: False
+[pass1] CLI>   Reconciliation passed: True
+[pass1] CLI>   Evidence: /home/z/my-project/dqvp-work/Data-Quality-Validation-Platform-v2/evidence/final_3m_validation/pass1_engine
+[pass1] CLI>     first_name_cleaning_candidate: 475812
+[pass1] CLI>     last_name_cleaning_candidate: 239623
+[pass1] CLI>     name_cleaning_candidate: 3322
+[pass1] CLI>     email_blank: 239249
+[pass1] CLI>     email_syntax_failure: 269952
+[pass1] CLI>     proposed_email_export_eligible: 2490799
+[pass1] CLI>     zip_state_assessable: 2770129
+[pass1] CLI>     geography_mismatch_candidate: 397033
+[pass1] CLI(err)> <frozen runpy>:128: RuntimeWarning: 'runner.cli' found in sys.modules after import of package 'runner', but prior to execution of 'runner.cli'; this may result in unpredictable behaviour
+[pass1] engine peak RSS (RUSAGE_CHILDREN, post-exit): 2226.79 MB
+[pass1] output: 782,288,380 bytes, sha256=b02872e3ee0a1471c369793a76e292758e339a199ef7253c84d91152f657af69
+[pass1] source immutability: input hash before=208154653ca965dd after=208154653ca965dd -> UNCHANGED
+========================================================================
+FINAL 3M VALIDATION — independent harness
+phase=verify rows=3,000,000 seed=20260910 pass_no=1 passes=2
+started_utc=2026-09-10T16:23:55Z
+========================================================================
+[pass1] VERIFY + INDEPENDENT ORACLE (streaming 3,000,000 rows) ...
+  verify+oracle: 250,000 rows (5.4s, mismatches so far: 0)
+  verify+oracle: 500,000 rows (11.0s, mismatches so far: 0)
+  verify+oracle: 750,000 rows (16.5s, mismatches so far: 0)
+  verify+oracle: 1,000,000 rows (22.0s, mismatches so far: 0)
+  verify+oracle: 1,250,000 rows (27.5s, mismatches so far: 0)
+  verify+oracle: 1,500,000 rows (33.0s, mismatches so far: 0)
+  verify+oracle: 1,750,000 rows (38.5s, mismatches so far: 0)
+  verify+oracle: 2,000,000 rows (43.9s, mismatches so far: 0)
+  verify+oracle: 2,250,000 rows (49.5s, mismatches so far: 0)
+  verify+oracle: 2,500,000 rows (55.0s, mismatches so far: 0)
+  verify+oracle: 2,750,000 rows (60.5s, mismatches so far: 0)
+  verify+oracle: 3,000,000 rows (66.1s, mismatches so far: 0)
+[pass1]   schema_status: PASS
+[pass1]   row_count_status: PASS
+[pass1]   column_count_status: PASS
+[pass1]   column_order_status: PASS
+[pass1]   row_identity_status: PASS
+[pass1]   row_ordering_status: PASS
+[pass1]   source_values_preserved_status: PASS
+[pass1]   output_shape_status: PASS
+[pass1]   flag_domain_status: PASS
+[pass1]   oracle comparisons=24,000,000 mismatches=0
+[pass1] SP1 isolation (manifest rule set): PASS
+========================================================================
+FINAL 3M VALIDATION — independent harness
+phase=generate rows=3,000,000 seed=20260910 pass_no=2 passes=2
+started_utc=2026-09-10T16:25:07Z
+========================================================================
+[pass2] GENERATE dataset (3,000,000 rows, seed 20260910) ...
+  generate: 250,000/3,000,000 rows (6.8s)
+  generate: 500,000/3,000,000 rows (13.5s)
+  generate: 750,000/3,000,000 rows (20.2s)
+  generate: 1,000,000/3,000,000 rows (26.9s)
+  generate: 1,250,000/3,000,000 rows (33.8s)
+  generate: 1,500,000/3,000,000 rows (40.6s)
+  generate: 1,750,000/3,000,000 rows (47.4s)
+  generate: 2,000,000/3,000,000 rows (54.2s)
+  generate: 2,250,000/3,000,000 rows (61.1s)
+  generate: 2,500,000/3,000,000 rows (67.9s)
+  generate: 2,750,000/3,000,000 rows (74.7s)
+  generate: 3,000,000/3,000,000 rows (81.4s)
+[pass2] dataset: 734,288,183 bytes, sha256=208154653ca965dd50a27c8a7b42e59ef2c7d65e6353ffb1d156b8c3029f1a6f, generated in 81.4s
+========================================================================
+FINAL 3M VALIDATION — independent harness
+phase=validate rows=3,000,000 seed=20260910 pass_no=2 passes=2
+started_utc=2026-09-10T16:26:29Z
+========================================================================
+[pass2] VALIDATE via production CLI subprocess ...
+[pass2] CLI exit=0 in 140.84s
+[pass2] CLI> [ALERT WARNING] sla_breach: SLA breach for completeness: score=0.8606, threshold=0.95
+[pass2] CLI> [ALERT WARNING] sla_breach: SLA breach for validity: score=0.8303, threshold=0.95
+[pass2] CLI> [ALERT WARNING] sla_breach: SLA breach for consistency: score=0.8567, threshold=0.9
+[pass2] CLI> [ALERT WARNING] sla_breach: SLA breach for accuracy: score=0.7615, threshold=0.9
+[pass2] CLI> [ALERT WARNING] sla_breach: SLA breach for geography_quality: score=0.8567, threshold=0.9
+[pass2] CLI> [ALERT WARNING] sla_breach: SLA breach for email_quality: score=0.8303, threshold=0.95
+[pass2] CLI> Validation PASSED: 3000000 rows in, 3000000 rows out
+[pass2] CLI>   Run ID: final_3m_pass2
+[pass2] CLI>   Duration: 114.51s
+[pass2] CLI>   Monitoring score: 0.8745
+[pass2] CLI>   SLA passed: False
+[pass2] CLI>   Reconciliation passed: True
+[pass2] CLI>   Evidence: /home/z/my-project/dqvp-work/Data-Quality-Validation-Platform-v2/evidence/final_3m_validation/pass2_engine
+[pass2] CLI>     first_name_cleaning_candidate: 475812
+[pass2] CLI>     last_name_cleaning_candidate: 239623
+[pass2] CLI>     name_cleaning_candidate: 3322
+[pass2] CLI>     email_blank: 239249
+[pass2] CLI>     email_syntax_failure: 269952
+[pass2] CLI>     proposed_email_export_eligible: 2490799
+[pass2] CLI>     zip_state_assessable: 2770129
+[pass2] CLI>     geography_mismatch_candidate: 397033
+[pass2] CLI(err)> <frozen runpy>:128: RuntimeWarning: 'runner.cli' found in sys.modules after import of package 'runner', but prior to execution of 'runner.cli'; this may result in unpredictable behaviour
+[pass2] engine peak RSS (RUSAGE_CHILDREN, post-exit): 2222.93 MB
+[pass2] output: 782,288,380 bytes, sha256=b02872e3ee0a1471c369793a76e292758e339a199ef7253c84d91152f657af69
+[pass2] source immutability: input hash before=208154653ca965dd after=208154653ca965dd -> UNCHANGED
+========================================================================
+FINAL 3M VALIDATION — independent harness
+phase=verify rows=3,000,000 seed=20260910 pass_no=2 passes=2
+started_utc=2026-09-10T16:28:52Z
+========================================================================
+[pass2] VERIFY + INDEPENDENT ORACLE (streaming 3,000,000 rows) ...
+  verify+oracle: 250,000 rows (5.4s, mismatches so far: 0)
+  verify+oracle: 500,000 rows (10.9s, mismatches so far: 0)
+  verify+oracle: 750,000 rows (16.4s, mismatches so far: 0)
+  verify+oracle: 1,000,000 rows (21.7s, mismatches so far: 0)
+  verify+oracle: 1,250,000 rows (27.1s, mismatches so far: 0)
+  verify+oracle: 1,500,000 rows (32.5s, mismatches so far: 0)
+  verify+oracle: 1,750,000 rows (37.9s, mismatches so far: 0)
+  verify+oracle: 2,000,000 rows (43.4s, mismatches so far: 0)
+  verify+oracle: 2,250,000 rows (48.8s, mismatches so far: 0)
+  verify+oracle: 2,500,000 rows (54.2s, mismatches so far: 0)
+  verify+oracle: 2,750,000 rows (59.6s, mismatches so far: 0)
+  verify+oracle: 3,000,000 rows (65.0s, mismatches so far: 0)
+[pass2]   schema_status: PASS
+[pass2]   row_count_status: PASS
+[pass2]   column_count_status: PASS
+[pass2]   column_order_status: PASS
+[pass2]   row_identity_status: PASS
+[pass2]   row_ordering_status: PASS
+[pass2]   source_values_preserved_status: PASS
+[pass2]   output_shape_status: PASS
+[pass2]   flag_domain_status: PASS
+[pass2]   oracle comparisons=24,000,000 mismatches=0
+[pass2] SP1 isolation (manifest rule set): PASS
+========================================================================
+FINAL 3M VALIDATION — independent harness
+phase=finalize rows=3,000,000 seed=20260910 pass_no=1 passes=2
+started_utc=2026-09-10T16:30:02Z
+========================================================================
+DETERMINISM: input_hash_equal=True output_hash_equal=True byte_identical_output=True
+FINAL_RESULTS.json written (atomic): /home/z/my-project/dqvp-work/Data-Quality-Validation-Platform-v2/evidence/final_3m_validation/FINAL_RESULTS.json
+pass2 bulk CSVs removed after byte-identity proof: ['/home/z/my-project/dqvp-work/Data-Quality-Validation-Platform-v2/data/generated/final_3m/consumer_3m_seed_20260910_pass2.csv', '/home/z/my-project/dqvp-work/Data-Quality-Validation-Platform-v2/data/generated/final_3m/consumer_3m_seed_20260910_pass2_out.csv']
+========================================================================
+FINAL 3M VALIDATION SUMMARY
+  final_status: PASS
+  rows: 3,000,000  columns: 33 -> 41
+  seed: 20260910
+  input_sha256:  208154653ca965dd50a27c8a7b42e59ef2c7d65e6353ffb1d156b8c3029f1a6f
+  output_sha256: b02872e3ee0a1471c369793a76e292758e339a199ef7253c84d91152f657af69
+  runtime_seconds: 573.965
+  peak_memory_mb: 2226.79
+  oracle_comparisons: 24,000,000
+  oracle_mismatches: 0
+  determinism_status: PASS (byte-identical on repeated execution)
+  schema_status: PASS
+  preservation_status: PASS
+  sp1_isolation_status: PASS
+========================================================================

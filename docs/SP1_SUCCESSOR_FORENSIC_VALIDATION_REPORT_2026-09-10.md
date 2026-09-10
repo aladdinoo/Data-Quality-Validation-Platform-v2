@@ -122,7 +122,11 @@ Recorded discrepancy (documented, not silently resolved): the 2026-09-10 instruc
 
 ## 12. Rule-hash result — **PASS**
 
-Current `RuleRegistry` rule hashes (8/8 V1) are byte-identical to the historical flagship manifests and to the frozen hashes recorded in `DELIVERY_MANIFEST.json`/`rule_matrix.json`. No rule hash was altered.
+Current `RuleRegistry` rule hashes (8/8 V1) are byte-identical to the historical flagship run manifests and to the per-rule hashes recorded in **`evidence/final_execution/rule_matrix.json`** (the repository's dedicated rule-hash record, `implementation_hash_head` per rule). No rule hash was altered.
+
+Citation precision (corrected 2026-09-10, final-3M task W-1): `DELIVERY_MANIFEST.json` records **golden-fixture hashes and artifact-level file hashes** (including the file hash OF `rule_matrix.json`), not per-rule hashes. The authoritative sources for per-rule hash comparison are `evidence/final_execution/rule_matrix.json` and the flagship run manifests (e.g. `evidence/final_execution/cli_run/evidence/manifest.json`, `evidence/sp1_successor_2026-09-10/test_runs/summary.json`).
+
+Pre-existing older-generation rule-hash pins (documented, historical, correct — do NOT rewrite): `evidence/audit_1k/manifest.json` (2026-08-25, pins an earlier rule-hash generation, 6/8 coincide with current) and `evidence/final_verification/manifest.json` (2026-08-25, pins an older generation, 0/8 coincide). Both are baseline-identical (unchanged since commit ecf476a) and are preserved as historical records of earlier runs; rule-hash drift across historical run generations is expected and is not a defect of the frozen current contract.
 
 ## 13. Evidence-integrity result — **PASS**
 

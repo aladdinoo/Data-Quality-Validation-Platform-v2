@@ -1,0 +1,61 @@
+{
+  "phase": "PHASE 0 — FORENSIC BASELINE",
+  "captured_utc": "2026-09-10T15:59:43Z",
+  "purpose": "Forensic baseline captured BEFORE any modification for the final 3M validation task. This is the first artifact of the evidence/final_3m_validation/ directory.",
+  "repository": {
+    "url_of_record": "https://github.com/aladdinoo/Data-Quality-Validation-Platform-v2 (branch main)",
+    "local_path": "/home/z/my-project/dqvp-work/Data-Quality-Validation-Platform-v2",
+    "head_commit": "4686dc2550a538ce2dd780d74974934f0a432cd7",
+    "head_commit_subject": "Record SP1 successor archive metadata (2026-09-10)",
+    "head_commit_date": "2026-09-10 15:10:55 +0000",
+    "branch": "main",
+    "git_status_short": "(empty — clean working tree)",
+    "working_tree_clean": true,
+    "stash_count": 0,
+    "origin_main_ref_local": "ecf476a44190840994d32d2300ca12229fa91f76",
+    "unpushed_local_commits": [
+      "f26fceb78628c5bc417a174aae158099fa312431 (Integrate SP1 successor geography contract validation)",
+      "4686dc2550a538ce2dd780d74974934f0a432cd7 (Record SP1 successor archive metadata)"
+    ],
+    "ahead_behind_vs_origin": "ahead 2, behind 0",
+    "remote_verification": "origin remote unreachable from this environment (no network); local refs + reflog used, per prior audit limitation L-1",
+    "tracked_file_count": 393
+  },
+  "environment": {
+    "os": "Debian GNU/Linux 13 (trixie)",
+    "kernel": "5.10.134-013.8.3.kangaroo.al8.x86_64",
+    "python": "3.12.14 (/home/z/.venv/bin/python3)",
+    "cpu_cores": 2,
+    "total_memory_mb": 4159,
+    "available_memory_mb_at_baseline": 3686,
+    "disk_free_gb_at_baseline": 9.2,
+    "dependencies": {
+      "pyyaml": "6.0.3",
+      "pytest": "9.0.2",
+      "pytest-cov": "7.0.0"
+    }
+  },
+  "test_count": {
+    "pytest_collect_only": "400 tests collected in 0.60s",
+    "prior_audited_result_expectation": "400 collected / 391 passed / 9 skipped / 0 failed"
+  },
+  "prior_state_of_record": {
+    "previous_archive": "Data-Quality-Validation-Platform-V2-SP1-Successor-Validated-2026-09-10.zip",
+    "previous_archive_sha256": "8b9be92b80cf64fa736f4a8215445f397117cc91aa38d82a0f6e05688fcea914",
+    "independent_final_audit_verdict": "B) VERIFIED WITH LIMITATIONS (2026-09-10)",
+    "prior_3m_execution_reference": "evidence/final_5m_execution/11_largest_safe_execution_3m/ (2026-09-09, seed 20260909, 138.47s, peak RSS 2192.27 MB) — HISTORICAL, not to be overwritten",
+    "prior_3m_dataset_size_bytes": 809834462,
+    "prior_3m_dataset_sha256": "9be5438ee082652968705add152ee7268272213249826043603f36cfd55ae09e"
+  },
+  "safety_invariants_declared": [
+    "No ClickHouse connection or mutation",
+    "No production SQL execution",
+    "E1 not implemented, not executed, not activated",
+    "SP1 not registered in V1 registry, not default, not production routed",
+    "V1 frozen semantics preserved (8 rules, 33->41 columns)",
+    "No invented DL001-DL015 authoritative fixture",
+    "No invented company data",
+    "No push to GitHub",
+    "Historical evidence never overwritten"
+  ]
+}

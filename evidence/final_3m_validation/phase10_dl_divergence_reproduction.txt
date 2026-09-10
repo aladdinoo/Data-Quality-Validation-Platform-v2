@@ -1,0 +1,26 @@
+independent derivation: 12 exact cases
+  disagreements: 8 -> ['DL001', 'DL002', 'DL003', 'DL010', 'DL011', 'DL012', 'DL014', 'DL015']
+  agreements:    4 -> ['DL004', 'DL008', 'DL009', 'DL013']
+  DL001: V1=(1, 1) canonical=(0, 0) DISAGREE
+  DL002: V1=(1, 1) canonical=(0, 0) DISAGREE
+  DL003: V1=(1, 1) canonical=(0, 0) DISAGREE
+  DL010: V1=(1, 0) canonical=(0, 0) DISAGREE
+  DL011: V1=(1, 0) canonical=(1, 1) DISAGREE
+  DL012: V1=(1, 0) canonical=(1, 1) DISAGREE
+  DL014: V1=(0, 0) canonical=(1, 0) DISAGREE
+  DL015: V1=(0, 0) canonical=(1, 0) DISAGREE
+  DL004: V1=(0, 0) canonical=(0, 0) AGREE
+  DL008: V1=(0, 0) canonical=(0, 0) AGREE
+  DL009: V1=(0, 0) canonical=(0, 0) AGREE
+  DL013: V1=(1, 0) canonical=(1, 0) AGREE
+MATCHES REPORTED 8/12: True
+DL012 under alternative resolution 96501->MP: canonical=(0,0) -> still disagrees with V1=(1, 0): True
+DL015 under alternative resolution 96799->MP: canonical=(0,0) -> still disagrees with V1=(0, 0): False
+DL005 state='': V1==canonical for all probe zips: True
+DL005 state='ON': V1==canonical for all probe zips: True
+DL007 state='null': V1==canonical for all probe zips: True
+DL007 state=None: V1==canonical for all probe zips: True
+DL006 branch state='CA': V1=(1, 0) canonical=(0, 0) agree=False
+DL006 branch state='ON': V1=(0, 0) canonical=(0, 0) agree=True
+DL006 branch state='63': V1=(0, 0) canonical=(0, 0) agree=True
+DL006 branch state='': V1=(0, 0) canonical=(0, 0) agree=True

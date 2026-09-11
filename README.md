@@ -1,12 +1,13 @@
 # Data Quality Validation Platform
 
-> **V1 frozen rule engine · FRESH 3,000,000-row validation executed 2026-09-10 with an independent oracle (48,000,000 comparisons, 0 mismatches) · historical 5M dataset forensically verified · SP1 successor geography contract implemented for validation only · nothing pushed, nothing activated**
+> **V1 frozen rule engine · FRESH 3,000,000-row validation executed 2026-09-10 with an independent oracle (48,000,000 flag comparisons across two passes, 0 mismatches, byte-identical double-pass output) · historical 2026-09-09 3M evidence preserved · historical 5M dataset forensically verified · SP1 successor geography contract implemented for validation only · nothing pushed, nothing activated**
 
 [![Status](https://img.shields.io/badge/status-PASS%20WITH%20DOCUMENTED%20LIMITATIONS-yellow)](#validation-verdict)
 [![3M Validation](https://img.shields.io/badge/3M-4%20successful%20runs-brightgreen)](#3m-validation)
 [![Oracle](https://img.shields.io/badge/independent%20oracle-48M%20comparisons%20%7C%200%20mismatches-brightgreen)](#independent-oracle)
 [![Tests](https://img.shields.io/badge/tests-414%20passed%20%2B%209%20skipped-brightgreen)](#how-to-run-tests)
 [![SP1](https://img.shields.io/badge/SP1-successor%20contract%20%7C%20validation--only%20%7C%20inactive-blue)](#sp1-successor-contract)
+[![DL](https://img.shields.io/badge/DL-authoritative%20fixture%20absent%20%7C%208%2F12%20derived-lightgrey)](#dl001-dl015-status)
 
 Every claim below is labeled with its evidence class:
 
@@ -19,7 +20,7 @@ Every claim below is labeled with its evidence class:
 
 The Data Quality Validation Platform V2 is a **flag-only** validation engine for 33-column consumer contact datasets. The frozen **V1** layer (8 rules, 33→41 column contract, prefix-map geography semantics, rule hashes, golden fixtures) has never been modified since the audited baseline `ecf476a`. On **2026-09-10** a **fresh, real 3,000,000-row validation** was executed end-to-end through the production CLI with a **from-scratch independent oracle**: **24,000,000 flag comparisons per pass, 0 mismatches, byte-identical outputs on a repeated full double-pass execution**, and peak engine memory of **2226.79 MB**. The full test suite stands at **423 collected / 414 passed / 9 skipped / 0 failed**, including 23 new hardening regression tripwires added by this final task.
 
-The **SP1 successor geography contract** (Gulnara, prepared 2026-09-01, superseding the old SP1 policy) is implemented in an isolated, injectable module and validated locally by **132 targeted tests** — while remaining **inactive, non-default, not production validated, and not authorized for execution**. The authoritative DL001–DL015 fixture was never delivered; its absence is preserved (7 tests skip-gated) and the known **8-of-12 derived divergence** is reproduced independently and pinned as a regression test. No ClickHouse connection, no production mutation, no E1, and no push to GitHub has occurred at any point.
+The **SP1 successor geography contract** (Gulnara, prepared 2026-09-01, superseding the old SP1 policy) is implemented in an isolated, injectable module and validated locally by **132 targeted tests** — while remaining **inactive, non-default, not production validated, and not authorized for execution**. The authoritative DL001–DL015 fixture was never delivered; its absence is preserved (7 tests skip-gated) and the known **8-of-12 derived divergence** is reproduced independently and pinned as a regression test. No ClickHouse connection, no production mutation, no E1, and no push to GitHub occurred during any work covered by this audit.
 
 ## Current Status
 
@@ -27,10 +28,10 @@ The **SP1 successor geography contract** (Gulnara, prepared 2026-09-01, supersed
 |---|---|---|---|
 | V1 rule engine | PASS | VERIFIED LOCALLY | Frozen, versioned, SHA-256 identified; byte-identical to baseline `ecf476a` |
 | Fresh 3M validation (2026-09-10) | PASS | VERIFIED LOCALLY | 2 full passes; 3,000,000 rows in/out each; oracle 0 mismatches; byte-identical |
-| Historical 3M execution (2026-09-09) | PASS | HISTORICAL | 2 complete runs; 48M comparisons; 0 mismatches |
+| Historical 3M execution (2026-09-09) | PASS | HISTORICAL | 2 complete runs; 48M comparisons (24M × 2 runs); 0 mismatches |
 | 5M dataset integrity | PASS | HISTORICAL | 5,000,000 rows × 33 columns; IDs 1..5,000,000; SHA-256 verified |
 | 5M stress execution | DOCUMENTED LIMITATION | HISTORICAL | 4,943,922 / 5,000,000 rows (98.9%) before kernel OOM at ~3.59 GB |
-| Independent oracle | PASS | VERIFIED LOCALLY | 48,000,000 comparisons (2 × 24,000,000); 0 mismatches |
+| Independent oracle | PASS | VERIFIED LOCALLY | 48,000,000 oracle flag comparisons across two validation passes (24,000,000 per pass × 2); 0 mismatches |
 | Determinism | PASS | VERIFIED LOCALLY | Fresh double-pass: input hash equal, output hash equal, byte-identical files |
 | Test suite | PASS WITH BOUNDED SKIPS | VERIFIED LOCALLY | 423 collected / 414 passed / 9 skipped / 0 failed (2026-09-10, post-hardening) |
 | Geography V1 | PASS WITH LIMITATIONS | VERIFIED LOCALLY | Frozen prefix-map semantics only; known boundaries documented |
@@ -49,7 +50,7 @@ The **SP1 successor geography contract** (Gulnara, prepared 2026-09-01, supersed
 
 **PASS WITH DOCUMENTED LIMITATIONS** — the strongest conclusion the evidence supports:
 
-> The frozen V1 platform is **independently validated at the 3,000,000-row execution scale**, now with **two independent validation generations**: the historical 2026-09-09 execution (seed 20260909) and the fresh 2026-09-10 execution (seed 20260910), each run twice with byte-identical outputs and **48,000,000 independent flag comparisons producing zero mismatches** per generation. The SP1 successor geography contract is **defined and locally implemented/tested** under the authoritative 2026-09-01 contract, while remaining inactive, non-default, not production validated, and not authorized for execution.
+> The frozen V1 platform is **independently validated at the 3,000,000-row execution scale**, now with **two independently generated validation datasets**: the historical 2026-09-09 dataset (seed 20260909) and the fresh 2026-09-10 dataset (seed 20260910), each executed twice with byte-identical outputs and **48,000,000 independent oracle flag comparisons per dataset (24,000,000 comparisons per pass × 2 passes), with 0 mismatches**. The two datasets are independently generated; the oracle's *logic* is independent of the production implementation; the oracle's data tables necessarily come from the frozen contract (pinned equal by tests). The SP1 successor geography contract is **defined and locally implemented/tested** under the authoritative 2026-09-01 contract, while remaining inactive, non-default, not production validated, and not authorized for execution.
 
 What this verdict deliberately does **not** claim: 5M completion, live ClickHouse execution, Airflow runtime execution, company-authoritative DL acceptance, E1 authorization, SP1 production activation, or any production readiness beyond the locally proven scope.
 
@@ -289,7 +290,7 @@ Example from the contract: a row with a **valid state and a malformed ZIP** is *
 
 ## DL001-DL015 Status
 
-- The authoritative fixture `tests/golden/dl_geography_cases.csv` **was never delivered** and **does not exist** in this repository (verified by file check and `git ls-files`). The 7-test DL module is **skip-gated by design** and the table is "never reconstructed" — no synthetic authoritative fixture was created, ever.
+- The authoritative fixture `tests/golden/dl_geography_cases.csv` **was never delivered** and **does not exist** in this repository (verified by file check and `git ls-files`). The 7-test DL module is **skip-gated by design** and the table is "never reconstructed" — no synthetic authoritative fixture has been created at any point in this repository's recorded history.
 - Per the authoritative description, the prefix-map (frozen V1) and canonical expected outputs disagree on **8 of 15** cases; **DL013 (UT / 84501) is a control case** — a shared ZIP prefix (845 spans UT and OK) is not automatically erroneous.
 - **DERIVED reproduction (VERIFIED LOCALLY, clearly labeled as derived — NOT authoritative):** the real frozen V1 rules executed against contract-derived canonical expectations on the 12 exactly-specified cases reproduce **exactly 8 disagreements** (DL001, DL002, DL003, DL010, DL011, DL012, DL014, DL015) and 4 agreements (DL004, DL008, DL009, DL013). DL012/DL015 verdicts are robust to alternative reference resolutions; DL005/DL007 provably agree for all probe ZIPs; DL006 is consistent under the non-US-state reading. This fact is now **pinned by a permanent regression test** (`tests/unit/test_final_3m_hardening.py::TestDLDerivedDivergencePinned`) and reproduced fresh in `evidence/final_3m_validation/phase10_dl_divergence_reproduction.txt`.
 - **NOT CLAIMED:** "15/15 authoritative DL cases verified". The authoritative count remains unverified against the external table because it was never delivered.
@@ -313,6 +314,8 @@ Example from the contract: a row with a **valid state and a malformed ZIP** is *
 | Production path | canonical CLI subprocess (`python -m runner.cli validate`) — the real production entry point |
 | Verdict | `Validation PASSED: 3000000 rows in, 3000000 rows out`, reconciliation passed |
 
+Stage-runtimes attribution: the values above are the engine-reported CLI durations recorded in the final report's performance table. Across the two complete staged executions preserved in `terminal_output.txt`, the per-run validation durations were 115.80 / 113.27 s (first execution) and 113.77 / 114.51 s (final execution — the one that wrote `FINAL_RESULTS.json`); the harness-measured subprocess wall times recorded in `FINAL_RESULTS.json` (interpreter startup included) are 138.0 / 140.8 s and sum with the generation and verify stages to the 573.965 s total. Every validate run returned `Validation PASSED` with identical SHA-256 hashes and 0 oracle mismatches.
+
 Structural checks (both passes): schema PASS · row count PASS · column count/order PASS · row identity (id = 1..3,000,000, no gaps/dupes) PASS · row ordering PASS · source values preserved PASS · output shape PASS · flag domain PASS · SP1 isolation PASS (engine manifest contains exactly the 8 V1 rules).
 
 Flag counts on the fresh dataset (both passes identical — the dataset intentionally exercises edge rates):
@@ -330,7 +333,7 @@ Flag counts on the fresh dataset (both passes identical — the dataset intentio
 
 The monitoring SLA flags warnings on this dataset by design: the fresh generator intentionally injects elevated anomaly rates (blank/invalid emails, malformed ZIPs, unknown states) to exercise every rule boundary, while the SLA thresholds assume production-like data. `Validation PASSED` and reconciliation are unaffected; the SLA warnings are recorded honestly in the engine evidence (`evidence/final_3m_validation/pass1_engine/`).
 
-**HISTORICAL 3M execution (2026-09-09, seed 20260909 — preserved, not re-executed):** two complete runs (138.5 s / 140.5 s; peak 2,192.27 / 2,195.82 MB; 48M comparisons, 0 mismatches; byte-identical outputs; output SHA-256 `22110e49d0276eeed1153fe16ddf00a2a87c49a379ece7363a84cfdca2cb1ef9`). All `zip_state_assessable` rows were assessable in that generation's distribution (3,000,000/3,000,000) — a property of that generator, not of the engine.
+**HISTORICAL 3M execution (2026-09-09, seed 20260909 — preserved, not re-executed):** two complete runs (138.5 s / 140.5 s; peak 2,192.27 / 2,195.82 MB; 48M comparisons, 0 mismatches; byte-identical outputs; output SHA-256 `22110e49d0276eeed1153fe16ddf00a2a87c49a379ece7363a84cfdca2cb1ef9`). All `zip_state_assessable` rows were assessable in that dataset's distribution (3,000,000/3,000,000) — a property of that generator, not of the engine.
 
 ## Independent Oracle
 
@@ -343,20 +346,21 @@ The fresh validation's oracle is **structurally independent** of the production 
 **Results (fresh, 2026-09-10):**
 
 - **24,000,000 comparisons per pass** (3,000,000 rows × 8 rules) — executed on **both** passes
-- **48,000,000 total comparisons, 0 mismatches**, 0 mismatches by rule, no first-mismatch examples (none existed)
+- **48,000,000 total oracle flag comparisons across two validation passes, 0 mismatches**, 0 mismatches by rule, no first-mismatch examples (none existed)
 - Mismatch counters by rule all zero: every engine flag equals the independent oracle flag for every row
 - The same agreement is re-proven at small scale by the fast regression test `TestEngineOracleAgreement` (edge rows + random rows + novel cases, engine run in-process vs oracle)
 
-The historical 2026-09-09 verifier (also zero production imports) additionally reported 48,000,000 comparisons with 0 mismatches for that generation.
+The historical 2026-09-09 verifier (also zero production imports) additionally reported 48,000,000 comparisons with 0 mismatches across that execution's two runs.
 
 ## Determinism
 
 **VERIFIED LOCALLY — byte-identity proven on repeated full execution:**
 
-- The complete pipeline was run **twice** (generate → validate → verify) on 2026-09-10:
+- The complete staged pipeline (generate → validate → verify) was executed for **both passes** on 2026-09-10:
   - pass 1 input SHA-256 == pass 2 input SHA-256 (`208154653…`)
   - pass 1 output SHA-256 == pass 2 output SHA-256 (`b02872e3…`)
   - `filecmp.cmp(..., shallow=False)` on both output files = **byte-identical**
+- The **entire double-pass was additionally re-executed end-to-end** (a full second staged execution; transcript preserved in `terminal_output.txt`): identical input/output SHA-256, byte-identical outputs, and 24,000,000 oracle comparisons per pass with **0 mismatches again**. The structured `FINAL_RESULTS.json` records this final execution.
 - The dataset generator consumes one `random.Random(20260910)` instance strictly in row order; the engine is a pure function of its input (no clocks, no randomness — pinned by tests).
 - Historical determinism (2026-09-09): the two 3M outputs were byte-identical, and the generator's determinism is pinned by Q15 (`det1.csv` / `det2.csv` hash equality).
 - Pass-2 bulk CSVs were removed **after** the byte-identity proof (hashes and the comparison transcript retained in `evidence/final_3m_validation/FINAL_RESULTS.json`), following the repository's established disk-reclamation convention for multi-hundred-MB synthetic artifacts.
@@ -370,7 +374,7 @@ The historical 2026-09-09 verifier (also zero production imports) additionally r
 | 100K | 4.471 s | 22,365.8 rows/s | 93.87 MB | HISTORICAL |
 | 1M | 45.917 s | 21,778.5 rows/s | 735.71 MB | HISTORICAL |
 | 3M (2026-09-09) | 138.47 s / 140.47 s | ~21,660 / 21,358 rows/s | 2,192.27 / 2,195.82 MB | HISTORICAL |
-| **3M (2026-09-10, fresh)** | **113.8–115.8 s validation** | **~26,000 rows/s** | **2,226.79 / 2,222.93 MB** | **VERIFIED LOCALLY** |
+| **3M (2026-09-10, fresh)** | **113.3–115.8 s validation (engine-reported, per-run)** | **~26,000 rows/s** | **2,226.79 / 2,222.93 MB** | **VERIFIED LOCALLY** |
 | 5M stress | 185.3 s | — | 3,592 MB at termination (98.9%) | HISTORICAL |
 
 Memory growth is approximately linear because the engine holds an `id_set` plus lineage accumulators (documented in the engine class docstring — no O(1) memory claim is made). The pre-registered linear model predicted the historical 3M peak within ~+1.4% and the 5M termination point within ~0.1%; the fresh 3M peak (2,226.79 MB on this environment) is consistent with the historical measurement (~+1.6% vs 2,192.27 MB on a different day/environment). Under the observed model, ~4.6 GB free RAM would be required for a safe 5M execution here.
@@ -383,7 +387,7 @@ flowchart LR
     SCRIPT[Independent harness<br/>scripts/final_3m_validation.py] --> FINAL[FINAL_RESULTS.json<br/>atomic write<br/>hashes + oracle verdicts]
     EV --> FINAL
     FINAL --> PROV[Provenance records<br/>contract hashes - dates<br/>company figures labeled]
-    BASE[Baseline snapshots<br/>pre-modification hashes] --> VERIFY[Evidence integrity<br/>285 tracked files<br/>byte-identical]
+    BASE[Baseline snapshots<br/>pre-modification hashes] --> VERIFY[Evidence integrity<br/>274/274 git-tracked historical<br/>evidence - report - doc files<br/>byte-identical]
     PROV --> VERIFY
     style RUN fill:#E8F5E9,stroke:#2E7D32
     style EV fill:#FCE4EC,stroke:#AD1457
@@ -408,6 +412,8 @@ flowchart LR
 
 **Prior evidence roots (preserved, never overwritten):** `evidence/final_5m_execution/` (2026-09-09 V1 validation, incl. historical 3M + 5M stress + benchmarks), `evidence/sp1_successor_2026-09-10/` (SP1 successor integration), `evidence/final_execution/`, `evidence/final_verification/`, `evidence/audit_1k/`, `evidence/benchmarks/`, `reports/history/`.
 
+**Final archive (VERIFIED LOCALLY):** `Data-Quality-Validation-Platform-V2-Final-3M-Validated-2026-09-10.zip` — 1,885,636 bytes, SHA-256 `bc74a37c449452d5ab7f2b2c38a528e4d582298ea1e5b45eac20642124c3c3aa`, 438 entries (421 tracked files + 17 git metadata; no secrets, no caches, no ephemeral data). Built at commit `0e2eab8`; extraction to a separate clean directory verified: zip integrity OK, SHA-256 exact match, git history preserved, and the full suite re-run from the extracted copy (414 passed / 9 skipped) — recorded in `evidence/final_3m_validation/archive_verification.json`. Commits after `0e2eab8` are README-only documentation corrections and are not part of the archive.
+
 **Provenance (recorded as metadata, not execution evidence):** successor contract hashes (`contract_v3` `8ae3256b…`, `decision_record_v2` `4dd8914f…`, `pinned_template` `47b3361b…`, `geography_rule_summary.md` `410bbf29…`), source commit `ee7859e1…` (external — not part of this repo's history), prepared 2026-09-01. **`manual_delivery_v1` is provenance, not execution evidence** — distinct from, and never merged with, Evidence Manifest v1; **recipient receipt: NOT VERIFIED**.
 
 **Rule-hash records (citation precision, W-1 corrected):** per-rule hashes live in `evidence/final_execution/rule_matrix.json` (the dedicated rule-hash record) and the flagship run manifests. `DELIVERY_MANIFEST.json` records **golden-fixture hashes and artifact-level file hashes** — not per-rule hashes. **W-2 (documented):** `evidence/audit_1k/manifest.json` and `evidence/final_verification/manifest.json` (both 2026-08-25) pin **older historical rule-hash generations** — pre-existing, baseline-identical, preserved as historical records; cross-generation hash drift in historical run manifests is expected and is not a defect of the frozen current contract. Both facts are pinned by `TestW1W2DocumentationFacts`.
@@ -426,14 +432,14 @@ flowchart LR
 | SP1 activation | Not registered, not default, no production routing | Live registry enumeration + zero non-test importers + tripwire |
 | Network | No network client in production packages | Tripwire scan (socket/requests/urllib/http) — zero hits |
 | Credentials | None present | `.env.example` placeholders only (pre-existing, inert) |
-| Git | Local commits only; nothing pushed | `origin/main` still `ecf476a`; ahead 3; no push performed |
+| Git | Local commits only; nothing pushed | `origin/main` local ref still `ecf476a`; every local commit is unpushed (verified via local refs/reflog — live remote state was not queried during this audit) |
 | Historical evidence | Never overwritten | 274/274 tracked files byte-identical; zero deletions |
 
 The platform is **flag-only**: the validation path computes flags and appends columns; it contains no data-mutation capability whatsoever. There is no production connector to guard — the boundary fails closed **by absence**, which is now pinned by `TestProductionBoundaryTripwires` so an accidental future connector import would fail the suite.
 
 ## ClickHouse Boundary
 
-- **Zero connections, zero statements, zero mutations — ever.** No ClickHouse client library (`clickhouse_connect` / `clickhouse_driver`) exists in any code.
+- **Zero ClickHouse connections, statements, or mutations occurred during all executions covered by this audit.** No ClickHouse client library (`clickhouse_connect` / `clickhouse_driver`) exists in any code.
 - `sql/00{1..5}_*.sql` are DDL **templates** only; no Python code executes them.
 - `CANONICAL_SOURCE_TABLE = "tips_data.tblZipStCtyIB"` is a documentation constant describing where the company's physical reference would live — it is never read, never queried, never bound.
 - The only "connection-like" strings are three pre-existing, inert documentation placeholders (`.env.example` host/port examples; an unused `port: 8123` constant in `configs/quality.yaml`) — identical to the audited baseline and read by no connection code.
@@ -452,7 +458,7 @@ The platform is **flag-only**: the validation path computes flags and appends co
 
 - E1 (latitude/longitude backfill) exists only as status records in historical evidence and documentation.
 - Zero E1 identifiers exist in any production package (`data_quality_platform/`, `runner/`) — now pinned by a permanent regression tripwire.
-- No E1 mutation logic was ever created; no E1 readiness is claimed. Activation would require an implemented module + written company authorization + a non-production environment, none of which exist.
+- No E1 mutation logic has been created at any point in this repository's recorded history; no E1 readiness is claimed. Activation would require an implemented module + written company authorization + a non-production environment, none of which exist.
 
 ## Known Limitations
 
@@ -465,7 +471,7 @@ Honest, bounded, and none silently "fixed":
 5. **V1 geography known boundaries** (frozen): 13 ambiguous prefixes, DC duplicate prefix, 11 territory/military codes absent from the prefix map, Austin false-positive golden cases (bounded).
 6. **R3 exact computational formula unresolved** — business meaning approved (flag-only, inherited from R1/R2); frozen V1 implementation preserved.
 7. **Recipient receipt of `manual_delivery_v1` not verified.**
-8. **Remote GitHub state verified via local refs/reflog only** — no network access from this environment; no push has occurred.
+8. **Remote GitHub state verified via local refs/reflog only** — no network operations were performed from this environment; no push has occurred (the `origin/main` ref never moved in the local reflog).
 9. **Monitoring SLA thresholds assume production-like data** — the intentionally anomaly-rich validation datasets trigger SLA warnings that are recorded but do not affect validation verdicts.
 10. **Fresh 3M oracle shares the frozen data tables** (prefix map, patterns) with the contract by transcription (pinned equal by tests) — its *logic* is independent, its *data* is the contract itself.
 
@@ -579,11 +585,11 @@ Outputs: dataset + flags CSV under `data/generated/final_3m/` (gitignored by the
 
 **VERDICT: PASS WITH DOCUMENTED LIMITATIONS** (A-tier local validation; external requirements remain unavailable/unexecuted/unauthorized).
 
-**Proven locally (VERIFIED LOCALLY):** frozen V1 behavior (rule hashes, fixtures, 33→41 contract byte-identical to baseline `ecf476a`); fresh real 3M validation through the production CLI — 2 full passes, 3,000,000 rows in/out, 48,000,000 independent-oracle comparisons with **0 mismatches**, byte-identical repeated execution, peak 2226.79 MB; schema/identity/ordering/preservation/shape checks; SP1 successor contract conformance (132/132 targeted, 35/35 clause reconciliation, 7/7 acceptance cases) in strict isolation; DL 8/12 derived divergence reproduced and pinned; full suite 423/414/9/0 with all pre-change numbers reproduced exactly; production-boundary tripwires; evidence and provenance integrity (274 tracked files byte-identical; zero deletions); W-1/W-2 documentation corrections pinned by tests.
+**Proven locally (VERIFIED LOCALLY):** frozen V1 behavior (rule hashes, fixtures, 33→41 contract byte-identical to baseline `ecf476a`); fresh real 3M validation through the production CLI — 2 full passes, 3,000,000 rows in/out, 48,000,000 independent-oracle flag comparisons across two validation passes (24,000,000 per pass × 2), **0 mismatches**, byte-identical repeated execution, peak 2226.79 MB; schema/identity/ordering/preservation/shape checks; SP1 successor contract conformance (132/132 targeted, 35/35 clause reconciliation, 7/7 acceptance cases) in strict isolation; DL 8/12 derived divergence reproduced and pinned; full suite 423/414/9/0 with all pre-change numbers reproduced exactly; production-boundary tripwires; evidence and provenance integrity (274 git-tracked historical evidence/report/doc files byte-identical; zero deletions); W-1/W-2 documentation corrections pinned by tests.
 
 **Externally gated or unexecuted (honestly not claimed):** company-authoritative DL acceptance (table never delivered); physical reference binding; SP1 production activation/authorization; ClickHouse runtime; Airflow runtime; E1 (not implemented, not authorized); any production mutation; recipient receipt; remote push (nothing pushed — `origin/main` remains `ecf476a`).
 
 **Product:** Data Quality Validation Platform · **Repository:** `Data-Quality-Validation-Platform-v2` · **Python package:** `data_quality_platform`
-**V1 validation:** 2026-09-09 (historical) + **2026-09-10 (fresh, independent)** · **SP1 successor integration:** 2026-09-10 · **Final task:** 2026-09-10
+**V1 validation:** 2026-09-09 (historical) + **2026-09-10 (fresh, independent)** · **SP1 successor integration:** 2026-09-10 · **Final validation task:** 2026-09-10 · **README finalized:** 2026-09-11 (documentation-only revisions; no code or evidence changes)
 **Final verdict:** **PASS WITH DOCUMENTED LIMITATIONS**
 
